@@ -1,0 +1,236 @@
+<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
+<html lang="fr"> <!-- Définir la langue de la page -->
+<head>
+    <meta charset="UTF-8"> <!-- Définir l'encodage des caractères à UTF-8 pour une meilleure compatibilité -->
+    <title>Maxence E-Portfolio</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
+    <meta name="description" content="Maxence - E-Portfolio"> <!-- Description de la page pour les moteurs de recherche -->
+    
+    <!-- Définition du style de la page -->
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Police de caractère */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #0d0d0d; /* Couleur de fond de la page */
+            color: #e6e6e6; /* Couleur du texte */
+            height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+            overflow: hidden; /* Empêcher le débordement du contenu */
+        }
+
+        /* Style pour le menu de navigation */
+        nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Style pour chaque lien du menu */
+        nav a {
+            color: #5b0085; /* Couleur du texte */
+            text-decoration: none; /* Enlever la décoration des liens */
+            font-size: 1.2rem;
+            cursor: pointer; /* Curseur de type pointeur pour les liens */
+            opacity: 0; /* Début avec opacité 0 */
+            animation: fadeInLink 1s forwards; /* Animation d'entrée */
+        }
+
+        nav a:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        nav a:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        nav a:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        /* Conteneur pour toutes les sections */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Empêcher le débordement */
+        }
+
+        /* Style des sections */
+        .section {
+            position: absolute; /* Positionner les sections de manière absolue */
+            top: 0;
+            left: 100%; /* Initialement, placer les sections à droite */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; /* Transition pour l'animation */
+            opacity: 0; /* Rendre la section invisible au départ */
+        }
+
+        /* Section active (celle qui doit être visible) */
+        .section.active {
+            transform: translateX(0); /* Déplacer la section à sa position initiale */
+            opacity: 1; /* Rendre la section visible */
+            left: 0; /* Positionner la section à sa place */
+        }
+
+        /* Section précédente (celle qui disparait) */
+        .section.previous {
+            opacity: 0; /* Rendre la section invisible */
+            transform: translateX(-100%); /* Déplacer la section vers la gauche */
+        }
+
+        /* En-tête de la section Profil */
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #5b0085;
+            opacity: 0;
+            animation: fadeInLink 1s forwards; /* Animation d'apparition du texte */
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #5b0085;
+            opacity: 0;
+            animation: fadeInLink 1s forwards;
+            animation-delay: 0.5s; /* Retarder l'animation du texte */
+        }
+
+        /* Boîte de code pour la section des compétences */
+        .code-box {
+            background-color: #1e1e1e; /* Fond sombre pour le code */
+            color: #d4d4d4; /* Texte clair */
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px; /* Coins arrondis */
+            max-width: 600px; /* Largeur maximale */
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 2); /* Ombre autour de la boîte */
+            opacity: 0; /* Début avec opacité 0 */
+            animation: fadeInUp 1s forwards; /* Animation d'entrée de bas en haut */
+        }
+
+        .code-box:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .code-box:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .code-box:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        /* Footer de la page */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #888; /* Couleur du texte du footer */
+        }
+
+        /* Animation pour les liens de navigation */
+        @keyframes fadeInLink {
+            0% {
+                transform: translateY(30px); /* Début de l'animation avec un décalage */
+                opacity: 0; /* Invisibilité initiale */
+            }
+            100% {
+                transform: translateY(0); /* Retour à la position initiale */
+                opacity: 1; /* Rendre visible */
+                color: #ffffff
+            }
+        }
+
+        /* Animation pour l'apparition de la boîte de code */
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(50px); /* Début avec un décalage */
+                opacity: 0; /* Début invisible */
+            }
+            100% {
+                transform: translateY(0); /* Retour à la position initiale */
+                opacity: 1; /* Rendre visible */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu de navigation -->
+    <nav>
+        <a onclick="showSection(0)">Profil</a> <!-- Lien vers la section Profil -->
+        <a onclick="showSection(1)">Compétences</a> <!-- Lien vers la section Compétences -->
+        <a onclick="showSection(2)">Contact</a> <!-- Lien vers la section Contact -->
+    </nav>
+
+    <!-- Conteneur des sections -->
+    <div class="container">
+        <!-- Section Profil -->
+        <div class="section active" id="section-0">
+            <header>
+                <h1>Hi, I'm Maxence <span>&#128075;</span></h1>
+                <p>Étudiant en B.T.S. SIO-CYBERSÉCURITÉ</p>
+            </header>
+        </div>
+
+        <!-- Section Compétences -->
+        <div class="section" id="section-1">
+            <div class="code-box">
+                <h2>Profil</h2>
+                <p>Je recherche un stage pratique du 2 juin au 4 juillet 2025. Passionné par la cybersécurité, le développement web, et les réseaux.</p>
+            </div>
+        </div>
+
+        <!-- Section Contact -->
+        <div class="section" id="section-2">
+            <div class="code-box">
+                <h2>Compétences</h2>
+                <ul>
+                    <li>Réseau</li>
+                    <li>Cybersécurité</li>
+                    <li>Développement Web</li>
+                </ul>
+            </div>
+            <footer>
+                <p>&copy; 2025 Maxence | Fait avec passion et du café ☕</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Script pour gérer les transitions entre sections -->
+    <script>
+        let sections = document.querySelectorAll('.section'); // Sélectionner toutes les sections
+        function showSection(index) {
+            sections.forEach((section, i) => {
+                // Réinitialisation des classes avant l'animation
+                section.classList.remove('active', 'previous');
+                
+                // Si c'est la section courante, on l'active
+                if (i === index) {
+                    section.classList.add('active');
+                } else if (i < index) {
+                    // Les sections précédentes se déplacent à gauche
+                    section.classList.add('previous');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
