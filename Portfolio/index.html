@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Maxence</title>
+  <meta name="description" content="Portfolio étudiant de Maxence Thary">
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #0d0d0d;
+      color: #e6e6e6;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    nav {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #e6e6e6;
+      text-decoration: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+    }
+
+    nav a:nth-child(1) { animation-delay: 0.2s; }
+    nav a:nth-child(2) { animation-delay: 0.4s; }
+    nav a:nth-child(3) { animation-delay: 0.6s; }
+    nav a:nth-child(4) { animation-delay: 0.8s; }
+    nav a:nth-child(5) { animation-delay: 1s; }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .section {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+    }
+
+    .section.active {
+      transform: translateX(0);
+      opacity: 1;
+      left: 0;
+    }
+
+    .section.previous {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    header {
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #e6e6e6;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #e6e6e6;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+      animation-delay: 0.5s;
+    }
+
+    .code-box {
+      background-color: #1e1e1e;
+      color: #e6e6e6;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      max-width: 600px;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.5;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 2);
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    footer p {
+      font-size: 1rem;
+      color: #888;
+    }
+
+    @keyframes fadeInLink {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a onclick="showSection(0)">Accueil</a>
+    <a onclick="showSection(1)">À propos</a>
+    <a onclick="showSection(2)">Compétences</a>
+    <a onclick="showSection(3)">Techniques</a>
+    <a onclick="showSection(4)">Contact</a>
+  </nav>
+
+  <div class="container">
+    <!-- ACCUEIL -->
+    <div class="section active" id="section-0">
+      <header>
+        <h1>Hi, I'm Maxence 👋</h1>
+        <p>Étudiant en BTS SIO - Cybersécurité</p>
+        <div class="code-box">
+          <p>
+            Je suis passionné par la cybersécurité, les réseaux et le développement web. Je recherche un stage du <strong>2 juin au 11 juillet 2025</strong>.
+          </p>
+          <a href="CV_professionnel.pdf" download style="color:#e6e6e6;">📄 Télécharger mon CV</a>
+        </div>
+      </header>
+      <footer>
+        <p>© 2025 Maxence | Fait avec passion et du café ☕</p>
+      </footer>
+    </div>
+
+    <!-- À PROPOS -->
+    <div class="section" id="section-1">
+      <div class="code-box">
+        <h2>À propos</h2>
+        <p>
+          Je m'appelle Maxence Thary. J’ai 18 ans et je suis passionné par les nouvelles technologies.<br>
+          En plus de l'informatique, je pratique le karaté, joue de la batterie, et monte des vidéos.
+        </p>
+      </div>
+      <footer>
+        <p>© 2025 Maxence | Fait avec passion et du café ☕</p>
+      </footer>
+    </div>
+
+    <!-- COMPÉTENCES -->
+    <div class="section" id="section-2">
+      <div class="code-box">
+        <h2>Compétences générales</h2>
+        <p><strong>Systèmes :</strong> Windows, Ubuntu, Kali Linux</p>
+        <p><strong>Langages :</strong> HTML, Python, Bash / Shell</p>
+        <p><strong>Logiciels :</strong> Word, PowerPoint, Adobe, FileZilla</p>
+        <p><strong>Expérience :</strong> montage vidéo, domotique, gestion de site web</p>
+      </div>
+      <footer>
+        <p>© 2025 Maxence | Fait avec passion et du café ☕</p>
+      </footer>
+    </div>
+
+    <!-- TECHNIQUES -->
+    <div class="section" id="section-3">
+      <div class="code-box">
+        <h2>Logiciels & Langages maîtrisés</h2>
+        <ul>
+          <li>🧠 Langages : HTML, Python, Bash / Shell</li>
+          <li>💻 Systèmes : Windows, Ubuntu, Kali Linux</li>
+          <li>🛠️ Virtualisation : VirtualBox, VMware, Stormshield</li>
+          <li>🗂️ Bureautique : Word, PowerPoint</li>
+          <li>🌐 Réseau : FileZilla, bases de Wireshark</li>
+        </ul>
+      </div>
+      <footer>
+        <p>© 2025 Maxence | Fait avec passion et du café ☕</p>
+      </footer>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="section-4">
+      <div class="code-box">
+        <h2>Contact</h2>
+        <p>Email : thary.maxence@gmail.com</p>
+        <p>Téléphone : 06 74 29 47 23</p>
+        <a href="https://www.linkedin.com/in/maxence-thary-514982339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="color:#e6e6e6;">Mon Linkedin</a>
+      </div>
+      <footer>
+        <p>© 2025 Maxence | Fait avec passion et du café ☕</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    function showSection(index) {
+      sections.forEach((section, i) => {
+        section.classList.remove('active', 'previous');
+        if (i === index) {
+          section.classList.add('active');
+        } else if (i < index) {
+          section.classList.add('previous');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
