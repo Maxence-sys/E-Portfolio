@@ -1,242 +1,221 @@
-<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
-<html lang="fr"> <!-- Définir la langue de la page -->
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8"> <!-- Définir l'encodage des caractères à UTF-8 pour une meilleure compatibilité -->
-    <title>Maxence E-Portfolio</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
-    <meta name="description" content="Maxence - E-Portfolio"> <!-- Description de la page pour les moteurs de recherche -->
-    
-    <!-- Définition du style de la page -->
-    <style>
-        body {
-            font-family: 'Courier New', Courier, monospace; /* Police de caractère */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: #0d0d0d; /* Couleur de fond de la page */
-            color: #e6e6e6; /* Couleur du texte */
-            height: 100vh; /* Prendre toute la hauteur de la fenêtre */
-            overflow: hidden; /* Empêcher le débordement du contenu */
-        }
+  <meta charset="UTF-8">
+  <title>Portfolio - Maxence</title>
+  <meta name="description" content="Portfolio étudiant de Maxence Thary">
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #0d0d0d;
+      color: #e6e6e6;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        /* Style pour le menu de navigation */
-        nav {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    nav {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        /* Style pour chaque lien du menu */
-        nav a {
-            color: #5b0085; /* Couleur du texte */
-            text-decoration: none; /* Enlever la décoration des liens */
-            font-size: 1.2rem;
-            cursor: pointer; /* Curseur de type pointeur pour les liens */
-            opacity: 0; /* Début avec opacité 0 */
-            animation: fadeInLink 1s forwards; /* Animation d'entrée */
-        }
+    nav a {
+      color: #e6e6e6;
+      text-decoration: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+    }
 
-        nav a:nth-child(1) {
-            animation-delay: 0.2s;
-        }
+    nav a:nth-child(1) { animation-delay: 0.2s; }
+    nav a:nth-child(2) { animation-delay: 0.4s; }
+    nav a:nth-child(3) { animation-delay: 0.6s; }
+    nav a:nth-child(4) { animation-delay: 0.8s; }
+    nav a:nth-child(5) { animation-delay: 1s; }
 
-        nav a:nth-child(2) {
-            animation-delay: 0.4s;
-        }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-        nav a:nth-child(3) {
-            animation-delay: 0.6s;
-        }
+    .section {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+    }
 
-        /* Conteneur pour toutes les sections */
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Empêcher le débordement */
-        }
+    .section.active {
+      transform: translateX(0);
+      opacity: 1;
+      left: 0;
+    }
 
-        /* Style des sections */
-        .section {
-            position: absolute; /* Positionner les sections de manière absolue */
-            top: 0;
-            left: 100%; /* Initialement, placer les sections à droite */
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; /* Transition pour l'animation */
-            opacity: 0; /* Rendre la section invisible au départ */
-        }
+    .section.previous {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
 
-        /* Section active (celle qui doit être visible) */
-        .section.active {
-            transform: translateX(0); /* Déplacer la section à sa position initiale */
-            opacity: 1; /* Rendre la section visible */
-            left: 0; /* Positionner la section à sa place */
-        }
+    header {
+      text-align: center;
+    }
 
-        /* Section précédente (celle qui disparait) */
-        .section.previous {
-            opacity: 0; /* Rendre la section invisible */
-            transform: translateX(-100%); /* Déplacer la section vers la gauche */
-        }
+    header h1 {
+      font-size: 3rem;
+      color: #e6e6e6;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+    }
 
-        /* En-tête de la section Profil */
-        header {
-            text-align: center;
-        }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #e6e6e6;
+      opacity: 0;
+      animation: fadeInLink 1s forwards;
+      animation-delay: 0.5s;
+    }
 
-        header h1 {
-            font-size: 3rem;
-            color: #5b0085;
-            opacity: 0;
-            animation: fadeInLink 1s forwards; /* Animation d'apparition du texte */
-        }
+    .code-box {
+      background-color: #1e1e1e;
+      color: #e6e6e6;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      max-width: 600px;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.5;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 2);
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #5b0085;
-            opacity: 0;
-            animation: fadeInLink 1s forwards;
-            animation-delay: 0.5s; /* Retarder l'animation du texte */
-        }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+    }
 
-        /* Boîte de code pour la section des compétences */
-        .code-box {
-            background-color: #1e1e1e; /* Fond sombre pour le code */
-            color: #d4d4d4; /* Texte clair */
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 8px; /* Coins arrondis */
-            max-width: 600px; /* Largeur maximale */
-            font-family: 'Courier New', Courier, monospace;
-            line-height: 1.5;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 2); /* Ombre autour de la boîte */
-            opacity: 0; /* Début avec opacité 0 */
-            animation: fadeInUp 1s forwards; /* Animation d'entrée de bas en haut */
-        }
+    footer p {
+      font-size: 1rem;
+      color: #888;
+    }
 
-        .code-box:nth-child(1) {
-            animation-delay: 0.2s;
-        }
+    @keyframes fadeInLink {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
 
-        .code-box:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .code-box:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        /* Footer de la page */
-        footer {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        footer p {
-            font-size: 1rem;
-            color: #888; /* Couleur du texte du footer */
-        }
-
-        /* Animation pour les liens de navigation */
-        @keyframes fadeInLink {
-            0% {
-                transform: translateY(30px); /* Début de l'animation avec un décalage */
-                opacity: 0; /* Invisibilité initiale */
-            }
-            100% {
-                transform: translateY(0); /* Retour à la position initiale */
-                opacity: 1; /* Rendre visible */
-                color: #ffffff
-            }
-        }
-
-        /* Animation pour l'apparition de la boîte de code */
-        @keyframes fadeInUp {
-            0% {
-                transform: translateY(50px); /* Début avec un décalage */
-                opacity: 0; /* Début invisible */
-            }
-            100% {
-                transform: translateY(0); /* Retour à la position initiale */
-                opacity: 1; /* Rendre visible */
-            }
-        }
-    </style>
+    @keyframes fadeInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Menu de navigation -->
-    <nav>
-        <a onclick="showSection(0)">Profil</a> <!-- Lien vers la section Profil -->
-        <a onclick="showSection(1)">Compétences</a> <!-- Lien vers la section Compétences -->
-        <a onclick="showSection(2)">Contact</a> <!-- Lien vers la section Contact -->
-    </nav>
 
-    <!-- Conteneur des sections -->
-    <div class="container">
-        <!-- Section Profil -->
-        <div class="section active" id="section-0">
-            <header>
-                <h1>Hi, I'm Maxence <span>&#128075;</span></h1>
-                <p>Étudiant en B.T.S. SIO-CYBERSÉCURITÉ</p>
-            </header>
-            <div class="section" id="section-1">
-                <div class="code-box">
-                    <h2>Profil</h2>
-                    <p>Je recherche un stage pratique du 2 juin au 4 juillet 2025. Passionné par la cybersécurité, le développement web, et les réseaux.</p>
-                </div>
-            </div>
-        </div>
+  <nav>
+    <a onclick="showSection(0)">Accueil</a>
+    <a onclick="showSection(1)">À propos</a>
+    <a onclick="showSection(2)">Compétences</a>
+    <a onclick="showSection(3)">Techniques</a>
+    <a onclick="showSection(4)">Contact</a>
+  </nav>
 
-        <!-- Section Compétences -->
-        <div class="section" id="section-1">
-            <div class="code-box">
-                <h2>Compétences</h2>
-                <p></p>
-            </div>
+  <div class="container">
+    <!-- ACCUEIL -->
+    <div class="section active" id="section-0">
+      <header>
+        <h1>Bonjour, je suis Maxence 👋</h1>
+        <p>Étudiant en BTS SIO - Cybersécurité</p>
+        <div class="code-box">
+          <p>
+            Je suis passionné par la cybersécurité, les réseaux et le développement web.<br>
+            Je recherche un stage du <strong>2 juin au 11 juillet 2025</strong>.
+          </p>
+          <a href="CV_professionnel.pdf" download style="color:#e6e6e6;">📄 Télécharger mon CV</a>
         </div>
-
-        <!-- Section Contact -->
-        <div class="section" id="section-2">
-            <div class="code-box">
-                <h2>Contact</h2>
-                <ul>
-                    <li>thary.maxence@gmail.com</li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <footer>
-                <p>&copy; 2025 Maxence | Fait avec passion et du café ☕</p>
-            </footer>
-        </div>
+      </header>
     </div>
 
-    <!-- Script pour gérer les transitions entre sections -->
-    <script>
-        let sections = document.querySelectorAll('.section'); // Sélectionner toutes les sections
-        function showSection(index) {
-            sections.forEach((section, i) => {
-                // Réinitialisation des classes avant l'animation
-                section.classList.remove('active', 'previous');
-                
-                // Si c'est la section courante, on l'active
-                if (i === index) {
-                    section.classList.add('active');
-                } else if (i < index) {
-                    // Les sections précédentes se déplacent à gauche
-                    section.classList.add('previous');
-                }
-            });
+    <!-- À PROPOS -->
+    <div class="section" id="section-1">
+      <div class="code-box">
+        <h2>À propos</h2>
+        <p>
+          Je m'appelle Maxence Thary. J’ai 18 ans et je suis passionné par les nouvelles technologies.<br>
+          En plus de l'informatique, je pratique le karaté, joue de la batterie, et monte des vidéos.
+        </p>
+      </div>
+    </div>
+
+    <!-- COMPÉTENCES -->
+    <div class="section" id="section-2">
+      <div class="code-box">
+        <h2>Compétences générales</h2>
+        <p><strong>Systèmes :</strong> Windows, Ubuntu, Kali Linux</p>
+        <p><strong>Langages :</strong> HTML, Python, Bash / Shell</p>
+        <p><strong>Logiciels :</strong> Word, PowerPoint, Adobe, FileZilla</p>
+        <p><strong>Expérience :</strong> montage vidéo, domotique, gestion de site web</p>
+      </div>
+    </div>
+
+    <!-- TECHNIQUES -->
+    <div class="section" id="section-3">
+      <div class="code-box">
+        <h2>Logiciels & Langages maîtrisés</h2>
+        <ul>
+          <li>🧠 Langages : HTML, Python, Bash / Shell</li>
+          <li>💻 Systèmes : Windows, Ubuntu, Kali Linux</li>
+          <li>🛠️ Virtualisation : VirtualBox, VMware, Stormshield</li>
+          <li>🗂️ Bureautique : Word, PowerPoint</li>
+          <li>🌐 Réseau : FileZilla, bases de Wireshark</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="section-4">
+      <div class="code-box">
+        <h2>Contact</h2>
+        <p>Email : thary.maxence@gmail.com</p>
+        <p>Téléphone : 06 74 29 47 23</p>
+      </div>
+      <footer>
+        <p>&copy; 2025 Maxence Thary | Portfolio personnel</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    function showSection(index) {
+      sections.forEach((section, i) => {
+        section.classList.remove('active', 'previous');
+        if (i === index) {
+          section.classList.add('active');
+        } else if (i < index) {
+          section.classList.add('previous');
         }
-    </script>
+      });
+    }
+  </script>
+
 </body>
 </html>
