@@ -12,12 +12,14 @@
 
   <style>
     :root {
-      --primary: #00ff88; /* Vert Néon */
-      --secondary: #00d2ff; /* Bleu Cyber */
-      --bg-color: #050505;
-      --card-bg: rgba(20, 20, 20, 0.8);
+      /* Palette Cyberpunk / Synthwave */
+      --primary: #ff2a6d; /* Rose Néon */
+      --secondary: #7c4dff; /* Violet Ultra */
+      --accent: #05d9e8; /* Cyan pour le contraste */
+      --bg-color: #120a1f; /* Fond très sombre violet */
+      --card-bg: rgba(30, 20, 40, 0.85);
       --text-color: #e0e0e0;
-      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      --glass-border: 1px solid rgba(255, 42, 109, 0.2);
     }
 
     * { box-sizing: border-box; }
@@ -32,11 +34,11 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      /* Fond animé grille */
+      /* Fond animé grille rétrofuturiste */
       background-image: 
-        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-      background-size: 30px 30px;
+        linear-gradient(rgba(124, 77, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 77, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
 
     /* --- Navigation --- */
@@ -47,10 +49,11 @@
       gap: 30px;
       z-index: 100;
       backdrop-filter: blur(5px);
+      border-bottom: 1px solid rgba(124, 77, 255, 0.2);
     }
 
     nav a {
-      color: #888;
+      color: #aaa;
       text-decoration: none;
       font-size: 1rem;
       cursor: pointer;
@@ -58,11 +61,12 @@
       transition: color 0.3s;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-weight: 600;
     }
 
     nav a:hover, nav a.active-link {
       color: var(--primary);
-      text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+      text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
     }
 
     nav a::after {
@@ -74,6 +78,7 @@
       left: 0;
       background-color: var(--primary);
       transition: width 0.3s;
+      box-shadow: 0 0 10px var(--primary);
     }
 
     nav a:hover::after, nav a.active-link::after {
@@ -85,7 +90,7 @@
       position: relative;
       flex: 1;
       width: 100%;
-      max-width: 900px;
+      max-width: 1100px; /* Plus large pour les blocs */
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -95,6 +100,7 @@
     .section {
       position: absolute;
       width: 100%;
+      height: 100%;
       padding: 20px;
       opacity: 0;
       transform: translateY(20px) scale(0.95);
@@ -103,6 +109,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center; /* Centrage vertical */
+      overflow-y: auto; /* Scroll si contenu trop long */
     }
 
     .section.active {
@@ -111,44 +119,48 @@
       pointer-events: all;
     }
 
-    /* --- Typography & Elements --- */
+    /* Scrollbar personnalisée */
+    .section::-webkit-scrollbar { width: 8px; }
+    .section::-webkit-scrollbar-track { background: transparent; }
+    .section::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+
+    /* --- Typography --- */
     h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
     }
 
     h2 {
-      color: var(--secondary);
-      border-bottom: 2px solid var(--secondary);
-      padding-bottom: 10px;
+      color: var(--accent);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
       margin-bottom: 20px;
       display: inline-block;
+      text-transform: uppercase;
     }
 
-    p { line-height: 1.6; }
-
-    /* --- Terminal Box Style --- */
+    /* --- Terminal Box --- */
     .terminal-window {
       background: var(--card-bg);
       border: var(--glass-border);
       border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
       width: 100%;
-      max-width: 700px;
-      margin: 15px auto;
-      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
       backdrop-filter: blur(10px);
     }
 
     .terminal-header {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.3);
       padding: 10px 15px;
       display: flex;
       gap: 8px;
-      border-bottom: var(--glass-border);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -156,56 +168,88 @@
     .yellow { background-color: #ffbd2e; }
     .green { background-color: #27c93f; }
 
-    .terminal-body {
-      padding: 25px;
-      color: #ccc;
+    .terminal-body { padding: 25px; color: #d0d0d0; }
+    .terminal-body strong { color: var(--primary); }
+    .terminal-body em { color: var(--accent); font-style: normal; }
+
+    /* --- GRID SYSTEM POUR LES BLOCS --- */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
     }
 
-    .terminal-body strong { color: var(--primary); }
+    .tech-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(124, 77, 255, 0.3);
+      padding: 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(255, 42, 109, 0.2);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .tech-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tech-card ul {
+      margin: 0;
+      padding-left: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    
+    .tech-card ul li { margin-bottom: 5px; }
+    .tech-card ul li::before { color: var(--accent); }
 
     /* --- Bouton CTA --- */
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       background: transparent;
       border: 1px solid var(--primary);
       color: var(--primary);
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 4px;
       transition: all 0.3s;
       font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .btn:hover {
       background: var(--primary);
-      color: #000;
-      box-shadow: 0 0 15px var(--primary);
-    }
-
-    /* --- Listes --- */
-    ul { list-style: none; padding: 0; }
-    ul li {
-      margin-bottom: 10px;
-      padding-left: 20px;
-      position: relative;
-    }
-    ul li::before {
-      content: '>';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 20px var(--primary);
     }
 
     /* --- Footer --- */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       font-size: 0.8rem;
-      color: #555;
+      color: #666;
+      background: rgba(0,0,0,0.3);
     }
 
-    /* --- Curseurs et Animation Texte --- */
+    /* --- Animations --- */
     .cursor {
       display: inline-block;
       width: 10px;
@@ -213,19 +257,17 @@
       animation: blink 1s infinite;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* Responsive */
+    /* Responsive Mobile */
     @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 15px; }
-      h1 { font-size: 1.8rem; }
-      .container { align-items: flex-start; overflow-y: auto; padding-top: 20px;}
+      nav { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
+      h1 { font-size: 1.5rem; }
+      .container { align-items: flex-start; padding-top: 20px; }
       body { overflow-y: auto; height: auto; }
-      .section { position: relative; opacity: 1; transform: none; display: none;}
-      .section.active { display: flex; animation: fadeIn 0.5s;}
+      .section { position: relative; opacity: 1; transform: none; display: none; height: auto; overflow: visible;}
+      .section.active { display: flex; animation: fadeIn 0.5s; }
+      .tech-grid { grid-template-columns: 1fr; }
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     }
   </style>
@@ -233,31 +275,33 @@
 <body>
 
   <nav>
-    <a onclick="showSection(0)" class="nav-link active-link">Accueil</a>
-    <a onclick="showSection(1)" class="nav-link">À propos</a>
-    <a onclick="showSection(2)" class="nav-link">Compétences</a>
-    <a onclick="showSection(3)" class="nav-link">Techniques</a>
-    <a onclick="showSection(4)" class="nav-link">Contact</a>
+    <a onclick="showSection(0)" class="nav-link active-link">Accueil & Profil</a>
+    <a onclick="showSection(1)" class="nav-link">Réalisations</a>
+    <a onclick="showSection(2)" class="nav-link">Veille</a>
+    <a onclick="showSection(3)" class="nav-link">Contact</a>
   </nav>
 
   <div class="container">
     
     <div class="section active" id="section-0">
-      <header style="text-align: center;">
+      <header style="text-align: center; margin-bottom: 20px;">
         <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
-        <p style="color: #aaa; margin-bottom: 30px;">Étudiant BTS SIO option SISR (Cybersécurité)</p>
+        <p style="color: var(--accent); margin-bottom: 10px;">BTS SIO Option SISR (Cybersécurité)</p>
       </header>
 
       <div class="terminal-window">
         <div class="terminal-header">
           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+          <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">profile_loader.sh</span>
         </div>
         <div class="terminal-body">
-          <p><strong>$ cat mission.txt</strong></p>
-          <p>Je suis à la recherche d’un stage du <strong style="color:var(--secondary)">26 Janvier au 20 Mars 2026</strong> pour mettre en pratique mes compétences en cybersécurité et administration système.</p>
+          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat whoami.txt</p>
+          <p>Je m'appelle <strong>Maxence Thary</strong>, 18 ans.</p>
+          <p>Passionné par le <em>Hacking Éthique</em> et l'administration système. Mon objectif est de comprendre les mécanismes profonds des OS pour mieux les sécuriser.</p>
           <br>
-          <p><strong>$ cat passion.txt</strong></p>
-          <p>Exploration du hacking éthique, sécurisation des systèmes et veille technologique.</p>
+          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat mission_stage.txt</p>
+          <p>Recherche active d'un stage du <strong style="text-decoration: underline;">26 Janvier au 20 Mars 2026</strong>.</p>
+          <p>Compétences clés : Administration Windows/Linux, Virtualisation, Analyse Réseau.</p>
           
           <div style="text-align: center;">
             <a href="CV_professionnel.pdf" download class="btn">📄 Télécharger mon CV</a>
@@ -267,16 +311,66 @@
     </div>
 
     <div class="section" id="section-1">
-      <div class="terminal-window">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">whoami</span>
+      <h2 style="margin-top: 0;">Mes Laboratoires & Projets (2 Ans)</h2>
+      <p style="font-size: 0.9rem; color: #888;">Survol des technologies manipulées durant mon BTS SIO</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>🪟 Windows Server</h3>
+          <ul>
+            <li>Installation & Config AD DS</li>
+            <li>Gestion des GPO (Stratégies de groupe)</li>
+            <li>Serveur DHCP / DNS</li>
+            <li>Powershell Scripting (Admin)</li>
+          </ul>
         </div>
-        <div class="terminal-body">
-          <h2>À propos de moi</h2>
-          <p>Je m'appelle <strong>Maxence Thary</strong>, j'ai 19 ans.</p>
-          <p>Passionné par le numérique depuis mon plus jeune âge, j'ai orienté mes études vers la <strong>cybersécurité</strong> pour comprendre l'envers du décor.</p>
-          <p>J’aime analyser comment les systèmes fonctionnent pour mieux les protéger contre les vulnérabilités modernes.</p>
+
+        <div class="tech-card">
+          <h3>🐧 Linux (Debian/Kali)</h3>
+          <ul>
+            <li>Gestion des droits (chmod/chown)</li>
+            <li>Scripting Bash (Automatisation)</li>
+            <li>Serveur Web Apache / Nginx</li>
+            <li>Sécurisation SSH (Clés, Fail2Ban)</li>
+          </ul>
+        </div>
+
+        <div class="tech-card">
+          <h3>🛡️ Cybersécurité & Réseau</h3>
+          <ul>
+            <li><strong>Pfsense :</strong> Règles Firewall, NAT</li>
+            <li><strong>Stormshield :</strong> Config filtrage URL</li>
+            <li><strong>Wireshark :</strong> Analyse de paquets</li>
+            <li>Mise en place de VPN (OpenVPN)</li>
+          </ul>
+        </div>
+
+        <div class="tech-card">
+          <h3>☁️ Virtualisation</h3>
+          <ul>
+            <li><strong>VMware / VirtualBox :</strong> Labs</li>
+            <li><strong>Proxmox :</strong> Création de CT/VM</li>
+            <li>Gestion de snapshots</li>
+            <li>Réseaux virtuels (vSwitch)</li>
+          </ul>
+        </div>
+
+        <div class="tech-card">
+          <h3>🐍 Développement</h3>
+          <ul>
+            <li><strong>Python :</strong> Scripts réseaux</li>
+            <li><strong>HTML/CSS :</strong> Création de portfolio</li>
+            <li>Automatisation de tâches simples</li>
+          </ul>
+        </div>
+        
+        <div class="tech-card">
+          <h3>🎫 Support & Gestion</h3>
+          <ul>
+            <li><strong>GLPI :</strong> Gestion de parc</li>
+            <li>Documentation technique</li>
+            <li>Traitement de tickets incidents</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -285,63 +379,55 @@
       <div class="terminal-window">
         <div class="terminal-header">
            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">skills.exe</span>
+           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">rss_feed --watch</span>
         </div>
         <div class="terminal-body">
-          <h2>Compétences Générales</h2>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <h2>📡 Ma Veille Technologique</h2>
+          <p>Pour rester à jour dans un domaine qui évolue chaque jour, j'utilise des outils d'agrégation de flux.</p>
+          
+          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
             <div>
-              <p><strong>Systèmes d'Exploitation</strong></p>
+              <h3 style="color: var(--primary);">🔍 Sujets suivis</h3>
               <ul>
-                <li>Windows Server / 10 / 11</li>
-                <li>Linux (Ubuntu, Debian)</li>
-                <li>Kali Linux (Pentest)</li>
+                <li>L'Intelligence Artificielle dans la Cyber</li>
+                <li>Les ransomwares (Tendances 2024/25)</li>
+                <li>Vulnérabilités Windows (Zero-Day)</li>
+                <li>Le Zero Trust Architecture</li>
               </ul>
             </div>
             <div>
-              <p><strong>Développement</strong></p>
+              <h3 style="color: var(--accent);">🛠️ Outils utilisés</h3>
               <ul>
-                <li>Python (Scripting)</li>
-                <li>Bash / Shell</li>
-                <li>HTML / CSS</li>
+                <li><strong>Feedly :</strong> Agrégateur RSS</li>
+                <li><strong>Twitter / X :</strong> InfoSec Community</li>
+                <li><strong>CERT-FR :</strong> Bulletins d'alerte</li>
+                <li><strong>ANSSI :</strong> Rapports officiels</li>
               </ul>
             </div>
+          </div>
+          
+          <div style="margin-top: 20px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px;">
+            <p style="margin: 0; font-size: 0.9rem;"><em>"La sécurité n'est pas un produit, c'est un processus."</em></p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="section" id="section-3">
-      <div class="terminal-window">
+      <div class="terminal-window" style="text-align: center; max-width: 500px;">
         <div class="terminal-header">
            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">tools --list</span>
+           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">connect.sh</span>
         </div>
         <div class="terminal-body">
-          <h2>Arsenal Technique</h2>
-          <ul>
-            <li>🛡️ <strong>Sécurité :</strong> Pfsense, Stormshield, Wireshark (Analyse de trames)</li>
-            <li>🛠️ <strong>Virtualisation :</strong> VMware Workstation, VirtualBox, Proxmox</li>
-            <li>🌐 <strong>Réseau :</strong> Configuration Switch/Routeur (Cisco), SSH, FTP (FileZilla)</li>
-            <li>💻 <strong>Bureautique :</strong> Suite Office 365, Rédaction de documentation technique</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-4">
-      <div class="terminal-window">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">contact_info</span>
-        </div>
-        <div class="terminal-body" style="text-align: center;">
-          <h2>Restons en contact</h2>
-          <p>N'hésitez pas à me contacter pour une opportunité de stage ou un projet.</p>
+          <h2>Me Contacter</h2>
+          <p>Un projet ? Une offre de stage ?</p>
           
-          <div style="margin: 30px 0;">
-            <p>📧 <a href="mailto:thary.maxence@gmail.com" style="color:var(--text-color); text-decoration:none;">thary.maxence@gmail.com</a></p>
-            <p>📱 06 74 29 47 23</p>
+          <div style="margin: 40px 0; font-size: 1.1rem;">
+            <p>📧 <a href="mailto:thary.maxence@gmail.com" style="color:var(--primary); text-decoration:none; border-bottom: 1px dashed var(--primary);">thary.maxence@gmail.com</a></p>
+            <p>📱 <span style="color: #fff;">06 74 29 47 23</span></p>
           </div>
 
           <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" class="btn">
@@ -354,7 +440,7 @@
   </div>
 
   <footer>
-    <p>© 2026 Maxence Thary | Sécurité & Développement</p>
+    <p>© 2026 Maxence Thary | BTS SIO</p>
   </footer>
 
   <script>
@@ -363,18 +449,15 @@
     const navLinks = document.querySelectorAll('.nav-link');
 
     function showSection(index) {
-      // Masquer toutes les sections
       sections.forEach(sec => sec.classList.remove('active'));
-      // Désactiver tous les liens
       navLinks.forEach(link => link.classList.remove('active-link'));
       
-      // Activer la section et le lien demandés
       sections[index].classList.add('active');
       navLinks[index].classList.add('active-link');
     }
 
-    // Effet Machine à écrire pour le titre
-    const textToType = "Hello, I'm Maxence 👋";
+    // Effet Machine à écrire
+    const textToType = "Maxence Thary_";
     const typeWriterElement = document.getElementById('typewriter');
     let i = 0;
 
@@ -382,11 +465,10 @@
       if (i < textToType.length) {
         typeWriterElement.innerHTML += textToType.charAt(i);
         i++;
-        setTimeout(typeWriter, 100); // Vitesse de frappe (ms)
+        setTimeout(typeWriter, 150);
       }
     }
 
-    // Lancer l'animation au chargement
     window.onload = typeWriter;
   </script>
 
