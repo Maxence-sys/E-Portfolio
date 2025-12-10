@@ -90,7 +90,7 @@
       position: relative;
       flex: 1;
       width: 100%;
-      max-width: 1100px; /* Plus large pour les blocs */
+      max-width: 1100px; 
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -109,8 +109,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* Centrage vertical */
-      overflow-y: auto; /* Scroll si contenu trop long */
+      justify-content: center; 
+      overflow-y: auto; 
     }
 
     .section.active {
@@ -379,37 +379,40 @@
       <div class="terminal-window">
         <div class="terminal-header">
            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">rss_feed --watch</span>
+           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">watch_viruses.exe</span>
         </div>
         <div class="terminal-body">
           <h2>📡 Ma Veille Technologique</h2>
-          <p>Pour rester à jour dans un domaine qui évolue chaque jour, j'utilise des outils d'agrégation de flux.</p>
+          <p>Sujet principal : <strong style="color: var(--primary);">L'évolution des Virus & Malwares</strong></p>
+          <p style="font-size: 0.9rem;">Comment les virus ont muté du simple programme blagueur aux armes de cyberguerre.</p>
           
           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
             <div>
-              <h3 style="color: var(--primary);">🔍 Sujets suivis</h3>
+              <h3 style="color: var(--secondary);">🦠 Thèmes analysés</h3>
               <ul>
-                <li>L'Intelligence Artificielle dans la Cyber</li>
-                <li>Les ransomwares (Tendances 2024/25)</li>
-                <li>Vulnérabilités Windows (Zero-Day)</li>
-                <li>Le Zero Trust Architecture</li>
+                <li>Historique (Creeper, Morris Worm...)</li>
+                <li>Polymorphisme & Métamorphisme</li>
+                <li>Ransomwares modernes (RaaS)</li>
+                <li>Techniques d'évasion (Obfuscation)</li>
               </ul>
             </div>
             <div>
-              <h3 style="color: var(--accent);">🛠️ Outils utilisés</h3>
+              <h3 style="color: var(--accent);">🛠️ Outils & Flux</h3>
               <ul>
-                <li><strong>Feedly :</strong> Agrégateur RSS</li>
-                <li><strong>Twitter / X :</strong> InfoSec Community</li>
-                <li><strong>CERT-FR :</strong> Bulletins d'alerte</li>
-                <li><strong>ANSSI :</strong> Rapports officiels</li>
+                <li><strong>Inoreader :</strong> Agrégateur central RSS</li>
+                <li><strong>Google Alerts :</strong> Monitoring mots-clés</li>
+                <li><em>Flux :</em> "Virus evolution", "Malware trends"</li>
+                <li>Sites spécialisés (ANSSI, TheHackerNews)</li>
               </ul>
             </div>
           </div>
           
-          <div style="margin-top: 20px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 5px;">
-            <p style="margin: 0; font-size: 0.9rem;"><em>"La sécurité n'est pas un produit, c'est un processus."</em></p>
+          <div style="margin-top: 20px; background: rgba(255, 42, 109, 0.1); padding: 15px; border-radius: 5px; border-left: 3px solid var(--primary);">
+            <p style="margin: 0; font-size: 0.9rem;">
+              <em>"Méthodologie : Google Alerts détecte les nouveaux articles sur les mots-clés, qui sont ensuite centralisés et triés automatiquement sur mon tableau de bord Inoreader."</em>
+            </p>
           </div>
         </div>
       </div>
