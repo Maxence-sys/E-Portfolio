@@ -30,8 +30,8 @@
       padding: 0;
       background-color: var(--bg-color);
       color: var(--text-color);
+      /* J'ai supprimé `overflow: hidden;` ici pour permettre la détection du scroll sur le body */
       height: 100vh;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       /* Fond animé grille rétrofuturiste */
@@ -95,6 +95,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      /* Masque le contenu qui dépasse le conteneur principal */
+      overflow: hidden; 
     }
 
     .section {
@@ -110,7 +112,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center; 
-      overflow-y: auto; 
+      overflow-y: auto; /* Permet le scroll à l'intérieur de la section si elle est trop longue */
     }
 
     .section.active {
@@ -215,8 +217,19 @@
       color: #ccc;
     }
     
-    .tech-card ul li { margin-bottom: 5px; }
-    .tech-card ul li::before { color: var(--accent); }
+    ul { list-style: none; padding: 0; } /* Rétablit le style global des listes non ordonnées */
+    ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+    ul li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+    }
+    .tech-card ul li::before { color: var(--accent); } /* Surcharge la couleur pour les cartes */
 
     /* --- Bouton CTA --- */
     .btn {
@@ -247,6 +260,7 @@
       font-size: 0.8rem;
       color: #666;
       background: rgba(0,0,0,0.3);
+      z-index: 100; /* Assure que le footer est au-dessus du conteneur */
     }
 
     /* --- Animations --- */
@@ -264,8 +278,18 @@
       nav { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
       h1 { font-size: 1.5rem; }
       .container { align-items: flex-start; padding-top: 20px; }
-      body { overflow-y: auto; height: auto; }
-      .section { position: relative; opacity: 1; transform: none; display: none; height: auto; overflow: visible;}
+      /* Permet le scroll du body sur mobile pour voir toutes les sections empilées */
+      body { overflow-y: auto; height: auto; } 
+      .section { 
+        position: relative; 
+        opacity: 1; 
+        transform: none; 
+        display: none; 
+        height: auto; 
+        overflow: visible;
+        min-height: 80vh; /* Ajouté pour mieux espacer les sections sur mobile */
+        justify-content: flex-start;
+      }
       .section.active { display: flex; animation: fadeIn 0.5s; }
       .tech-grid { grid-template-columns: 1fr; }
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -281,7 +305,7 @@
     <a onclick="showSection(3)" class="nav-link">Contact</a>
   </nav>
 
-  <div class="container">
+  <div class="container" id="main-container">
     
     <div class="section active" id="section-0">
       <header style="text-align: center; margin-bottom: 20px;">
@@ -447,17 +471,81 @@
   </footer>
 
   <script>
-    // Gestion des onglets
+    // Variables globales
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.nav-link');
+    const totalSections = sections.length;
+    let currentIndex = 0;
+    let isScrolling = false; // Flag pour gérer le debounce
+    const scrollTimeout = 700; // Délai en ms entre deux changements de slide (vitesse)
 
+    // Fonction pour changer de section
     function showSection(index) {
+      if (index < 0 || index >= totalSections || index === currentIndex) return;
+
+      // Masquer toutes les sections et désactiver tous les liens
       sections.forEach(sec => sec.classList.remove('active'));
       navLinks.forEach(link => link.classList.remove('active-link'));
       
+      // Activer la nouvelle section et le lien
       sections[index].classList.add('active');
       navLinks[index].classList.add('active-link');
+      currentIndex = index;
     }
+
+    // --- Gestion du SCROLL/Swipe ---
+    function handleScroll(direction) {
+        if (isScrolling) return; // Si l'animation est déjà en cours, on ignore le nouveau scroll
+
+        let newIndex = currentIndex;
+        
+        // La direction est 1 pour scroll vers le bas (section suivante) ou -1 pour scroll vers le haut (section précédente)
+        if (direction > 0) {
+            newIndex = Math.min(currentIndex + 1, totalSections - 1);
+        } else if (direction < 0) {
+            newIndex = Math.max(currentIndex - 1, 0);
+        }
+
+        if (newIndex !== currentIndex) {
+            isScrolling = true;
+            showSection(newIndex);
+            
+            // Réinitialise le flag après le délai d'animation
+            setTimeout(() => {
+                isScrolling = false;
+            }, scrollTimeout);
+        }
+    }
+
+    // Événement Mouse Wheel (Détection du scroll de la souris)
+    document.addEventListener('wheel', (e) => {
+        // e.deltaY > 0 signifie scroll vers le bas
+        handleScroll(e.deltaY > 0 ? 1 : -1);
+    }, { passive: false }); // Utiliser passive: false pour prévenir le scroll par défaut du body si possible
+
+    // Événement Touch (Détection du swipe sur mobile)
+    let startY = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+        // Enregistre la position verticale de départ du doigt
+        startY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', (e) => {
+        if (!startY) return;
+
+        const endY = e.changedTouches[0].clientY;
+        const deltaY = endY - startY; // Si positif -> swipe vers le bas
+        const swipeThreshold = 50; // Distance minimale pour considérer comme un swipe
+
+        if (Math.abs(deltaY) > swipeThreshold) {
+            // Si deltaY est négatif, le swipe est vers le haut (passer à la section suivante)
+            // Si deltaY est positif, le swipe est vers le bas (revenir à la section précédente)
+            handleScroll(deltaY < 0 ? 1 : -1);
+        }
+        startY = 0; // Réinitialiser
+    });
+
 
     // Effet Machine à écrire
     const textToType = "Maxence Thary_";
