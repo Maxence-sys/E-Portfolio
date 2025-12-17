@@ -1,695 +1,537 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Maxence Thary - Cybersécurité</title>
-  <meta name="description" content="Portfolio étudiant de Maxence Thary - BTS SIO Cybersécurité">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Maxence Thary - Cybersécurité</title>
+  <meta name="description" content="Portfolio étudiant de Maxence Thary - BTS SIO Cybersécurité">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #ff2a6d; 
-      --secondary: #7c4dff; 
-      --accent: #05d9e8; 
-      --bg-color: #120a1f; 
-      --card-bg: rgba(30, 20, 40, 0.85);
-      --text-color: #e0e0e0;
-      --glass-border: 1px solid rgba(255, 42, 109, 0.2);
-    }
+  <style>
+    :root {
+      --primary: #ff2a6d; 
+      --secondary: #7c4dff; 
+      --accent: #05d9e8; 
+      --bg-color: #120a1f; 
+      --card-bg: rgba(30, 20, 40, 0.85);
+      --text-color: #e0e0e0;
+      --glass-border: 1px solid rgba(255, 42, 109, 0.2);
+    }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-    body {
-      font-family: 'Fira Code', monospace;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-image: 
-        linear-gradient(rgba(124, 77, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 77, 255, 0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
+    body {
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        linear-gradient(rgba(124, 77, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 77, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
 
-    nav {
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      z-index: 100;
-      backdrop-filter: blur(5px);
-      border-bottom: 1px solid rgba(124, 77, 255, 0.2);
-      position: relative; 
-    }
+    nav {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    nav a:hover, nav a.active-link {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    nav a:hover::after, nav a.active-link::after {
+      width: 100%;
+    }
+
+    .container {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      max-width: 1100px; 
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; 
+    }
+
+    .section {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      overflow-y: auto; 
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .section::-webkit-scrollbar { width: 8px; }
+    .section::-webkit-scrollbar-track { background: transparent; }
+    .section::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+    }
+
+    h2 {
+      color: var(--accent);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .terminal-window {
+      background: var(--card-bg);
+      border: var(--glass-border);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+
+    .terminal-header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 15px;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+
+    .terminal-body { padding: 25px; color: #d0d0d0; }
+    .terminal-body strong { color: var(--primary); }
+    .terminal-body em { color: var(--accent); font-style: normal; }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+
+    .tech-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(124, 77, 255, 0.3);
+      padding: 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(255, 42, 109, 0.2);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .tech-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tech-card ul {
+      margin: 0;
+      padding-left: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
     
-    .one-page-mode body {
-        height: auto;
-        overflow-y: visible;
-    }
-    .one-page-mode .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: auto;
-        padding-top: 50px; 
-        overflow: visible;
-    }
-    .one-page-mode .section {
+    ul { list-style: none; padding: 0; } 
+    ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
         position: relative;
-        opacity: 1;
-        transform: none;
-        pointer-events: all;
-        display: flex; 
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: auto;
-        min-height: auto;
-        padding: 50px 20px; 
-        border-bottom: 2px dashed rgba(255, 42, 109, 0.2);
-        overflow: visible;
     }
-    .one-page-mode .section:last-child {
-        border-bottom: none;
-        padding-bottom: 50px;
-    }
-    .one-page-mode nav a {
-        cursor: default; 
-    }
-
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
-
-    nav a:hover, nav a.active-link {
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s;
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    nav a:hover::after, nav a.active-link::after {
-      width: 100%;
-    }
-
-    .container {
-      position: relative;
-      flex: 1;
-      width: 100%;
-      max-width: 1100px; 
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden; 
-    }
-
-    .section {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; 
-      overflow-y: auto; 
-    }
-
-    .section.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: all;
-    }
-
-    .section::-webkit-scrollbar { width: 8px; }
-    .section::-webkit-scrollbar-track { background: transparent; }
-    .section::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
-    }
-
-    h2 {
-      color: var(--accent);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-      display: inline-block;
-      text-transform: uppercase;
-    }
-
-    .terminal-window {
-      background: var(--card-bg);
-      border: var(--glass-border);
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
-
-    .terminal-header {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px 15px;
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .red { background-color: #ff5f56; }
-    .yellow { background-color: #ffbd2e; }
-    .green { background-color: #27c93f; }
-
-    .terminal-body { padding: 25px; color: #d0d0d0; }
-    .terminal-body strong { color: var(--primary); }
-    .terminal-body em { color: var(--accent); font-style: normal; }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-      margin-top: 20px;
-    }
-
-    .tech-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(124, 77, 255, 0.3);
-      padding: 20px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tech-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 5px 15px rgba(255, 42, 109, 0.2);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .tech-card h3 {
-      color: var(--primary);
-      margin-top: 0;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .tech-card ul {
-      margin: 0;
-      padding-left: 15px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    
-    ul { list-style: none; padding: 0; } 
-    ul li {
-        margin-bottom: 10px;
-        padding-left: 20px;
-        position: relative;
-    }
-    ul li::before {
-        content: '>';
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-    }
-    .tech-card ul li::before { color: var(--accent); } 
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .btn:hover {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 0 20px var(--primary);
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.8rem;
-      color: #666;
-      background: rgba(0,0,0,0.3);
-      z-index: 100; 
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: var(--primary);
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    
-    .one-page-toggle {
+    ul li::before {
+        content: '>';
         position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 0.8rem;
-        color: #aaa;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        white-space: nowrap;
+        left: 0;
+        color: var(--primary);
     }
-    
-    .one-page-toggle input[type="checkbox"] {
-        appearance: none;
-        width: 30px;
-        height: 15px;
-        background: #444;
-        border-radius: 15px;
-        position: relative;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-    .one-page-toggle input[type="checkbox"]::before {
-        content: '';
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        width: 13px;
-        height: 13px;
-        background: #ccc;
-        border-radius: 50%;
-        transition: transform 0.3s;
-    }
-    .one-page-toggle input[type="checkbox"]:checked {
-        background: var(--primary);
-    }
-    .one-page-toggle input[type="checkbox"]:checked::before {
-        transform: translateX(15px);
-        background: #fff;
-    }
-    
+    .tech-card ul li::before { color: var(--accent); }
 
-    @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
-      h1 { font-size: 1.5rem; }
-      .container { align-items: flex-start; padding-top: 20px; }
-      body { overflow-y: auto; height: auto; } 
-      .section { 
-        position: relative; 
-        opacity: 1; 
-        transform: none; 
-        display: none; 
-        height: auto; 
-        overflow: visible;
-        min-height: 80vh; 
-        justify-content: flex-start;
-      }
-      .section.active { display: flex; animation: fadeIn 0.5s; }
-      .tech-grid { grid-template-columns: 1fr; }
-      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      
-      .one-page-mode .section {
-        min-height: auto;
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 20px var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.8rem;
+      color: #666;
+      background: rgba(0,0,0,0.3);
+      z-index: 100; 
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: var(--primary);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
+      h1 { font-size: 1.5rem; }
+      .container { align-items: flex-start; padding-top: 20px; }
+      body { overflow-y: auto; height: auto; } 
+      .section { 
+        position: relative; 
+        opacity: 1; 
+        transform: none; 
+        display: none; 
+        height: auto; 
+        overflow: visible;
+        min-height: 80vh; 
+        justify-content: flex-start;
       }
-      .one-page-toggle {
-        position: relative;
-        transform: none;
-        right: auto;
-        top: auto;
-        margin-top: 10px;
-        justify-content: center;
-      }
-      nav {
-          flex-direction: column;
-          align-items: center;
-      }
-    }
-  </style>
+      .section.active { display: flex; animation: fadeIn 0.5s; }
+      .tech-grid { grid-template-columns: 1fr; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    }
+  </style>
 </head>
 <body>
 
-  <nav id="main-nav">
-    <a onclick="showSection(0)" class="nav-link active-link">Accueil & Profil</a>
-    <a onclick="showSection(1)" class="nav-link">Réalisations</a>
-    <a onclick="showSection(2)" class="nav-link">Veille</a>
-    <a onclick="showSection(3)" class="nav-link">Contact</a>
+  <nav>
+    <a onclick="showSection(0)" class="nav-link active-link">Accueil & Profil</a>
+    <a onclick="showSection(1)" class="nav-link">Réalisations</a>
+    <a onclick="showSection(2)" class="nav-link">Veille</a>
+    <a onclick="showSection(3)" class="nav-link">Contact</a>
+  </nav>
+
+  <div class="container" id="main-container">
     
-    <div class="one-page-toggle">
-        Mode Page Unique
-        <input type="checkbox" id="onePageToggle" onchange="toggleOnePageMode(this.checked)">
+    <div class="section active" id="section-0">
+      <header style="text-align: center; margin-bottom: 20px;">
+        <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
+        <p style="color: var(--accent); margin-bottom: 10px;">BTS SIO Option SISR (Cybersécurité)</p>
+      </header>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+          <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">profile_loader.sh</span>
+        </div>
+        <div class="terminal-body">
+          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat whoami.txt</p>
+          <p>Je m'appelle <strong>Maxence Thary</strong>, 18 ans.</p>
+          <p>Passionné par le <em>Hacking Éthique</em> et l'administration système. Mon objectif est de comprendre les mécanismes profonds des OS pour mieux les sécuriser.</p>
+          <br>
+          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat mission_stage.txt</p>
+          <p>Recherche active d'un stage du <strong style="text-decoration: underline;">26 Janvier au 20 Mars 2026</strong>.</p>
+          <p>Compétences clés : Administration Windows/Linux, Virtualisation, Analyse Réseau.</p>
+          
+          <div style="text-align: center;">
+            <a href="CV_professionnel.pdf" download class="btn">📄 Télécharger mon CV</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
 
-  <div class="container" id="main-container">
-    
-    <div class="section active" id="section-0">
-      <header style="text-align: center; margin-bottom: 20px;">
-        <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
-        <p style="color: var(--accent); margin-bottom: 10px;">BTS SIO Option SISR (Cybersécurité)</p>
-      </header>
+    <div class="section" id="section-1">
+      <h2 style="margin-top: 0;">Mes Laboratoires & Projets (2 Ans)</h2>
+      <p style="font-size: 0.9rem; color: #888;">Survol des technologies manipulées durant mon BTS SIO</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>🪟 Windows Server</h3>
+          <ul>
+            <li>Installation & Config AD DS</li>
+            <li>Gestion des GPO (Stratégies de groupe)</li>
+            <li>Serveur DHCP / DNS</li>
+            <li>Powershell Scripting (Admin)</li>
+          </ul>
+        </div>
 
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-          <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">profile_loader.sh</span>
-        </div>
-        <div class="terminal-body">
-          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat whoami.txt</p>
-          <p>Je m'appelle <strong>Maxence Thary</strong>, 19 ans.</p>
-          <p>Passionné par le <em>Hacking Éthique</em> et l'administration système. Mon objectif est de comprendre les mécanismes profonds des OS pour mieux les sécuriser.</p>
-          <br>
-          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat mission_stage.txt</p>
-          <p>Recherche active d'un stage du <strong style="text-decoration: underline;">26 Janvier au 20 Mars 2026</strong>.</p>
-          <p>Compétences clés : Administration Windows/Linux, Virtualisation, Analyse Réseau.</p>
-          
-          <div style="text-align: center;">
-            <a href="CV_professionnel.pdf" download class="btn">📄 Télécharger mon CV</a>
-          </div>
-        </div>
-      </div>
-    </div>
+        <div class="tech-card">
+          <h3>🐧 Linux (Debian/Kali)</h3>
+          <ul>
+            <li>Gestion des droits (chmod/chown)</li>
+            <li>Scripting Bash (Automatisation)</li>
+            <li>Serveur Web Apache / Nginx</li>
+            <li>Sécurisation SSH (Clés, Fail2Ban)</li>
+          </ul>
+        </div>
 
-    <div class="section" id="section-1">
-      <h2 style="margin-top: 0;">Mes Laboratoires & Projets (2 Ans)</h2>
-      <p style="font-size: 0.9rem; color: #888;">Survol des technologies manipulées durant mon BTS SIO</p>
-      
-      <div class="tech-grid">
-        <div class="tech-card">
-          <h3>🪟 Windows Server</h3>
-          <ul>
-            <li>Installation & Config AD DS</li>
-            <li>Gestion des GPO (Stratégies de groupe)</li>
-            <li>Serveur DHCP / DNS</li>
-            <li>Powershell Scripting (Admin)</li>
-          </ul>
-        </div>
+        <div class="tech-card">
+          <h3>🛡️ Cybersécurité & Réseau</h3>
+          <ul>
+            <li><strong>Pfsense :</strong> Règles Firewall, NAT</li>
+            <li><strong>Stormshield :</strong> Config filtrage URL</li>
+            <li><strong>Wireshark :</strong> Analyse de paquets</li>
+            <li>Mise en place de VPN (OpenVPN)</li>
+          </ul>
+        </div>
 
-        <div class="tech-card">
-          <h3>🐧 Linux (Debian/Kali)</h3>
-          <ul>
-            <li>Gestion des droits (chmod/chown)</li>
-            <li>Scripting Bash (Automatisation)</li>
-            <li>Serveur Web Apache / Nginx</li>
-            <li>Sécurisation SSH (Clés, Fail2Ban)</li>
-          </ul>
-        </div>
+        <div class="tech-card">
+          <h3>☁️ Virtualisation</h3>
+          <ul>
+            <li><strong>VMware / VirtualBox :</strong> Labs</li>
+            <li><strong>Proxmox :</strong> Création de CT/VM</li>
+            <li>Gestion de snapshots</li>
+            <li>Réseaux virtuels (vSwitch)</li>
+          </ul>
+        </div>
 
-        <div class="tech-card">
-          <h3>🛡️ Cybersécurité & Réseau</h3>
-          <ul>
-            <li><strong>Pfsense :</strong> Règles Firewall, NAT</li>
-            <li><strong>Stormshield :</strong> Config filtrage URL</li>
-            <li><strong>Wireshark :</strong> Analyse de paquets</li>
-            <li>Mise en place de VPN (OpenVPN)</li>
-          </ul>
-        </div>
+        <div class="tech-card">
+          <h3>🐍 Développement</h3>
+          <ul>
+            <li><strong>Python :</strong> Scripts réseaux</li>
+            <li><strong>HTML/CSS :</strong> Création de portfolio</li>
+            <li>Automatisation de tâches simples</li>
+          </ul>
+        </div>
+        
+        <div class="tech-card">
+          <h3>🎫 Support & Gestion</h3>
+          <ul>
+            <li><strong>GLPI :</strong> Gestion de parc</li>
+            <li>Documentation technique</li>
+            <li>Traitement de tickets incidents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        <div class="tech-card">
-          <h3>☁️ Virtualisation</h3>
-          <ul>
-            <li><strong>VMware / VirtualBox :</strong> Labs</li>
-            <li><strong>Proxmox :</strong> Création de CT/VM</li>
-            <li>Gestion de snapshots</li>
-            <li>Réseaux virtuels (vSwitch)</li>
-          </ul>
-        </div>
+    <div class="section" id="section-2">
+      <div class="terminal-window">
+        <div class="terminal-header">
+           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">watch_viruses.exe</span>
+        </div>
+        <div class="terminal-body">
+          <h2>📡 Ma Veille Technologique</h2>
+          <p>Sujet principal : <strong style="color: var(--primary);">L'évolution des Virus & Malwares</strong></p>
+          <p style="font-size: 0.9rem;">Comment les virus ont muté du simple programme blagueur aux armes de cyberguerre.</p>
+          
+          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
 
-        <div class="tech-card">
-          <h3>🐍 Développement</h3>
-          <ul>
-            <li><strong>Python :</strong> Scripts réseaux</li>
-            <li><strong>HTML/CSS :</strong> Création de portfolio</li>
-            <li>Automatisation de tâches simples</li>
-          </ul>
-        </div>
-        
-        <div class="tech-card">
-          <h3>🎫 Support & Gestion</h3>
-          <ul>
-            <li><strong>GLPI :</strong> Gestion de parc</li>
-            <li>Documentation technique</li>
-            <li>Traitement de tickets incidents</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+              <h3 style="color: var(--secondary);">🦠 Thèmes analysés</h3>
+              <ul>
+                <li>Historique (Creeper, Morris Worm...)</li>
+                <li>Polymorphisme & Métamorphisme</li>
+                <li>Ransomwares modernes (RaaS)</li>
+                <li>Techniques d'évasion (Obfuscation)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="color: var(--accent);">🛠️ Outils & Flux</h3>
+              <ul>
+                <li><strong>Inoreader :</strong> Agrégateur central RSS</li>
+                <li><strong>Google Alerts :</strong> Monitoring mots-clés</li>
+                <li><em>Flux :</em> "Virus evolution", "Malware trends"</li>
+                <li>Sites spécialisés (ANSSI, TheHackerNews)</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="margin-top: 20px; background: rgba(255, 42, 109, 0.1); padding: 15px; border-radius: 5px; border-left: 3px solid var(--primary);">
+            <p style="margin: 0; font-size: 0.9rem;">
+              <em>"Méthodologie : Google Alerts détecte les nouveaux articles sur les mots-clés, qui sont ensuite centralisés et triés automatiquement sur mon tableau de bord Inoreader."</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="section" id="section-2">
-      <div class="terminal-window">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">watch_viruses.exe</span>
-        </div>
-        <div class="terminal-body">
-          <h2>📡 Ma Veille Technologique</h2>
-          <p>Sujet principal : <strong style="color: var(--primary);">L'évolution des Virus & Malwares</strong></p>
-          <p style="font-size: 0.9rem;">Comment les virus ont muté du simple programme blagueur aux armes de cyberguerre.</p>
-          
-          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+    <div class="section" id="section-3">
+      <div class="terminal-window" style="text-align: center; max-width: 500px;">
+        <div class="terminal-header">
+           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">connect.sh</span>
+        </div>
+        <div class="terminal-body">
+          <h2>Me Contacter</h2>
+          <p>Un projet ? Une offre de stage ?</p>
+          
+          <div style="margin: 40px 0; font-size: 1.1rem;">
+            <p>📧 <a href="mailto:thary.maxence@gmail.com" style="color:var(--primary); text-decoration:none; border-bottom: 1px dashed var(--primary);">thary.maxence@gmail.com</a></p>
+            <p>📱 <span style="color: #fff;">06 74 29 47 23</span></p>
+          </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div>
-              <h3 style="color: var(--secondary);">🦠 Thèmes analysés</h3>
-              <ul>
-                <li>Historique (Creeper, Morris Worm...)</li>
-                <li>Polymorphisme & Métamorphisme</li>
-                <li>Ransomwares modernes (RaaS)</li>
-                <li>Techniques d'évasion (Obfuscation)</li>
-              </ul>
-            </div>
-            <div>
-              <h3 style="color: var(--accent);">🛠️ Outils & Flux</h3>
-              <ul>
-                <li><strong>Inoreader :</strong> Agrégateur central RSS</li>
-                <li><strong>Google Alerts :</strong> Monitoring mots-clés</li>
-                <li><em>Flux :</em> "Virus evolution", "Malware trends"</li>
-                <li>Sites spécialisés (ANSSI, TheHackerNews)</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div style="margin-top: 20px; background: rgba(255, 42, 109, 0.1); padding: 15px; border-radius: 5px; border-left: 3px solid var(--primary);">
-            <p style="margin: 0; font-size: 0.9rem;">
-              <em>"Méthodologie : Google Alerts détecte les nouveaux articles sur les mots-clés, qui sont ensuite centralisés et triés automatiquement sur mon tableau de bord Inoreader."</em>
-            </p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
+          <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" class="btn">
+             Mon LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <div class="section" id="section-3">
-      <div class="terminal-window" style="text-align: center; max-width: 500px;">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">connect.sh</span>
-        </div>
-        <div class="terminal-body">
-          <h2>Me Contacter</h2>
-          <p>Un projet ? Une offre de stage ?</p>
-          
-          <div style="margin: 40px 0; font-size: 1.1rem;">
-            <p>📧 <a href="mailto:thary.maxence@gmail.com" style="color:var(--primary); text-decoration:none; border-bottom: 1px dashed var(--primary);">thary.maxence@gmail.com</a></p>
-            <p>📱 <span style="color: #fff;">06 74 29 47 23</span></p>
-          </div>
+  </div>
 
-          <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" class="btn">
-             Mon LinkedIn
-          </a>
-        </div>
-      </div>
-    </div>
+  <footer>
+    <p>© 2026 Maxence Thary | BTS SIO</p>
+  </footer>
 
-  </div>
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const totalSections = sections.length;
+    let currentIndex = 0;
+    let isScrolling = false; 
+    const scrollTimeout = 700; 
 
-  <footer>
-    <p>© 2026 Maxence Thary | BTS SIO</p>
-  </footer>
+    function showSection(index) {
+      if (index < 0 || index >= totalSections || index === currentIndex) return;
 
-  <script>
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const totalSections = sections.length;
-    let currentIndex = 0;
-    let isScrolling = false; 
-    const scrollTimeout = 700; 
-    const body = document.body;
-    const mainContainer = document.getElementById('main-container');
-    const navBar = document.getElementById('main-nav');
-    const onePageToggleInput = document.getElementById('onePageToggle');
-    let isOnePageMode = false;
+      sections.forEach(sec => sec.classList.remove('active'));
+      navLinks.forEach(link => link.classList.remove('active-link'));
+      
+      sections[index].classList.add('active');
+      navLinks[index].classList.add('active-link');
+      currentIndex = index;
+    }
+
+    function handleScroll(direction) {
+        if (isScrolling) return; 
+
+        let newIndex = currentIndex;
+        
+        if (direction > 0) {
+            newIndex = Math.min(currentIndex + 1, totalSections - 1);
+        } else if (direction < 0) {
+            newIndex = Math.max(currentIndex - 1, 0);
+        }
+
+        if (newIndex !== currentIndex) {
+            isScrolling = true;
+            showSection(newIndex);
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, scrollTimeout);
+        }
+    }
+
+    document.addEventListener('wheel', (e) => {
+        handleScroll(e.deltaY > 0 ? 1 : -1);
+    }, { passive: false }); 
+    let startY = 0;
     
-    const originalNavOnclick = [];
-    navLinks.forEach((link, index) => {
-        originalNavOnclick.push(link.onclick);
+    document.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
     });
 
-    function toggleOnePageMode(enabled) {
-        isOnePageMode = enabled;
-        if (enabled) {
-            body.classList.add('one-page-mode');
-            
-            navLinks.forEach((link, index) => {
-                link.onclick = (e) => {
-                    e.preventDefault();
-                    sections[index].scrollIntoView({ behavior: 'smooth' });
-                    navLinks.forEach(l => l.classList.remove('active-link'));
-                    link.classList.add('active-link');
-                };
-            });
-            
-            sections.forEach(sec => sec.classList.add('active'));
-            
-            showSection(0);
-            
-        } else {
-            body.classList.remove('one-page-mode');
-            
-            navLinks.forEach((link, index) => {
-                link.onclick = originalNavOnclick[index];
-            });
-            
-            sections.forEach(sec => sec.classList.remove('active'));
-            sections[currentIndex].classList.add('active');
+    document.addEventListener('touchend', (e) => {
+        if (!startY) return;
+
+        const endY = e.changedTouches[0].clientY;
+        const deltaY = endY - startY; 
+        const swipeThreshold = 50; 
+
+        if (Math.abs(deltaY) > swipeThreshold) {
+            handleScroll(deltaY < 0 ? 1 : -1);
         }
-    }
+        startY = 0; 
+    });
 
 
-    function showSection(index) {
-      if (index < 0 || index >= totalSections || (index === currentIndex && !isOnePageMode)) return;
+    const textToType = "Maxence Thary_";
+    const typeWriterElement = document.getElementById('typewriter');
+    let i = 0;
 
-      if (!isOnePageMode) {
-        sections.forEach(sec => sec.classList.remove('active'));
+    function typeWriter() {
+      if (i < textToType.length) {
+        typeWriterElement.innerHTML += textToType.charAt(i);
+        i++;
+        setTimeout(typeWriter, 150);
       }
-      navLinks.forEach(link => link.classList.remove('active-link'));
-      
-      sections[index].classList.add('active');
-      navLinks[index].classList.add('active-link');
-      currentIndex = index;
-    }
-
-    function handleScroll(direction) {
-        if (isOnePageMode) return; 
-
-        if (isScrolling) return; 
-
-        let newIndex = currentIndex;
-        
-        if (direction > 0) {
-            newIndex = Math.min(currentIndex + 1, totalSections - 1);
-        } else if (direction < 0) {
-            newIndex = Math.max(currentIndex - 1, 0);
-        }
-
-        if (newIndex !== currentIndex) {
-            isScrolling = true;
-            showSection(newIndex);
-            
-            setTimeout(() => {
-                isScrolling = false;
-            }, scrollTimeout);
-        }
-    }
-
-    document.addEventListener('wheel', (e) => {
-        if (!isOnePageMode) {
-           handleScroll(e.deltaY > 0 ? 1 : -1);
-        }
-    }, { passive: false }); 
-
-    let startY = 0;
-    
-    document.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-    });
-
-    document.addEventListener('touchend', (e) => {
-        if (isOnePageMode) { startY = 0; return; } 
-
-        if (!startY) return;
-
-        const endY = e.changedTouches[0].clientY;
-        const deltaY = endY - startY; 
-        const swipeThreshold = 50; 
-
-        if (Math.abs(deltaY) > swipeThreshold) {
-            handleScroll(deltaY < 0 ? 1 : -1);
-        }
-        startY = 0; 
-    });
-
-
-    const textToType = "Maxence Thary_";
-    const typeWriterElement = document.getElementById('typewriter');
-    let i = 0;
-
-    function typeWriter() {
-      if (i < textToType.length) {
-        typeWriterElement.innerHTML += textToType.charAt(i);
-        i++;
-        setTimeout(typeWriter, 150);
-      }
-    }
-
-    window.onload = typeWriter;
-    
-    if (window.innerWidth <= 768) {
-        onePageToggleInput.checked = true;
-        toggleOnePageMode(true);
     }
-    
-  </script>
+
+    window.onload = typeWriter;
+  </script>
 
 </body>
 </html>
