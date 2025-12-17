@@ -1,567 +1,502 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Maxence Thary - Cybersécurité</title>
-  <meta name="description" content="Portfolio étudiant de Maxence Thary - BTS SIO Cybersécurité">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      /* Palette Cyberpunk / Synthwave */
-      --primary: #ff2a6d; /* Rose Néon */
-      --secondary: #7c4dff; /* Violet Ultra */
-      --accent: #05d9e8; /* Cyan pour le contraste */
-      --bg-color: #120a1f; /* Fond très sombre violet */
-      --card-bg: rgba(30, 20, 40, 0.85);
-      --text-color: #e0e0e0;
-      --glass-border: 1px solid rgba(255, 42, 109, 0.2);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: 'Fira Code', monospace;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      /* J'ai supprimé `overflow: hidden;` ici pour permettre la détection du scroll sur le body */
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      /* Fond animé grille rétrofuturiste */
-      background-image: 
-        linear-gradient(rgba(124, 77, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 77, 255, 0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    /* --- Navigation --- */
-    nav {
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      z-index: 100;
-      backdrop-filter: blur(5px);
-      border-bottom: 1px solid rgba(124, 77, 255, 0.2);
-    }
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
-
-    nav a:hover, nav a.active-link {
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: var(--primary);
-      transition: width 0.3s;
-      box-shadow: 0 0 10px var(--primary);
-    }
-
-    nav a:hover::after, nav a.active-link::after {
-      width: 100%;
-    }
-
-    /* --- Conteneur Principal --- */
-    .container {
-      position: relative;
-      flex: 1;
-      width: 100%;
-      max-width: 1100px; 
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* Masque le contenu qui dépasse le conteneur principal */
-      overflow: hidden; 
-    }
-
-    .section {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; 
-      overflow-y: auto; /* Permet le scroll à l'intérieur de la section si elle est trop longue */
-    }
-
-    .section.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: all;
-    }
-
-    /* Scrollbar personnalisée */
-    .section::-webkit-scrollbar { width: 8px; }
-    .section::-webkit-scrollbar-track { background: transparent; }
-    .section::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
-
-    /* --- Typography --- */
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
-    }
-
-    h2 {
-      color: var(--accent);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-      display: inline-block;
-      text-transform: uppercase;
-    }
-
-    /* --- Terminal Box --- */
-    .terminal-window {
-      background: var(--card-bg);
-      border: var(--glass-border);
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
-
-    .terminal-header {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px 15px;
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .red { background-color: #ff5f56; }
-    .yellow { background-color: #ffbd2e; }
-    .green { background-color: #27c93f; }
-
-    .terminal-body { padding: 25px; color: #d0d0d0; }
-    .terminal-body strong { color: var(--primary); }
-    .terminal-body em { color: var(--accent); font-style: normal; }
-
-    /* --- GRID SYSTEM POUR LES BLOCS --- */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-      margin-top: 20px;
-    }
-
-    .tech-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(124, 77, 255, 0.3);
-      padding: 20px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tech-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 5px 15px rgba(255, 42, 109, 0.2);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .tech-card h3 {
-      color: var(--primary);
-      margin-top: 0;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .tech-card ul {
-      margin: 0;
-      padding-left: 15px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Maxence Thary - Cybersécurité</title>
+    <meta name="description" content="Portfolio étudiant de Maxence Thary - BTS SIO Cybersécurité">
     
-    ul { list-style: none; padding: 0; } /* Rétablit le style global des listes non ordonnées */
-    ul li {
-        margin-bottom: 10px;
-        padding-left: 20px;
-        position: relative;
-    }
-    ul li::before {
-        content: '>';
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-    }
-    .tech-card ul li::before { color: var(--accent); } /* Surcharge la couleur pour les cartes */
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <style>
+        :root {
+            /* Palette Cyberpunk / Synthwave */
+            --primary: #ff2a6d; /* Rose Néon */
+            --secondary: #7c4dff; /* Violet Ultra */
+            --accent: #05d9e8; /* Cyan pour le contraste */
+            --bg-color: #120a1f; /* Fond très sombre violet */
+            --card-bg: rgba(30, 20, 40, 0.85);
+            --text-color: #e0e0e0;
+            --glass-border: 1px solid rgba(255, 42, 109, 0.2);
+            --max-width: 1200px;
+        }
 
-    /* --- Bouton CTA --- */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+        * { box-sizing: border-box; }
 
-    .btn:hover {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 0 20px var(--primary);
-    }
+        body {
+            font-family: 'Fira Code', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            /* Fond animé grille rétrofuturiste */
+            background-image: 
+                linear-gradient(rgba(124, 77, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 77, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
 
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.8rem;
-      color: #666;
-      background: rgba(0,0,0,0.3);
-      z-index: 100; /* Assure que le footer est au-dessus du conteneur */
-    }
+        /* --- Navigation Sticking --- */
+        nav {
+            position: sticky; /* Reste en haut lors du scroll */
+            top: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background-color: rgba(18, 10, 31, 0.95); /* Arrière-plan semi-transparent pour la lisibilité */
+            border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    /* --- Animations --- */
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: var(--primary);
-      animation: blink 1s infinite;
-    }
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 5px 0; /* Ajouté pour une zone de clic plus grande */
+        }
 
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        nav a:hover, nav a.active-link {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 42, 109, 0.6);
+        }
 
-    /* Responsive Mobile */
-    @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
-      h1 { font-size: 1.5rem; }
-      .container { align-items: flex-start; padding-top: 20px; }
-      /* Permet le scroll du body sur mobile pour voir toutes les sections empilées */
-      body { overflow-y: auto; height: auto; } 
-      .section { 
-        position: relative; 
-        opacity: 1; 
-        transform: none; 
-        display: none; 
-        height: auto; 
-        overflow: visible;
-        min-height: 80vh; /* Ajouté pour mieux espacer les sections sur mobile */
-        justify-content: flex-start;
-      }
-      .section.active { display: flex; animation: fadeIn 0.5s; }
-      .tech-grid { grid-template-columns: 1fr; }
-      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    }
-  </style>
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0; /* Alignement sur le bas du padding */
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        nav a:hover::after, nav a.active-link::after {
+            width: 100%;
+        }
+
+        /* --- Conteneur Principal --- */
+        .container {
+            width: 100%;
+            max-width: var(--max-width); 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Nouvelle structure de section */
+        .section {
+            padding: 80px 20px; /* Plus d'espace entre les sections */
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #home-section {
+            min-height: calc(100vh - 80px); /* Pour que la première section prenne presque tout l'écran */
+            justify-content: center;
+            text-align: center;
+        }
+        
+        /* --- Typography --- */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-bottom: 40px; /* Plus d'espace */
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.8rem;
+        }
+        
+        /* Contenu aligné à gauche dans les sections */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            text-align: left;
+        }
+
+        /* --- Terminal Box --- */
+        .terminal-window {
+            background: var(--card-bg);
+            border: var(--glass-border);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+        /* Styles terminal-header/body non modifiés, ils sont très bien */
+
+        /* --- GRID SYSTEM POUR LES BLOCS --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Plus d'espace */
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(124, 77, 255, 0.3);
+            padding: 25px; /* Plus de padding */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px); /* Plus grand effet de survol */
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(255, 42, 109, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .tech-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Plus d'espace pour l'icône */
+            margin-bottom: 15px;
+        }
+        .tech-card h3 i { font-size: 1.4rem; color: var(--accent); }
+
+        .tech-card ul {
+            margin: 0;
+            padding-left: 0;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        /* Mise à jour du style des listes pour les cartes et la veille */
+        .tech-card ul li, .terminal-body ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            list-style: none;
+        }
+        .tech-card ul li::before, .terminal-body ul li::before {
+            content: '\2023'; /* Puce style guillemet */
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Style pour la Veille Technologique */
+        .veille-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+             .veille-grid { grid-template-columns: 1fr; }
+        }
+        .veille-box h3 {
+             color: var(--secondary);
+             border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+             padding-bottom: 5px;
+             margin-top: 0;
+        }
+        .methodologie-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid var(--primary);
+            background: rgba(255, 42, 109, 0.15); /* Couleur plus soutenue */
+        }
+        .methodologie-box p { margin: 0; font-size: 0.95rem; }
+
+        /* --- Contact --- */
+        .contact-info {
+            margin: 40px 0; 
+            font-size: 1.2rem;
+        }
+        .contact-info p { margin: 15px 0; }
+        .contact-info a {
+            color:var(--primary); 
+            text-decoration:none; 
+            border-bottom: 1px dashed var(--primary);
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: var(--accent);
+            border-bottom: 1px dashed var(--accent);
+        }
+
+        /* --- Responsive Mobile --- */
+        @media (max-width: 768px) {
+            nav { flex-wrap: wrap; gap: 10px; padding: 10px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; margin-bottom: 30px; }
+            .section { padding: 50px 10px; min-height: auto; }
+            #home-section { min-height: 80vh; }
+            .terminal-body { padding: 20px; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Styles cursor/blink (inchangés, ils sont parfaits) */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: var(--primary);
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a onclick="showSection(0)" class="nav-link active-link">Accueil & Profil</a>
-    <a onclick="showSection(1)" class="nav-link">Réalisations</a>
-    <a onclick="showSection(2)" class="nav-link">Veille</a>
-    <a onclick="showSection(3)" class="nav-link">Contact</a>
-  </nav>
+    <nav>
+        <a href="#home-section" class="nav-link">Accueil & Profil</a>
+        <a href="#realisations-section" class="nav-link">Réalisations</a>
+        <a href="#veille-section" class="nav-link">Veille</a>
+        <a href="#contact-section" class="nav-link">Contact</a>
+    </nav>
 
-  <div class="container" id="main-container">
-    
-    <div class="section active" id="section-0">
-      <header style="text-align: center; margin-bottom: 20px;">
-        <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
-        <p style="color: var(--accent); margin-bottom: 10px;">BTS SIO Option SISR (Cybersécurité)</p>
-      </header>
-
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-          <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">profile_loader.sh</span>
-        </div>
-        <div class="terminal-body">
-          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat whoami.txt</p>
-          <p>Je m'appelle <strong>Maxence Thary</strong>, 19 ans.</p>
-          <p>Passionné par le <em>Hacking Éthique</em> et l'administration système. Mon objectif est de comprendre les mécanismes profonds des OS pour mieux les sécuriser.</p>
-          <br>
-          <p><span style="color: var(--secondary);">root@maxence:~$</span> cat mission_stage.txt</p>
-          <p>Recherche active d'un stage du <strong style="text-decoration: underline;">26 Janvier au 20 Mars 2026</strong>.</p>
-          <p>Compétences clés : Administration Windows/Linux, Virtualisation, Analyse Réseau.</p>
-          
-          <div style="text-align: center;">
-            <a href="CV_professionnel.pdf" download class="btn">📄 Télécharger mon CV</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="section-1">
-      <h2 style="margin-top: 0;">Mes Laboratoires & Projets (2 Ans)</h2>
-      <p style="font-size: 0.9rem; color: #888;">Survol des technologies manipulées durant mon BTS SIO</p>
-      
-      <div class="tech-grid">
-        <div class="tech-card">
-          <h3>🪟 Windows Server</h3>
-          <ul>
-            <li>Installation & Config AD DS</li>
-            <li>Gestion des GPO (Stratégies de groupe)</li>
-            <li>Serveur DHCP / DNS</li>
-            <li>Powershell Scripting (Admin)</li>
-          </ul>
-        </div>
-
-        <div class="tech-card">
-          <h3>🐧 Linux (Debian/Kali)</h3>
-          <ul>
-            <li>Gestion des droits (chmod/chown)</li>
-            <li>Scripting Bash (Automatisation)</li>
-            <li>Serveur Web Apache / Nginx</li>
-            <li>Sécurisation SSH (Clés, Fail2Ban)</li>
-          </ul>
-        </div>
-
-        <div class="tech-card">
-          <h3>🛡️ Cybersécurité & Réseau</h3>
-          <ul>
-            <li><strong>Pfsense :</strong> Règles Firewall, NAT</li>
-            <li><strong>Stormshield :</strong> Config filtrage URL</li>
-            <li><strong>Wireshark :</strong> Analyse de paquets</li>
-            <li>Mise en place de VPN (OpenVPN)</li>
-          </ul>
-        </div>
-
-        <div class="tech-card">
-          <h3>☁️ Virtualisation</h3>
-          <ul>
-            <li><strong>VMware / VirtualBox :</strong> Labs</li>
-            <li><strong>Proxmox :</strong> Création de CT/VM</li>
-            <li>Gestion de snapshots</li>
-            <li>Réseaux virtuels (vSwitch)</li>
-          </ul>
-        </div>
-
-        <div class="tech-card">
-          <h3>🐍 Développement</h3>
-          <ul>
-            <li><strong>Python :</strong> Scripts réseaux</li>
-            <li><strong>HTML/CSS :</strong> Création de portfolio</li>
-            <li>Automatisation de tâches simples</li>
-          </ul>
-        </div>
+    <div class="container" id="main-content">
         
-        <div class="tech-card">
-          <h3>🎫 Support & Gestion</h3>
-          <ul>
-            <li><strong>GLPI :</strong> Gestion de parc</li>
-            <li>Documentation technique</li>
-            <li>Traitement de tickets incidents</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        <section class="section" id="home-section">
+            <header style="text-align: center; margin-bottom: 30px;">
+                <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
+                <p style="color: var(--accent); font-size: 1.1rem;">Technicien Supérieur en Cybersécurité (BTS SIO Option SISR)</p>
+            </header>
 
-    <div class="section" id="section-2">
-      <div class="terminal-window">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">watch_viruses.exe</span>
-        </div>
-        <div class="terminal-body">
-          <h2>📡 Ma Veille Technologique</h2>
-          <p>Sujet principal : <strong style="color: var(--primary);">L'évolution des Virus & Malwares</strong></p>
-          <p style="font-size: 0.9rem;">Comment les virus ont muté du simple programme blagueur aux armes de cyberguerre.</p>
-          
-          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div>
-              <h3 style="color: var(--secondary);">🦠 Thèmes analysés</h3>
-              <ul>
-                <li>Historique (Creeper, Morris Worm...)</li>
-                <li>Polymorphisme & Métamorphisme</li>
-                <li>Ransomwares modernes (RaaS)</li>
-                <li>Techniques d'évasion (Obfuscation)</li>
-              </ul>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">profile_loader.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span style="color: var(--secondary);">root@maxence:~$</span> cat whoami.txt</p>
+                    <p>Je m'appelle <strong>Maxence Thary</strong>, 19 ans, et je suis étudiant en BTS SIO (Services Informatiques aux Organisations) option **SISR** (Solutions d'Infrastructure, Systèmes et Réseaux) avec une spécialisation en Cybersécurité.</p>
+                    <p>Passionné par le <em>Hacking Éthique</em> et l'administration système, mon objectif est de comprendre les mécanismes profonds des infrastructures pour garantir leur sécurité et leur résilience.</p>
+                    <br>
+                    <p><span style="color: var(--secondary);">root@maxence:~$</span> cat mission_stage.txt</p>
+                    <p>Je suis à la recherche active d'un stage dans les domaines de l'administration système, du réseau ou du support niveau 2/3, pour la période du <strong style="text-decoration: underline;">26 Janvier au 20 Mars 2026</strong>.</p>
+                    <p>Compétences clés : Administration Windows/Linux, Virtualisation, Sécurité des Réseaux, et maîtrise des protocoles fondamentaux (TCP/IP, DHCP, DNS).</p>
+                    
+                    <div style="text-align: center;">
+                        <a href="CV_professionnel.pdf" download class="btn">📄 Télécharger mon CV (PDF)</a>
+                    </div>
+                </div>
             </div>
-            <div>
-              <h3 style="color: var(--accent);">🛠️ Outils & Flux</h3>
-              <ul>
-                <li><strong>Inoreader :</strong> Agrégateur central RSS</li>
-                <li><strong>Google Alerts :</strong> Monitoring mots-clés</li>
-                <li><em>Flux :</em> "Virus evolution", "Malware trends"</li>
-                <li>Sites spécialisés (ANSSI, TheHackerNews)</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div style="margin-top: 20px; background: rgba(255, 42, 109, 0.1); padding: 15px; border-radius: 5px; border-left: 3px solid var(--primary);">
-            <p style="margin: 0; font-size: 0.9rem;">
-              <em>"Méthodologie : Google Alerts détecte les nouveaux articles sur les mots-clés, qui sont ensuite centralisés et triés automatiquement sur mon tableau de bord Inoreader."</em>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <div class="section" id="section-3">
-      <div class="terminal-window" style="text-align: center; max-width: 500px;">
-        <div class="terminal-header">
-           <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-           <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">connect.sh</span>
-        </div>
-        <div class="terminal-body">
-          <h2>Me Contacter</h2>
-          <p>Un projet ? Une offre de stage ?</p>
-          
-          <div style="margin: 40px 0; font-size: 1.1rem;">
-            <p>📧 <a href="mailto:thary.maxence@gmail.com" style="color:var(--primary); text-decoration:none; border-bottom: 1px dashed var(--primary);">thary.maxence@gmail.com</a></p>
-            <p>📱 <span style="color: #fff;">06 74 29 47 23</span></p>
-          </div>
-
-          <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" class="btn">
-             Mon LinkedIn
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <p>© 2026 Maxence Thary | BTS SIO</p>
-  </footer>
-
-  <script>
-    // Variables globales
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const totalSections = sections.length;
-    let currentIndex = 0;
-    let isScrolling = false; // Flag pour gérer le debounce
-    const scrollTimeout = 700; // Délai en ms entre deux changements de slide (vitesse)
-
-    // Fonction pour changer de section
-    function showSection(index) {
-      if (index < 0 || index >= totalSections || index === currentIndex) return;
-
-      // Masquer toutes les sections et désactiver tous les liens
-      sections.forEach(sec => sec.classList.remove('active'));
-      navLinks.forEach(link => link.classList.remove('active-link'));
-      
-      // Activer la nouvelle section et le lien
-      sections[index].classList.add('active');
-      navLinks[index].classList.add('active-link');
-      currentIndex = index;
-    }
-
-    // --- Gestion du SCROLL/Swipe ---
-    function handleScroll(direction) {
-        if (isScrolling) return; // Si l'animation est déjà en cours, on ignore le nouveau scroll
-
-        let newIndex = currentIndex;
-        
-        // La direction est 1 pour scroll vers le bas (section suivante) ou -1 pour scroll vers le haut (section précédente)
-        if (direction > 0) {
-            newIndex = Math.min(currentIndex + 1, totalSections - 1);
-        } else if (direction < 0) {
-            newIndex = Math.max(currentIndex - 1, 0);
-        }
-
-        if (newIndex !== currentIndex) {
-            isScrolling = true;
-            showSection(newIndex);
+        <section class="section" id="realisations-section">
+            <h2><i class="fas fa-hammer"></i> Mes Compétences Techniques (Labs & Projets)</h2>
+            <p style="font-size: 1rem; color: #aaa;">Maîtrise des environnements systèmes et sécurité acquise en 2 ans de formation intensive.</p>
             
-            // Réinitialise le flag après le délai d'animation
-            setTimeout(() => {
-                isScrolling = false;
-            }, scrollTimeout);
+            <div class="content-wrapper">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3><i class="fab fa-windows"></i> Windows Server & AD</h3>
+                        <ul>
+                            <li>Installation et configuration d'un domaine **Active Directory** (AD DS).</li>
+                            <li>Gestion des **GPO** (Stratégies de groupe) pour la sécurité et la conformité.</li>
+                            <li>Déploiement et administration des services **DHCP** / **DNS**.</li>
+                            <li>Scripting d'administration avec **Powershell**.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><i class="fab fa-linux"></i> Linux & Services (Debian/Kali)</h3>
+                        <ul>
+                            <li>Administration de base (Utilisateurs, logs) et gestion des droits (**chmod/chown**).</li>
+                            <li>Automatisation de tâches via **Scripting Bash**.</li>
+                            <li>Mise en place de serveurs **Apache / Nginx** sécurisés (HTTPS).</li>
+                            <li>Sécurisation des accès à distance via **SSH** (Clés, Fail2Ban).</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><i class="fas fa-shield-alt"></i> Cybersécurité & Réseau</h3>
+                        <ul>
+                            <li>Configuration de Firewalls (ex: **Pfsense**, **Stormshield**) : règles NAT/filtrage.</li>
+                            <li>Analyse et diagnostic des flux réseau avec **Wireshark**.</li>
+                            <li>Mise en place de réseaux privés virtuels (**VPN - OpenVPN**).</li>
+                            <li>Principes de durcissement (hardening) des systèmes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><i class="fas fa-cloud"></i> Virtualisation & Infra</h3>
+                        <ul>
+                            <li>Construction d'infrastructures de test isolées (**VMware / VirtualBox**).</li>
+                            <li>Hyperviseurs : Administration et gestion de VM/Containers (**Proxmox**).</li>
+                            <li>Gestion des environnements de secours (**Snapshots, Backups**).</li>
+                            <li>Segmentation réseau via interfaces virtuelles (vSwitch).</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card">
+                        <h3><i class="fas fa-code"></i> Développement & Scripting</h3>
+                        <ul>
+                            <li>**Python** : Création de scripts utilitaires et d'outils de pentest basique.</li>
+                            <li>**HTML/CSS/JS** : Réalisation de ce portfolio moderne.</li>
+                            <li>Automatisation et tests de vulnérabilités (ex: Nmap, outils Kali).</li>
+                            <li>Connaissance des bases de données (**SQL**).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h3><i class="fas fa-ticket-alt"></i> ITIL & Gestion de Parc</h3>
+                        <ul>
+                            <li>Gestion des incidents (Diagnostic, résolution, documentation).</li>
+                            <li>Utilisation de **GLPI** pour l'inventaire et la gestion de parc informatique.</li>
+                            <li>Rédaction de documentation technique claire et structurée.</li>
+                            <li>Adoption d'une approche méthodologique (ITIL).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="veille-section">
+            <h2><i class="fas fa-broadcast-tower"></i> Veille Technologique</h2>
+            <p style="font-size: 1rem; color: #aaa;">Monitoring permanent de l'évolution des menaces pour anticiper les failles de sécurité.</p>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">threat_feed_monitor.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <p style="margin-bottom: 25px;">Sujet principal : <strong style="color: var(--primary); text-transform: uppercase;">L'évolution des Virus, Malwares et des techniques d'évasion.</strong></p>
+                    
+                    <div class="veille-grid">
+                        <div class="veille-box">
+                            <h3 style="color: var(--secondary);"><i class="fas fa-microscope"></i> Thèmes analysés</h3>
+                            <ul>
+                                <li>Historique des menaces majeures (Morris Worm, Stuxnet, etc.).</li>
+                                <li>Analyse du **Polymorphisme & Métamorphisme** des codes malveillants.</li>
+                                <li>Étude des **Ransomwares-as-a-Service (RaaS)** et modèles d'attaque récents.</li>
+                                <li>Techniques d'évasion avancées (Sandbox, Obfuscation, Anti-VM).</li>
+                            </ul>
+                        </div>
+                        <div class="veille-box">
+                            <h3 style="color: var(--accent);"><i class="fas fa-tools"></i> Outils & Flux de capture</h3>
+                            <ul>
+                                <li>**Inoreader :** Centralisation et tri intelligent des flux RSS.</li>
+                                <li>**Google Alerts :** Détection instantanée sur les mots-clés critiques.</li>
+                                <li>Sources : **ANSSI**, **TheHackerNews**, **BleepingComputer**, Dark Reading.</li>
+                                <li>Mots-clés : "Zero-Day", "Malware trends", "APT groups", "C2 infrastructure".</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="methodologie-box">
+                        <p>
+                            <i class="fas fa-sitemap" style="color: var(--primary);"></i> 
+                            <em>Méthodologie :</em> L'information est capturée par des alertes (Google, Twitter) puis filtrée, centralisée et analysée sur mon tableau de bord Inoreader pour produire une synthèse trimestrielle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <div class="terminal-window" style="text-align: center; max-width: 500px;">
+                <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <span style="font-size: 0.8rem; color: #555; margin-left: 10px;">connect_target.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <h2><i class="fas fa-handshake"></i> Prêt à collaborer ?</h2>
+                    <p>Je suis disponible pour un échange concernant une offre de stage ou un projet technique.</p>
+                    
+                    <div class="contact-info">
+                        <p>📧 Email : <a href="mailto:thary.maxence@gmail.com">thary.maxence@gmail.com</a></p>
+                        <p>📱 Téléphone : <span style="color: var(--accent);">06 74 29 47 23</span></p>
+                    </div>
+
+                    <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" class="btn">
+                        <i class="fab fa-linkedin"></i> Mon Profil LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Maxence Thary | BTS SIO. Conçu avec passion et du code.</p>
+    </footer>
+
+    <script>
+        // Effet Machine à écrire (maintenu)
+        const textToType = "Maxence Thary_";
+        const typeWriterElement = document.getElementById('typewriter');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
         }
-    }
 
-    // Événement Mouse Wheel (Détection du scroll de la souris)
-    document.addEventListener('wheel', (e) => {
-        // e.deltaY > 0 signifie scroll vers le bas
-        handleScroll(e.deltaY > 0 ? 1 : -1);
-    }, { passive: false }); // Utiliser passive: false pour prévenir le scroll par défaut du body si possible
+        // Gestion de l'état "Active" du lien de navigation au scroll
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-    // Événement Touch (Détection du swipe sur mobile)
-    let startY = 0;
-    
-    document.addEventListener('touchstart', (e) => {
-        // Enregistre la position verticale de départ du doigt
-        startY = e.touches[0].clientY;
-    });
+        function setActiveLink() {
+            let current = '';
+            
+            // Détermine quelle section est visible
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Ajustement pour le header sticky
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-    document.addEventListener('touchend', (e) => {
-        if (!startY) return;
-
-        const endY = e.changedTouches[0].clientY;
-        const deltaY = endY - startY; // Si positif -> swipe vers le bas
-        const swipeThreshold = 50; // Distance minimale pour considérer comme un swipe
-
-        if (Math.abs(deltaY) > swipeThreshold) {
-            // Si deltaY est négatif, le swipe est vers le haut (passer à la section suivante)
-            // Si deltaY est positif, le swipe est vers le bas (revenir à la section précédente)
-            handleScroll(deltaY < 0 ? 1 : -1);
+            // Met à jour la classe "active-link"
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
         }
-        startY = 0; // Réinitialiser
-    });
 
-
-    // Effet Machine à écrire
-    const textToType = "Maxence Thary_";
-    const typeWriterElement = document.getElementById('typewriter');
-    let i = 0;
-
-    function typeWriter() {
-      if (i < textToType.length) {
-        typeWriterElement.innerHTML += textToType.charAt(i);
-        i++;
-        setTimeout(typeWriter, 150);
-      }
-    }
-
-    window.onload = typeWriter;
-  </script>
+        window.addEventListener('scroll', setActiveLink);
+        window.onload = () => {
+             typeWriter();
+             setActiveLink(); // Initialise le lien actif au chargement
+        }
+    </script>
 
 </body>
 </html>
