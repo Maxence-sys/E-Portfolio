@@ -28,7 +28,10 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth; 
+      scroll-snap-type: y mandatory;
+    }
 
     body {
       font-family: var(--font-main);
@@ -86,8 +89,12 @@
     }
 
     section {
-      padding: 100px 0;
-      min-height: 80vh;
+      padding: 60px 0; 
+      
+      min-height: 100vh;
+      scroll-snap-align: start;
+      scroll-margin-top: 85px;
+      
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -97,7 +104,7 @@
       display: flex;
       align-items: center;
       font-size: 1.8rem;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       color: var(--text-main);
     }
 
@@ -119,7 +126,11 @@
     }
 
     /* --- HERO SECTION --- */
-    #home { min-height: 100vh; padding-top: 0; }
+    #home { 
+        min-height: 100vh; 
+        padding-top: 0;
+        scroll-margin-top: 0;
+    }
     
     .hero-pre { font-family: var(--font-mono); color: var(--accent); margin-bottom: 20px; }
     .hero-title { font-size: clamp(40px, 8vw, 70px); font-weight: 800; color: #ccd6f6; line-height: 1.1; }
@@ -194,12 +205,20 @@
     #contact-content a:hover { color: var(--accent) !important; text-decoration: underline; }
 
     /* --- FOOTER --- */
-    footer { text-align: center; padding: 20px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem; }
+    footer { 
+        text-align: center; 
+        padding: 20px; 
+        color: var(--text-muted); 
+        font-family: var(--font-mono); 
+        font-size: 0.8rem; 
+        scroll-snap-align: end;
+    }
 
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .hero-title { font-size: 40px; }
+      section { min-height: auto; padding: 80px 0; }
     }
   </style>
 </head>
