@@ -153,29 +153,6 @@
     }
     .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
 
-    /* --- ABOUT GRID --- */
-    .about-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr; 
-        gap: 40px;
-        align-items: center;
-    }
-
-    .profile-pic-placeholder {
-        width: 100%;
-        height: 250px;
-        background: var(--card-bg);
-        border: 2px dashed var(--text-muted);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        text-align: center;
-        padding: 20px;
-    }
-
     /* --- COMPÉTENCES (SKILLS) --- */
     .skills-grid { 
         display: grid; 
@@ -211,6 +188,9 @@
     .card li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
     .card a { color: var(--text-main); text-decoration: underline; text-decoration-color: var(--accent); }
     .card a:hover { color: var(--accent); }
+    
+    /* Paragraphe dans les cartes (pour Inoreader) */
+    .card p { color: var(--text-muted); font-size: 0.95rem; margin-top: 10px; }
 
     /* --- CONTACT --- */
     .contact-box {
@@ -235,8 +215,6 @@
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .profile-pic-placeholder { height: 200px; width: 200px; margin: 0 auto; }
       section { padding: 50px 0; }
     }
   </style>
@@ -272,19 +250,13 @@
 
     <section id="about">
       <h2>À propos</h2>
-      <div class="about-grid">
-        <div>
-          <p style="margin-bottom: 15px; color: var(--text-muted);">
-            Passionné par l'infrastructure et la sécurité, j'aime comprendre comment les réseaux fonctionnent pour mieux les protéger.
-          </p>
-          <p style="color: var(--text-muted);">
-            En dehors des cours, je passe mon temps sur <strong>Root-Me</strong> et sur mon <strong>HomeLab</strong> (Serveur Proxmox) pour tester de nouvelles architectures réseaux et des outils d'audit.
-          </p>
-        </div>
-        
-        <div class="profile-pic-placeholder">
-           [ Ta Photo Ici ]
-        </div>
+      <div style="max-width: 800px;">
+        <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem;">
+          Passionné par l'infrastructure et la sécurité informatique, j'ai orienté mes études vers la compréhension profonde des systèmes pour mieux les protéger.
+        </p>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Mon approche est pragmatique : je ne me contente pas d'apprendre la théorie. En dehors des cours, je passe mon temps sur <strong>Root-Me</strong> pour aiguiser mes compétences offensives et sur mon <strong>HomeLab</strong> (Serveur Proxmox) pour déployer et sécuriser des architectures réseaux complexes.
+        </p>
       </div>
     </section>
 
@@ -352,6 +324,7 @@
       </div>
       
       <div class="skills-grid">
+        
         <div class="card">
           <h3>📥 Mes Alertes</h3>
           <ul>
@@ -370,6 +343,17 @@
             <li><a href="https://www.malwarebytes.com/blog" target="_blank">Malwarebytes Labs</a></li>
           </ul>
         </div>
+
+        <div class="card">
+          <h3>🚀 Outil : Inoreader</h3>
+          <p>
+            J'utilise <strong>Inoreader</strong> comme agrégateur de flux RSS.
+          </p>
+          <p style="margin-top: 10px;">
+            Cela me permet de centraliser toutes mes sources (ANSSI, Blogs sécurité, Alertes) dans un dashboard unique pour ne manquer aucune vulnérabilité critique.
+          </p>
+        </div>
+
       </div>
     </section>
 
