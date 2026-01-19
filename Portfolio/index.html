@@ -193,8 +193,9 @@
     .veille-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .veille-card { background: var(--card-bg); padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); }
     .veille-card h3 { color: var(--accent); margin-bottom: 15px; font-family: var(--font-mono); }
-    .veille-card a { color: var(--text-main); border-bottom: 1px dashed var(--accent); }
-    .veille-card a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
+    /* Style pour les liens cliquables dans la partie 'Sites de Référence' seulement */
+    .clickable-list a { color: var(--text-main); border-bottom: 1px dashed var(--accent); }
+    .clickable-list a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
 
     /* --- CONTACT STYLE SPÉCIFIQUE --- */
     #contact-content {
@@ -351,12 +352,12 @@
         <div class="veille-card">
           <h3>📥 Mes Flux RSS & Alertes</h3>
           <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
-            <li><a href="https://www.google.com/alerts/feeds/01953410481611099347/3171461852122454017" target="_blank">Google Alert - Virus & Menaces</a></li>
-            <li><a href="https://www.google.com/alerts/feeds/01953410481611099347/6038114180921382456" target="_blank">Google Alert - Cyber Actu</a></li>
+            <li>Google Alert - Virus & Menaces</li>
+            <li>Google Alert - Cyber Actu</li>
           </ul>
         </div>
 
-        <div class="veille-card">
+        <div class="veille-card clickable-list">
           <h3>📰 Sites de Référence</h3>
           <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
             <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank">CERT-FR (ANSSI)</a> - Alertes officielles</li>
