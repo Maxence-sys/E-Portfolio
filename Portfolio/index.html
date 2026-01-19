@@ -178,21 +178,23 @@
     .string { color: #ecc48d; }
 
     /* --- SKILLS GRID --- */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
     .skill-card {
       background-color: var(--card-bg); padding: 20px; border-radius: 4px;
       transition: transform 0.2s; border-left: 3px solid transparent;
     }
     .skill-card:hover { transform: translateY(-5px); border-left: 3px solid var(--accent); }
-    .skill-card h3 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .skill-card h3 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
     .skill-card ul { padding-left: 0; font-size: 0.9rem; color: var(--text-muted); }
-    .skill-card li { margin-bottom: 5px; position: relative; padding-left: 15px; }
+    .skill-card li { margin-bottom: 8px; position: relative; padding-left: 15px; }
     .skill-card li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
 
     /* --- VEILLE (Cards) --- */
     .veille-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .veille-card { background: var(--card-bg); padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); }
     .veille-card h3 { color: var(--accent); margin-bottom: 15px; font-family: var(--font-mono); }
+    .veille-card a { color: var(--text-main); border-bottom: 1px dashed var(--accent); }
+    .veille-card a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
 
     /* --- CONTACT STYLE SPÉCIFIQUE --- */
     #contact-content {
@@ -254,7 +256,7 @@
 
     <section id="about">
       <h2>À propos de moi</h2>
-      <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 50px; align-items: start;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: start;">
         <div>
           <p style="color: var(--text-muted); margin-bottom: 15px;">
             Passionné par l'informatique depuis mon plus jeune âge, j'ai orienté mes études vers la compréhension profonde des systèmes d'exploitation.
@@ -285,43 +287,82 @@
     <section id="skills">
       <h2>Compétences Techniques</h2>
       <div class="skills-grid">
+        
         <div class="skill-card">
-          <h3>Windows Server</h3>
-          <ul><li>Active Directory (AD DS)</li><li>GPO & Stratégies</li><li>Powershell</li></ul>
+          <h3>📡 Systèmes & Réseaux</h3>
+          <ul>
+            <li>Windows Server & Linux</li>
+            <li>Active Directory (AD)</li>
+            <li>TCP/IP, VLAN</li>
+            <li>Routage de base</li>
+          </ul>
         </div>
+
         <div class="skill-card">
-          <h3>🐧 Linux (Debian)</h3>
-          <ul><li>Administration CLI</li><li>Scripting Bash</li><li>Sécurisation SSH</li></ul>
+          <h3>🐧 OS (Systèmes)</h3>
+          <ul>
+            <li>Windows 10/11</li>
+            <li>Ubuntu / Debian</li>
+            <li>Kali Linux</li>
+            <li>Pfsense (Firewall)</li>
+          </ul>
         </div>
+
         <div class="skill-card">
           <h3>🛡️ Cybersécurité</h3>
-          <ul><li>Firewalling (Pfsense)</li><li>Wireshark</li><li>OpenVPN</li></ul>
+          <ul>
+            <li>Notions de Pentesting</li>
+            <li>Gestion Firewall & Antivirus</li>
+            <li>Gestion droits & accès (IAM)</li>
+            <li>Sécurité des serveurs (Hardening)</li>
+          </ul>
         </div>
+
         <div class="skill-card">
-          <h3>☁️ Virtualisation</h3>
-          <ul><li>VMware / Proxmox</li><li>Réseaux virtuels</li><li>Conteneurs</li></ul>
+          <h3>💻 Langages & Scripting</h3>
+          <ul>
+            <li>HTML / CSS</li>
+            <li>Python (Scripting)</li>
+            <li>Bash / Shell</li>
+          </ul>
         </div>
+
+        <div class="skill-card">
+          <h3>🛠️ Outils & Logiciels</h3>
+          <ul>
+            <li>Wireshark (Analyse trames)</li>
+            <li>VirtualBox / VMware</li>
+            <li>Stormshield</li>
+            <li>Suite Office</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
     <section id="veille">
       <h2>Veille Technologique</h2>
       <div style="margin-bottom: 30px; color: var(--text-muted);">
-        <p>Sujet : <strong>L'évolution des Malwares et Ransomwares (RaaS)</strong>.</p>
+        <p>Sujet principal : <strong>Les Virus, Antivirus et l'évolution des menaces</strong>.</p>
+        <p style="font-size: 0.9rem; margin-top: 10px;">Je surveille activement l'apparition de nouvelles signatures virales et les technologies de défense (EDR/XDR).</p>
       </div>
+      
       <div class="veille-container">
         <div class="veille-card">
-          <h3>📥 Sources</h3>
+          <h3>📥 Mes Flux RSS & Alertes</h3>
           <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
-            <li>Inoreader (Flux RSS ANSSI, CERT-FR)</li>
-            <li>TheHackerNews</li>
+            <li><a href="https://www.google.com/alerts/feeds/01953410481611099347/3171461852122454017" target="_blank">Google Alert - Virus & Menaces</a></li>
+            <li><a href="https://www.google.com/alerts/feeds/01953410481611099347/6038114180921382456" target="_blank">Google Alert - Cyber Actu</a></li>
           </ul>
         </div>
+
         <div class="veille-card">
-          <h3>Thèmes</h3>
+          <h3>📰 Sites de Référence</h3>
           <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
-            <li>Obfuscation moderne</li>
-            <li>Ransomware as a Service</li>
+            <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank">CERT-FR (ANSSI)</a> - Alertes officielles</li>
+            <li><a href="https://thehackernews.com/" target="_blank">The Hacker News</a> - Actu internationale</li>
+            <li><a href="https://www.malwarebytes.com/blog" target="_blank">Malwarebytes Labs</a> - Analyse technique</li>
+            <li><a href="https://www.lemagit.fr/securite" target="_blank">LeMagIT Sécurité</a> - Actu FR</li>
           </ul>
         </div>
       </div>
