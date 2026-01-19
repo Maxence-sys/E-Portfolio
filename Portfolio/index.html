@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio d'Ethan Georget - Administrateur Réseaux & Cybersécurité">
-    <title>Ethan Georget | Portfolio</title>
+    <meta name="description" content="Portfolio de Maxence Thary - Étudiant BTS SIO Cybersécurité">
+    <title>Maxence Thary | Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -88,7 +88,6 @@
             overflow: hidden;
         }
         
-        /* Petit effet de fond abstrait */
         .hero::before {
             content: '';
             position: absolute;
@@ -122,7 +121,7 @@
         .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); box-shadow: none; }
         .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
 
-        /* --- SECTIONS GÉNÉRALES --- */
+        /* --- SECTIONS --- */
         section { padding: 100px 10%; }
         .section-title {
             font-size: 2.5rem;
@@ -154,8 +153,9 @@
             height: 280px; 
             border-radius: 20px; 
             object-fit: cover; 
+            background-color: #e2e8f0;
             box-shadow: 20px 20px 0px var(--bg-light), 20px 20px 0px 2px var(--primary);
-            /* Le style ci-dessus crée un effet de cadre décalé */
+            display: flex; align-items: center; justify-content: center; color: #94a3b8;
         }
 
         .alert-box {
@@ -186,13 +186,12 @@
         .skill-list li { margin-bottom: 12px; display: flex; align-items: center; color: var(--text-light); }
         .skill-list i { color: var(--primary); margin-right: 12px; font-size: 0.9rem; background: rgba(59, 130, 246, 0.1); padding: 5px; border-radius: 50%; }
 
-        /* --- PROJETS (STYLE REVU) --- */
+        /* --- PROJETS --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
-
         .project-card {
             background: var(--card-bg);
             border-radius: 16px;
@@ -203,163 +202,41 @@
             flex-direction: column;
             border-top: 5px solid transparent;
         }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary);
-        }
-
-        .project-header {
-            padding: 30px 30px 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-        }
-
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--primary); }
+        .project-header { padding: 30px 30px 0 30px; display: flex; justify-content: space-between; align-items: start; }
         .folder-icon { font-size: 2.5rem; color: var(--primary); opacity: 0.8; }
-        .external-link { color: var(--text-light); font-size: 1.2rem; }
-        .external-link:hover { color: var(--primary); }
-
         .project-content { padding: 20px 30px 30px 30px; flex: 1; display: flex; flex-direction: column; }
         .project-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
         .project-content p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px; }
-
         .tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
-            font-size: 0.8rem;
-            font-family: monospace;
-            color: var(--primary);
-            background: rgba(59, 130, 246, 0.1);
-            padding: 5px 12px;
-            border-radius: 50px;
-        }
+        .tag { font-size: 0.8rem; font-family: monospace; color: var(--primary); background: rgba(59, 130, 246, 0.1); padding: 5px 12px; border-radius: 50px; }
 
-        .project-link {
-            margin-top: 20px;
-            font-weight: 600;
-            color: var(--dark);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .project-link:hover { color: var(--primary); gap: 10px; }
-
-        /* --- PARCOURS (TIMELINE MODERNE) --- */
-        .timeline-section { position: relative; }
-        .timeline-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: #e2e8f0;
-            top: 0;
-            bottom: 0;
-            left: 20px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            padding-left: 60px;
-        }
-
-        /* Le point sur la ligne */
-        .timeline-marker {
-            position: absolute;
-            left: 11px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: white;
-            border: 4px solid var(--primary);
-            z-index: 1;
-        }
+        /* --- PARCOURS --- */
+        .timeline-container { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline-container::after { content: ''; position: absolute; width: 2px; background: #e2e8f0; top: 0; bottom: 0; left: 20px; }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 60px; }
+        .timeline-marker { position: absolute; left: 11px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: white; border: 4px solid var(--primary); z-index: 1; }
         .timeline-item.school .timeline-marker { border-color: var(--accent); }
-
-        .timeline-content {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--primary);
-            transition: 0.3s;
-        }
+        .timeline-content { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.03); border-left: 4px solid var(--primary); transition: 0.3s; }
         .timeline-item.school .timeline-content { border-left-color: var(--accent); }
-
-        .timeline-content:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            transform: translateX(5px);
-        }
-
-        .t-date {
-            display: inline-block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .timeline-content:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateX(5px); }
+        .t-date { display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--text-light); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
         .t-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
         .t-company { font-size: 1rem; color: var(--primary); font-weight: 500; margin-bottom: 15px; display: block; }
         .t-desc { font-size: 0.95rem; color: var(--text-light); }
-        .t-desc ul { list-style: disc; padding-left: 20px; margin-top: 10px; }
-        .t-link { font-size: 0.85rem; color: var(--primary); margin-top: 10px; display: inline-block; text-decoration: underline;}
 
-        /* --- CONTACT (STYLE "CTA") --- */
-        .contact-section {
-            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-            border-radius: 20px;
-            margin: 0 5% 50px 5%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
+        /* --- CONTACT --- */
+        .contact-section { background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%); color: white; text-align: center; padding: 80px 20px; border-radius: 20px; margin: 0 5% 50px 5%; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .contact-section h2 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
         .contact-section p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
+        .contact-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .contact-btn { background: rgba(255,255,255,0.1); color: white; padding: 15px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
         .contact-btn:hover { background: white; color: var(--dark); transform: translateY(-3px); }
         .contact-btn.primary { background: var(--primary); border-color: var(--primary); }
         .contact-btn.primary:hover { background: var(--primary-dark); color: white; border-color: var(--primary-dark); }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            background: var(--bg-light);
-        }
+        footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 0.9rem; background: var(--bg-light); }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
@@ -372,11 +249,11 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">ETHAN<span style="color:var(--dark);">.G</span></div>
+        <div class="logo">MAXENCE<span style="color:var(--dark);">.THARY</span></div>
         <div class="nav-links">
             <a href="#about">Profil</a>
             <a href="#skills">Compétences</a>
-            <a href="#projects">Projets</a>
+            <a href="#projects">Expériences</a>
             <a href="#experience">Parcours</a>
             <a href="#contact">Contact</a>
         </div>
@@ -384,31 +261,33 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Ethan Georget</h1>
-            <h2>Futur <span class="highlight">Administrateur Réseaux & Cybersécurité</span></h2>
+            <h1>Maxence Thary</h1>
+            <h2>Futur <span class="highlight">Administrateur Cybersécurité</span></h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; color: #94a3b8;">
-                Étudiant en BTS SIO option SISR | Recherche d'alternance pour <strong>Septembre 2025</strong>
+                [cite_start]Étudiant en BTS SIO option SISR [cite: 2] | [cite_start]Recherche de stage du <strong>26/01/2026 au 20/03/2026</strong> [cite: 9]
             </p>
-            <a href="#projects" class="btn">Voir mes réalisations</a>
-            <a href="assets/cv.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Télécharger CV</a>
+            <a href="#projects" class="btn">Voir mes projets</a>
+            <a href="CV_professionnel.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Télécharger CV</a>
         </div>
     </header>
 
     <section id="about">
         <div class="about-content">
-            <img src="https://via.placeholder.com/280x280.png?text=Ethan" alt="Ethan Georget" class="about-img">
+            <div class="about-img">
+                <i class="fas fa-user-shield" style="font-size: 5rem;"></i>
+            </div>
             
             <div class="about-text">
                 <h2 class="section-title" style="margin-bottom: 30px;">À Propos</h2>
                 <p>
-                    Passionné par l'informatique depuis le collège, j'ai orienté mes études vers l'administration des systèmes et des réseaux.
-                    Après un <strong>Bac Pro SN (Systèmes Numériques)</strong> obtenu avec mention, je poursuis actuellement en <strong>BTS SIO</strong> option SISR.
+                    [cite_start]Étudiant en 2e année de BTS SIO option SISR, je suis passionné par la <strong>cybersécurité</strong> et les infrastructures informatiques[cite: 7].
+                    [cite_start]Motivé, curieux et sérieux, je souhaite développer mes compétences techniques dans la sécurité des systèmes d'information[cite: 8].
                 </p>
                 <p style="margin-top: 15px;">
-                    Curieux et technique, j'aime comprendre comment fonctionnent les infrastructures complexes. J'ai déjà acquis une expérience précieuse grâce à mes stages à la <strong>Mairie de Meaux</strong> et à l'<strong>IFAC</strong>.
+                    [cite_start]En dehors de mes études, je pratique le hacking éthique, la musculation et je suis passionné par la batterie[cite: 30].
                 </p>
                 <div class="alert-box">
-                    <i class="fas fa-briefcase"></i> <strong>Objectif :</strong> Je recherche une entreprise pour une <strong>alternance</strong> (contrat d'apprentissage) à partir de septembre 2025.
+                    [cite_start]<i class="fas fa-calendar-check"></i> <strong>Période de Stage :</strong> Je suis disponible du 26 janvier au 20 mars 2026[cite: 9].
                 </div>
             </div>
         </div>
@@ -419,35 +298,32 @@
         <div class="skills-grid">
             
             <div class="skill-card">
-                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Réseau & Infra</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Switchs Cisco (SG300)</li>
-                    <li><i class="fas fa-check"></i> VLANs (Data, Voice, Admin)</li>
-                    <li><i class="fas fa-check"></i> TCP/IP, DHCP, DNS, SNMP</li>
-                    <li><i class="fas fa-check"></i> Wireshark & Packet Tracer</li>
-                </ul>
-            </div>
-
-            <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-server"></i></div>
-                <h3>Système & Admin</h3>
+                <h3>Systèmes & Réseaux</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Windows Server 2016/2019</li>
-                    <li><i class="fas fa-check"></i> Active Directory (GPO)</li>
-                    <li><i class="fas fa-check"></i> Virtualisation (VMware)</li>
-                    <li><i class="fas fa-check"></i> Office 365 (Migration)</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Windows Server, Active Directory [cite: 18]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Linux (Ubuntu, Kali), TCP/IP [cite: 18]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> VLAN, Routage, VirtualBox/VMware [cite: 18, 21]</li>
                 </ul>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Outils & Supervision</h3>
+                <h3>Cybersécurité</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Eyes Of Network (Nagios)</li>
-                    <li><i class="fas fa-check"></i> Grafana (Dashboards)</li>
-                    <li><i class="fas fa-check"></i> Ticketing (GLPI)</li>
-                    <li><i class="fas fa-check"></i> Veille Juridique (RGPD)</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Firewall (Pfsense, Stormshield) [cite: 18, 21]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Pentesting, Wireshark [cite: 19, 21]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Gestion des droits & accès [cite: 19]</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Langages & Outils</h3>
+                <ul class="skill-list">
+                    [cite_start]<li><i class="fas fa-check"></i> Python, HTML, Bash / Shell [cite: 20]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Adobe Premiere Pro [cite: 24]</li>
+                    [cite_start]<li><i class="fas fa-check"></i> Google Workspace [cite: 26]</li>
                 </ul>
             </div>
 
@@ -455,57 +331,51 @@
     </section>
 
     <section id="projects">
-        <h2 class="section-title">Projets & Réalisations</h2>
+        <h2 class="section-title">Expériences & Projets</h2>
         <div class="projects-grid">
             
             <div class="project-card">
                 <div class="project-header">
-                    <i class="far fa-folder folder-icon"></i>
-                    <a href="assets/projet_jo.pdf" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+                    <i class="fas fa-network-wired folder-icon"></i>
                 </div>
                 <div class="project-content">
-                    <h3>Infrastructure "JO 2024"</h3>
-                    <p>Conception complète d'une infrastructure réseau sécurisée pour un site olympique fictif. Segmentation réseau, routage et agrégation.</p>
+                    <h3>Projet BTS SIO : Réseau Sécurisé</h3>
+                    <p>Mise en place d'un réseau complet : configuration de serveurs, gestion des droits utilisateurs et sécurisation des accès.</p>
                     <div class="tags">
-                        <span class="tag">Cisco</span>
-                        <span class="tag">VLAN/VTP</span>
-                        <span class="tag">ACL</span>
+                        <span class="tag">Windows Server</span>
+                        <span class="tag">Sécurité</span>
+                        <span class="tag">Droits</span>
                     </div>
-                    <a href="assets/projet_jo.pdf" target="_blank" class="project-link">Voir le dossier <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <i class="far fa-file-alt folder-icon"></i>
-                    <a href="assets/veille_ia.pdf" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+                    <i class="fas fa-laptop-code folder-icon"></i>
                 </div>
                 <div class="project-content">
-                    <h3>Veille Juridique : IA</h3>
-                    <p>Analyse des enjeux juridiques et éthiques liés à l'intelligence artificielle. Étude du RGPD et de l'AI Act européen.</p>
+                    <h3>Gestion Site E-commerce</h3>
+                    <p>Gestion de site web d'entreprise avec mise à jour des contenus via Google Workspace.</p>
                     <div class="tags">
-                        <span class="tag">Juridique</span>
-                        <span class="tag">RGPD</span>
-                        <span class="tag">IA</span>
+                        <span class="tag">Web</span>
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Google Workspace</span>
                     </div>
-                    <a href="assets/veille_ia.pdf" target="_blank" class="project-link">Lire la synthèse <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-header">
-                    <i class="fas fa-building folder-icon"></i>
-                    <a href="assets/rapport_meaux.pdf" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+                    <i class="fas fa-video folder-icon"></i>
                 </div>
                 <div class="project-content">
-                    <h3>Rapport - Mairie de Meaux</h3>
-                    <p>Immersion DSI : Gestion Active Directory, mise en place de sondes de supervision Nagios et support utilisateur.</p>
+                    <h3>Audiovisuel & Domotique</h3>
+                    <p>Montage vidéo sur Adobe Premiere Pro et configuration d'appareils connectés (Domotique).</p>
                     <div class="tags">
-                        <span class="tag">Active Directory</span>
-                        <span class="tag">Supervision</span>
-                        <span class="tag">O365</span>
+                        <span class="tag">Premiere Pro</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Config</span>
                     </div>
-                    <a href="assets/rapport_meaux.pdf" target="_blank" class="project-link">Lire le rapport <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -516,37 +386,14 @@
         <h2 class="section-title">Mon Parcours</h2>
         <div class="timeline-container">
             
-            <div class="timeline-item">
+            <div class="timeline-item school">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                    <span class="t-date">Oct 2023 - Fév 2024</span>
-                    <h3 class="t-title">Stagiaire Technicien Informatique</h3>
-                    <span class="t-company">Association IFAC (92)</span>
+                    <span class="t-date">2024 - 2026 (En cours)</span>
+                    <h3 class="t-title">BTS SIO - Spécialité Cybersécurité</h3>
+                    <span class="t-company">Lycée René Descartes, Champs-sur-Marne</span>
                     <div class="t-desc">
-                        Intervention technique sur l'infrastructure du siège.
-                        <ul>
-                            <li>Installation switchs Cisco SG300-28PP (VLANs).</li>
-                            <li>Résolution de conflits IP et brassage baies.</li>
-                            <li>Démantèlement d'équipements (PABX).</li>
-                        </ul>
-                        <a href="assets/rapport_ifac.pdf" target="_blank" class="t-link">Voir le rapport de stage</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <span class="t-date">Oct 2022 - Juin 2023</span>
-                    <h3 class="t-title">Stagiaire DSI</h3>
-                    <span class="t-company">Mairie de Meaux (77)</span>
-                    <div class="t-desc">
-                        Gestion quotidienne du parc informatique.
-                        <ul>
-                            <li>Administration Active Directory.</li>
-                            <li>Migration de boîtes mail vers Office 365.</li>
-                            <li>Supervision via Eyes Of Network.</li>
-                        </ul>
+                        [cite_start]Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux). [cite: 11, 12, 13]
                     </div>
                 </div>
             </div>
@@ -554,23 +401,11 @@
             <div class="timeline-item school">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                    <span class="t-date">2024 - Présent</span>
-                    <h3 class="t-title">BTS SIO - Option SISR</h3>
-                    <span class="t-company">Lycée René Descartes (Champs-sur-Marne)</span>
+                    <span class="t-date">2022 - 2024</span>
+                    <h3 class="t-title">Bac Pro Systèmes Numériques</h3>
+                    <span class="t-company">Lycée Louis Lumière, Chelles</span>
                     <div class="t-desc">
-                        Solutions d'Infrastructure, Systèmes et Réseaux.
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item school">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <span class="t-date">2021 - 2024</span>
-                    <h3 class="t-title">BAC PRO SN - Option RISC</h3>
-                    <span class="t-company">Lycée Saint-Aspais (Melun)</span>
-                    <div class="t-desc">
-                        Obtenu avec <strong>Mention Bien</strong>.
+                        [cite_start]Option ARED. [cite: 14, 15, 16]
                     </div>
                 </div>
             </div>
@@ -581,24 +416,21 @@
     <div id="contact" style="padding-top: 50px;">
         <div class="contact-section">
             <h2>Prêt à collaborer ?</h2>
-            <p>Je suis actuellement à la recherche d'une alternance en administration systèmes et réseaux. Discutons de vos besoins !</p>
+            <p>Je suis à la recherche d'un stage pour développer mes compétences. Contactez-moi !</p>
             
             <div class="contact-buttons">
-                <a href="mailto:georgetethan@gmail.com" class="contact-btn primary">
-                    <i class="fas fa-envelope"></i> georgetethan@gmail.com
+                <a href="mailto:thary.maxence@gmail.com" class="contact-btn primary">
+                    <i class="fas fa-envelope"></i> thary.maxence@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/ethan-georget" target="_blank" class="contact-btn">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/" target="_blank" class="contact-btn">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="tel:0674294723" class="contact-btn">
+                    <i class="fas fa-phone"></i> 06 74 29 47 23
                 </a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Ethan Georget. Développé avec passion.</p>
+        <p>&copy; 2026 Maxence Thary. Tous droits réservés.</p>
     </footer>
 
 </body>
