@@ -4,34 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maxence Thary | Cybersécurité & Systèmes</title>
-  <meta name="description" content="Portfolio de Maxence Thary - Étudiant BTS SIO Option SISR. Recherche de stage en cybersécurité et administration système.">
+  <meta name="description" content="Portfolio de Maxence Thary - Étudiant BTS SIO Option SISR.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* --- VARIABLES & RESET --- */
+    /* --- NOUVELLE PALETTE DE COULEURS (Plus riche, moins vide) --- */
     :root {
-      --bg-color: #0a192f;
-      --card-bg: #112240;
-      --text-main: #ccd6f6;
-      --text-muted: #8892b0;
-      --accent: #64ffda;
-      --accent-dim: rgba(100, 255, 218, 0.1);
-      
+      /* Fond principal : Gris très foncé bleuté (Slate 950) */
+      --bg-color: #0f172a; 
+      /* Fond secondaire (cartes) : Gris bleuté (Slate 800) */
+      --card-bg: #1e293b; 
+      /* Texte principal : Blanc cassé */
+      --text-main: #f1f5f9; 
+      /* Texte secondaire : Gris clair */
+      --text-muted: #94a3b8; 
+      /* Accent : Bleu électrique moderne (au lieu du vert hacker) */
+      --accent: #3b82f6; 
+      --accent-hover: #60a5fa;
+
       --font-main: 'Inter', sans-serif;
       --font-mono: 'Fira Code', monospace;
       
-      --nav-height: 80px;
+      --nav-height: 70px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { 
-      scroll-behavior: smooth; 
-      scroll-snap-type: y mandatory;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-main);
@@ -39,302 +41,309 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      /* Ajout d'un dégradé de fond pour supprimer l'effet "vide" */
+      background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
     }
 
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    a { text-decoration: none; color: inherit; transition: 0.2s; }
     ul { list-style: none; }
 
-    /* --- NAVIGATION --- */
+    /* --- NAVIGATION COMPACTE --- */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       height: var(--nav-height);
-      background: rgba(10, 25, 47, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.9); /* Transparence légère */
+      backdrop-filter: blur(12px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 50px;
+      padding: 0 40px;
       z-index: 1000;
-      box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .logo {
       font-family: var(--font-mono);
       color: var(--accent);
-      font-weight: 600;
-      font-size: 1.2rem;
-      border: 1px solid var(--accent);
-      padding: 5px 10px;
-      border-radius: 4px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -1px;
     }
 
-    .nav-links { display: flex; gap: 30px; }
+    .nav-links { display: flex; gap: 25px; align-items: center; }
     
     .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
     .nav-links a:hover { color: var(--accent); }
-    .nav-links a span { color: var(--accent); margin-right: 5px; }
+    
+    /* Bouton CV plus moderne */
+    .btn-small {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .btn-small:hover { background: var(--accent-hover); }
 
-    /* --- GENERAL LAYOUT --- */
+    /* --- LAYOUT RESSERRÉ --- */
     .container {
-      max-width: 1000px;
+      max-width: 900px; /* Plus étroit pour que le texte paraisse moins perdu */
       margin: 0 auto;
-      padding: 0 25px;
+      padding: 0 20px;
     }
 
     section {
-      padding: 60px 0; 
-      
-      min-height: 100vh;
-      scroll-snap-align: start;
-      scroll-margin-top: 85px;
-      
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 60px 0; /* Réduction des espaces verticaux (c'était 100vh) */
+      /* Suppression du min-height: 100vh pour éviter les grands vides */
     }
 
     h2 {
-      display: flex;
-      align-items: center;
       font-size: 1.8rem;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       color: var(--text-main);
+      border-left: 4px solid var(--accent);
+      padding-left: 15px;
+      line-height: 1;
     }
 
-    h2::before {
-      content: '>';
-      font-family: var(--font-mono);
-      color: var(--accent);
-      margin-right: 10px;
-      font-weight: 400;
-    }
-
-    h2::after {
-      content: "";
-      display: block;
-      width: 200px;
-      height: 1px;
-      background: #233554;
-      margin-left: 20px;
-    }
-
-    /* --- HERO SECTION --- */
+    /* --- HERO SECTION (Accueil) --- */
     #home { 
-        min-height: 100vh; 
-        padding-top: 0;
-        scroll-margin-top: 0;
+        padding-top: 140px; /* Espace sous le menu */
+        padding-bottom: 80px;
+        text-align: left;
     }
     
-    .hero-pre { font-family: var(--font-mono); color: var(--accent); margin-bottom: 20px; }
-    .hero-title { font-size: clamp(40px, 8vw, 70px); font-weight: 800; color: #ccd6f6; line-height: 1.1; }
-    .hero-subtitle { font-size: clamp(40px, 8vw, 60px); font-weight: 800; color: var(--text-muted); line-height: 1.1; margin-bottom: 20px; }
+    .hero-pre { 
+        font-family: var(--font-mono); 
+        color: var(--accent); 
+        margin-bottom: 15px; 
+        font-weight: 600;
+    }
+    
+    .hero-title { 
+        font-size: clamp(40px, 6vw, 60px); 
+        font-weight: 800; 
+        color: #fff; 
+        line-height: 1.1; 
+        margin-bottom: 10px;
+    }
+    
+    .hero-subtitle { 
+        font-size: clamp(25px, 5vw, 40px); 
+        font-weight: 700; 
+        color: var(--text-muted); 
+        line-height: 1.2; 
+        margin-bottom: 25px; 
+    }
     
     .hero-desc {
-      max-width: 540px;
+      max-width: 600px;
       color: var(--text-muted);
       font-size: 1.1rem;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
-    .btn-outline {
-      color: var(--accent);
-      background-color: transparent;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      padding: 18px 25px;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: inline-block;
-    }
-
-    .btn-outline:hover { background: var(--accent-dim); }
-
-    /* --- TERMINAL WIDGET --- */
-    .terminal-wrapper {
-      background: #112240;
+    .btn-primary {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 15px 30px;
       border-radius: 6px;
-      box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
-      overflow: hidden;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      margin-top: 20px;
-      border: 1px solid #233554;
+      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    }
+    .btn-primary:hover { 
+        background-color: var(--accent-hover); 
+        transform: translateY(-2px);
+    }
+
+    /* --- ABOUT GRID (Avec placeholder photo) --- */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr; /* Texte large, Photo petite */
+        gap: 40px;
+        align-items: center;
+    }
+
+    .profile-pic-placeholder {
+        width: 100%;
+        height: 250px;
+        background: var(--card-bg);
+        border: 2px dashed var(--text-muted);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* --- CARTES (Compétences & Veille) --- */
+    .skills-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+        gap: 20px; 
     }
     
-    .terminal-header { background: #020c1b; padding: 10px 15px; display: flex; gap: 8px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-    .terminal-body { padding: 20px; color: var(--text-muted); }
-    .cmd { color: var(--accent); margin-right: 10px; }
-    .keyword { color: #c792ea; }
-    .string { color: #ecc48d; }
-
-    /* --- SKILLS GRID --- */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-    .skill-card {
-      background-color: var(--card-bg); padding: 20px; border-radius: 4px;
-      transition: transform 0.2s; border-left: 3px solid transparent;
+    .card {
+      background-color: var(--card-bg); 
+      padding: 25px; 
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05); /* Bordure subtile */
+      transition: 0.2s; 
     }
-    .skill-card:hover { transform: translateY(-5px); border-left: 3px solid var(--accent); }
-    .skill-card h3 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-    .skill-card ul { padding-left: 0; font-size: 0.9rem; color: var(--text-muted); }
-    .skill-card li { margin-bottom: 8px; position: relative; padding-left: 15px; }
-    .skill-card li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
-
-    /* --- VEILLE (Cards) --- */
-    .veille-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .veille-card { background: var(--card-bg); padding: 30px; border-radius: 4px; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); }
-    .veille-card h3 { color: var(--accent); margin-bottom: 15px; font-family: var(--font-mono); }
-    /* Style pour les liens cliquables dans la partie 'Sites de Référence' seulement */
-    .clickable-list a { color: var(--text-main); border-bottom: 1px dashed var(--accent); }
-    .clickable-list a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
-
-    /* --- CONTACT STYLE SPÉCIFIQUE --- */
-    #contact-content {
-        font-family: var(--font-main);
-        color: var(--text-muted);
-        font-size: 1.1rem;
-        margin-top: 40px;
+    
+    .card:hover { 
+        transform: translateY(-3px); 
+        border-color: var(--accent); 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
-    #contact-content p { margin-bottom: 10px; }
-    #contact-content a:hover { color: var(--accent) !important; text-decoration: underline; }
+    
+    .card h3 { 
+        color: #fff; 
+        font-size: 1.1rem; 
+        margin-bottom: 12px; 
+        border-bottom: 2px solid var(--accent);
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+    
+    .card ul { padding-left: 0; color: var(--text-muted); font-size: 0.95rem; }
+    .card li { margin-bottom: 6px; padding-left: 15px; position: relative; }
+    .card li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
-    /* --- FOOTER --- */
+    /* Style spécifique pour les liens de veille */
+    .card a { color: var(--text-main); text-decoration: underline; text-decoration-color: var(--accent); }
+    .card a:hover { color: var(--accent); }
+
+    /* --- CONTACT --- */
+    .contact-box {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.05);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
     footer { 
         text-align: center; 
-        padding: 20px; 
+        padding: 40px 20px; 
         color: var(--text-muted); 
-        font-family: var(--font-mono); 
-        font-size: 0.8rem; 
-        scroll-snap-align: end;
+        font-size: 0.85rem; 
+        margin-top: 40px;
+        border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .hero-title { font-size: 40px; }
-      section { min-height: auto; padding: 80px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .profile-pic-placeholder { height: 200px; width: 200px; margin: 0 auto; }
+      section { padding: 50px 0; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#" class="logo">MT.</a>
+    <a href="#" class="logo">MT<span style="color:#fff">.</span></a>
     <div class="nav-links">
-      <a href="#about"><span>01.</span> Profil</a>
-      <a href="#skills"><span>02.</span> Compétences</a>
-      <a href="#veille"><span>03.</span> Veille</a>
-      <a href="#contact"><span>04.</span> Contact</a>
-      <a href="CV_Maxence_Thary.pdf" class="btn-outline" style="padding: 8px 16px; font-size: 0.8rem;">CV.pdf</a>
+      <a href="#about">Profil</a>
+      <a href="#skills">Compétences</a>
+      <a href="#veille">Veille</a>
+      <a href="CV_Maxence_Thary.pdf" class="btn-small">Mon CV</a>
     </div>
   </nav>
 
   <div class="container">
     
     <section id="home">
-      <p class="hero-pre">Bonjour, je m'appelle</p>
-      <h1 class="hero-title">Maxence Thary.</h1>
-      <h2 class="hero-subtitle">Je sécurise les systèmes de demain.</h2>
+      <p class="hero-pre">Bienvenue, je suis</p>
+      <h1 class="hero-title">Maxence Thary</h1>
+      <h2 class="hero-subtitle">Futur Administrateur Système & Cyber.</h2>
       <div class="hero-desc">
-        <p>Étudiant en BTS SIO (Option SISR), je me spécialise dans l'administration système et la cybersécurité offensive (Ethical Hacking).</p>
-        <p style="margin-top: 15px; color: var(--accent);">
-          À la recherche d'un stage du <span style="text-decoration: underline;">26 Janvier au 20 Mars 2026</span>.
+        <p>Étudiant en BTS SIO (Option SISR), passionné par la défense des infrastructures et le Ethical Hacking.</p>
+        <p style="margin-top: 15px; background: rgba(59, 130, 246, 0.1); padding: 10px; border-radius: 4px; border-left: 3px solid var(--accent); display: inline-block;">
+            📅 <strong>Recherche de stage :</strong> 26 Janvier au 20 Mars 2026.
         </p>
       </div>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thary.maxence@gmail.com&su=Contact%20Portfolio%20-%20Offre%20de%20Stage" target="_blank" class="btn-outline">
-        Me contacter maintenant (Gmail)
+      <a href="#contact" class="btn-primary">
+        Me contacter
       </a>
     </section>
 
     <section id="about">
-      <h2>À propos de moi</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: start;">
+      <h2>À propos</h2>
+      <div class="about-grid">
         <div>
-          <p style="color: var(--text-muted); margin-bottom: 15px;">
-            Passionné par l'informatique depuis mon plus jeune âge, j'ai orienté mes études vers la compréhension profonde des systèmes d'exploitation.
+          <p style="margin-bottom: 15px; color: var(--text-muted);">
+            Passionné par l'informatique depuis mon plus jeune âge, j'ai orienté mes études vers la compréhension profonde des systèmes d'exploitation (Windows & Linux).
           </p>
           <p style="color: var(--text-muted);">
-            Actuellement en préparation de mon BTS, je monte régulièrement des laboratoires virtuels pour tester des vulnérabilités.
+            Mon objectif est de sécuriser les systèmes d'information tout en assurant leur disponibilité. Je monte régulièrement des laboratoires virtuels (Proxmox/VMware) pour m'entraîner sur des scénarios d'attaques et de défense.
           </p>
         </div>
         
-        <div class="terminal-wrapper">
-          <div class="terminal-header">
-            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-          </div>
-          <div class="terminal-body">
-            <div><span class="cmd">root@kali:~$</span> cat status.json</div>
-            <div style="margin-top: 10px; color: #a8b2d1;">
-              {<br>
-              &nbsp;&nbsp;<span class="keyword">"role"</span>: <span class="string">"Étudiant Cyber"</span>,<br>
-              &nbsp;&nbsp;<span class="keyword">"location"</span>: <span class="string">"France"</span>,<br>
-              &nbsp;&nbsp;<span class="keyword">"motivation"</span>: <span class="string">"100%"</span><br>
-              }
-            </div>
-          </div>
+        <div class="profile-pic-placeholder">
+           [ Emplacement Photo ]<br>
+           (Ajoute ta photo ici pour combler le vide)
         </div>
       </div>
     </section>
 
     <section id="skills">
-      <h2>Compétences Techniques</h2>
+      <h2>Compétences</h2>
       <div class="skills-grid">
         
-        <div class="skill-card">
-          <h3>📡 Systèmes & Réseaux</h3>
+        <div class="card">
+          <h3>📡 Réseaux & Systèmes</h3>
           <ul>
-            <li>Windows Server & Linux</li>
-            <li>Active Directory (AD)</li>
-            <li>TCP/IP, VLAN</li>
-            <li>Routage de base</li>
+            <li>Windows Server (AD, GPO)</li>
+            <li>Linux (Debian/Ubuntu) CLI</li>
+            <li>TCP/IP, DNS, DHCP</li>
+            <li>Routage & VLANs</li>
           </ul>
         </div>
 
-        <div class="skill-card">
-          <h3>🐧 OS (Systèmes)</h3>
-          <ul>
-            <li>Windows 10/11</li>
-            <li>Ubuntu / Debian</li>
-            <li>Kali Linux</li>
-            <li>Pfsense (Firewall)</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
+        <div class="card">
           <h3>🛡️ Cybersécurité</h3>
           <ul>
-            <li>Notions de Pentesting</li>
-            <li>Gestion Firewall & Antivirus</li>
-            <li>Gestion droits & accès (IAM)</li>
-            <li>Sécurité des serveurs (Hardening)</li>
+            <li>Firewalling (Pfsense/Stormshield)</li>
+            <li>Analyse de paquets (Wireshark)</li>
+            <li>Hardening (Durcissement OS)</li>
+            <li>Sensibilisation utilisateurs</li>
           </ul>
         </div>
 
-        <div class="skill-card">
-          <h3>💻 Langages & Scripting</h3>
+        <div class="card">
+          <h3>💻 Scripting & Web</h3>
           <ul>
-            <li>HTML / CSS</li>
-            <li>Python (Scripting)</li>
-            <li>Bash / Shell</li>
+            <li>Bash (Automatisation)</li>
+            <li>Python (Scripts basiques)</li>
+            <li>HTML5 / CSS3</li>
+            <li>Powershell</li>
           </ul>
         </div>
 
-        <div class="skill-card">
-          <h3>🛠️ Outils & Logiciels</h3>
+        <div class="card">
+          <h3>🛠️ Outils</h3>
           <ul>
-            <li>Wireshark (Analyse trames)</li>
-            <li>VirtualBox / VMware</li>
-            <li>Stormshield</li>
-            <li>Suite Office</li>
+            <li>Virtualisation (Proxmox, VMware)</li>
+            <li>Kali Linux (Outils d'audit)</li>
+            <li>Suite Office 365</li>
+            <li>Ticketing (GLPI)</li>
           </ul>
         </div>
 
@@ -342,55 +351,59 @@
     </section>
 
     <section id="veille">
-      <h2>Veille Technologique</h2>
-      <div style="margin-bottom: 30px; color: var(--text-muted);">
-        <p>Sujet principal : <strong>Les Virus, Antivirus et l'évolution des menaces</strong>.</p>
-        <p style="font-size: 0.9rem; margin-top: 10px;">Je surveille activement l'apparition de nouvelles signatures virales et les technologies de défense (EDR/XDR).</p>
+      <h2>Veille Techno</h2>
+      <div style="margin-bottom: 25px; color: var(--text-muted);">
+        <p>Sujet : <strong>L'évolution des menaces virales et des solutions EDR/XDR</strong>.</p>
       </div>
       
-      <div class="veille-container">
-        <div class="veille-card">
-          <h3>📥 Mes Flux RSS & Alertes</h3>
-          <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
-            <li>Google Alert - Virus & Menaces</li>
-            <li>Google Alert - Cyber Actu</li>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>📥 Mes Alertes</h3>
+          <ul>
+            <li>Google Alert : "Ransomware"</li>
+            <li>Google Alert : "Faille Zero-day"</li>
+            <li>Flux RSS CERT-FR</li>
           </ul>
         </div>
 
-        <div class="veille-card clickable-list">
-          <h3>📰 Sites de Référence</h3>
-          <ul style="padding-left: 20px; list-style-type: square; color: var(--text-muted);">
-            <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank">CERT-FR (ANSSI)</a> - Alertes officielles</li>
-            <li><a href="https://thehackernews.com/" target="_blank">The Hacker News</a> - Actu internationale</li>
-            <li><a href="https://www.malwarebytes.com/blog" target="_blank">Malwarebytes Labs</a> - Analyse technique</li>
-            <li><a href="https://www.lemagit.fr/securite" target="_blank">LeMagIT Sécurité</a> - Actu FR</li>
+        <div class="card">
+          <h3>📰 Mes Sources</h3>
+          <ul>
+            <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank">ANSSI (CERT-FR)</a></li>
+            <li><a href="https://thehackernews.com/" target="_blank">The Hacker News</a></li>
+            <li><a href="https://www.lemagit.fr/" target="_blank">LeMagIT</a></li>
+            <li><a href="https://cyber.gouv.fr/" target="_blank">Cybermalveillance.gouv</a></li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      
-      <div style="margin-bottom: 50px; text-align:center;">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thary.maxence@gmail.com&su=Contact%20Portfolio%20-%20Offre%20de%20Stage" target="_blank" class="btn-outline" style="padding: 20px 40px; font-size: 1rem;">
-            Me contacter maintenant
-          </a>
-      </div>
+      <div class="contact-box">
+        <h2 style="border:none; padding:0; justify-content:center; margin-bottom: 15px;">Me contacter</h2>
+        <p style="color: var(--text-muted); margin-bottom: 25px;">
+            Intéressé par mon profil pour un stage ? N'hésitez pas à me contacter directement.
+        </p>
+        
+        <div style="margin-bottom: 20px; font-size: 1.1rem; font-weight: bold;">
+            thary.maxence@gmail.com
+        </div>
 
-      <div id="contact-content">
-        <h2 style="margin-bottom: 20px;">Contact</h2>
-        <p>Email : thary.maxence@gmail.com</p>
-        <p>Téléphone : 06 74 29 47 23</p>
-        <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" style="color:#e6e6e6;">Mon Linkedin</a>
-      </div>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thary.maxence@gmail.com" target="_blank" class="btn-primary">
+            Envoyer un email
+        </a>
 
+        <div style="margin-top: 30px; font-size: 0.9rem; color: var(--text-muted);">
+            <p>06 74 29 47 23</p>
+            <p style="margin-top:5px;"><a href="https://www.linkedin.com/in/maxence-thary" target="_blank" style="text-decoration: underline;">Voir mon LinkedIn</a></p>
+        </div>
+      </div>
     </section>
 
   </div>
 
   <footer>
-    <a href="#" style="font-family: var(--font-mono);">Maxence Thary</a>
-    <p style="margin-top: 10px; opacity: 0.5;">© 2026 - BTS SIO</p>
+    <p>Maxence Thary — BTS SIO 2026</p>
   </footer>
 
 </body>
