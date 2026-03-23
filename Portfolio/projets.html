@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventaire des Activités | Maxence Thary</title>
+    <title>Inventaire Technique | Maxence Thary</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; --text: #334155; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--light); color: var(--text); margin: 0; padding-top: 100px; }
@@ -17,68 +16,41 @@
         h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.3rem; }
         .file-list { display: grid; grid-template-columns: 1fr; gap: 8px; }
         .file-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--light); border-radius: 6px; }
-        .file-name { font-weight: 500; font-size: 0.85rem; max-width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .file-name { font-weight: 500; font-size: 0.85rem; }
         .btn-view { background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; text-decoration: none; }
-        .audit-tag { background: #fee2e2; color: #dc2626; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-left: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="nav-back">
-        <a href="index.html"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
-    </div>
+    <div class="nav-back"><a href="index.html"><i class="fas fa-arrow-left"></i> Retour au Portfolio</a></div>
 
     <div class="container">
-        
-        <div id="audit" class="section-box">
-            <h2><i class="fas fa-file-contract"></i> Rapports d'Activité & Audits</h2>
+        <h1 style="text-align:center; margin-bottom:40px;">Activités Techniques BTS SIO</h1>
+
+        <div class="section-box">
+            <h2>AP - Ateliers de Professionnalisation</h2>
             <div class="file-list">
-                <div class="file-item"><span class="file-name">Dossier de déploiement Infrastructure (AP4-01)</span><a href="activite/Maxence THARY - TrameCR_AP4-01_DeploiementInfra_Rev03-2.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
-                <div class="file-item"><span class="file-name">Rapport de stage - 1ère année (Mairie de Meaux)</span><a href="activite/Rapport_Stage_BTS1.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
+                <div class="file-item"><span class="file-name">Déploiement Infrastructure (AP4-01)</span><a href="activite/Maxence THARY - TrameCR_AP4-01_DeploiementInfra_Rev03-2.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
 
         <div class="section-box">
-            <h2><i class="fas fa-user-shield"></i> B3 - Cybersécurité</h2>
+            <h2>B3 - Cybersécurité</h2>
             <div class="file-list">
                 <div class="file-item"><span class="file-name">Mise en œuvre UTM (pfSense, Snort, Squid)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Analyse de Firewalling & Règles NAT</span><a href="activite/SISR_LABOFIREWALL.pdf" class="btn-view" target="_blank">Voir</a></div>
                 <div class="file-item"><span class="file-name">Attaque Base MySQL (04.4.2.8)</span><a href="activite/Maxence THARY - 04.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Mesures d'Atténuation Menaces (04.4.3.7)</span><a href="activite/Maxence THARY - 04.TP4.3.7_MesuresAttnMenaces_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Configuration ACLs Cisco (06.6.2.4)</span><a href="activite/Maxence THARY - 06.TP6.2.4_ACLs_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Sécurisation des ports - Port Security (06.11.1.10)</span><a href="activite/Maxence THARY - 06.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Test de Sécurité Réseau (05.23.1.7)</span><a href="activite/Maxence THARY - 05.TP23.1.7_TestSecuriteReseau_rev02-3.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Port Security (06.11.1.10)</span><a href="activite/Maxence THARY - 06.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
 
         <div class="section-box">
-            <h2><i class="fas fa-server"></i> B2 - Administration Systèmes & Réseaux</h2>
+            <h2>B2 - Systèmes & Réseaux</h2>
             <div class="file-list">
-                <div class="file-item"><span class="file-name">Administration Windows Server 2022 (Lab)</span><a href="activite/SISR-LABO-WINDOWS.pdf" class="btn-view" target="_blank">Voir</a></div>
                 <div class="file-item"><span class="file-name">Sécurisation Serveur Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">VPN IPsec & SSL - Stormshield/SNS</span><a href="activite/VPN-SNS.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Haute Disponibilité - Failover & LVS</span><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Réplication de Données (GlusterFS / Rsync)</span><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Tolérance de Panne (RAID 1 & 5)</span><a href="activite/SISR_LABORAID.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Commandes PowerShell (04.TD01)</span><a href="activite/Maxence THARY - 04.TD01_CommandesPowerShell_Rev03.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Planification de Sauvegardes (PowerShell)</span><a href="activite/Maxence THARY - 04.TD02_PlanificationSauvegardesPowerShell_Rev03.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">VPN IPsec & SSL (SNS)</span><a href="activite/VPN-SNS.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Cisco: Basic Switch Config (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
-
-        <div class="section-box">
-            <h2><i class="fas fa-network-wired"></i> Réseaux - Cisco Packet Tracer</h2>
-            <div class="file-list">
-                <div class="file-item"><span class="file-name">Basic Switch Configuration (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">VLAN Configuration (01.3.3.12)</span><a href="activite/Maxence THARY - 01.3.3.12-packet-tracer---vlan-configuration_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Configure Wireless Network (01.13.1.10)</span><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Router on a Stick (02.4.2.7)</span><a href="activite/Maxence THARY - 02.4.2.7-packet-tracer---configure-router-on-a-stick-inter-vlan-routing_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Configure EtherChannel (03.6.2.4)</span><a href="activite/Maxence THARY - 03.6.2.4-packet-tracer---configure-etherchannel_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">STP Loop Prevention (03.5.1.9)</span><a href="activite/Maxence THARY - 03.5.1.9-packet-tracer---investigate-stp-loop-prevention_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Implement DHCPv4 (07.4.2)</span><a href="activite/Maxence THARY - 7.4.2-lab---implement-dhcpv4_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-            </div>
-        </div>
-
     </div>
-
 </body>
 </html>
