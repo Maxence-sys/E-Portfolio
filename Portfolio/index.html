@@ -4,6 +4,250 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxence Thary | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.6);
+            --accent: #a855f7; /* Violet "Ethan Style" */
+            --accent-glow: rgba(168, 85, 247, 0.2);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- EFFETS DE FOND (BLOBS) --- */
+        .blob {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(90px);
+        }
+        .blob-1 { top: -100px; left: -100px; }
+        .blob-2 { bottom: -100px; right: -100px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 10%; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-size: 1.6rem; font-weight: 800; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- CONTAINER --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HERO --- */
+        #home { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero-title { font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-subtitle { font-size: 1.5rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 30px; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 50px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent); font-family: 'Fira Code'; font-size: 0.8rem; margin-bottom: 15px; }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 0; }
+        h2 { font-size: 2.2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 20px; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--border); }
+
+        /* --- GRIDS & CARDS --- */
+        .category-title { color: var(--accent); font-family: 'Fira Code'; margin: 30px 0 20px; font-size: 1.1rem; display: block; text-transform: uppercase; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(168, 85, 247, 0.05); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; min-height: 50px; }
+        
+        .btn-view {
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-main { background: var(--accent); color: #fff; padding: 14px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; text-align: center; }
+        .btn-main:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px; text-align: center; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav>
+        <div class="logo">MAXENCE<span>.</span></div>
+        <div class="nav-links">
+            <a href="#about">Profil</a>
+            <a href="#projects">Projets</a>
+            <a href="#veille">Veille</a>
+            <a href="#contact">Contact</a>
+            <a href="CV_professionnel.pdf" class="btn-main" style="padding: 8px 20px;">CV</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <section id="home">
+            <div class="badge">BTS SIO SISR 2026</div>
+            <h1 class="hero-title">Admin Sys &<br>Ethical Hacker.</h1>
+            <p class="hero-subtitle">Je conçois des architectures réseaux sécurisées et je teste leur robustesse via des audits offensifs.</p>
+            <div style="margin-top: 20px;">
+                <a href="#projects" class="btn-main">Voir mes Activités</a>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>BTS SIO - Projets et Activités</h2>
+
+            <span class="category-title">B3 - Cybersécurité</span>
+            <div class="grid">
+                <div class="card">
+                    <h3>Mise en œuvre UTM (pfSense, Squid, Snort)</h3>
+                    <a href="LAB3-B3-UTM.pdf" class="btn-view">Consulter l'activité →</a>
+                </div>
+                <div class="card">
+                    <h3>Filtrage et NAT sous pfSense</h3>
+                    <a href="#" class="btn-view">Consulter l'activité →</a>
+                </div>
+                <div class="card">
+                    <h3>Exploration Trafic DNS (Activité 04.4.1.7)</h3>
+                    <a href="#" class="btn-view">Consulter l'activité →</a>
+                </div>
+                <div class="card">
+                    <h3>Attaque Base MySQL (Activité 04.4.2.8)</h3>
+                    <a href="#" class="btn-view">Consulter l'activité →</a>
+                </div>
+                <div class="card">
+                    <h3>Configuration ACLs (Activité 06.6.2.4)</h3>
+                    <a href="#" class="btn-view">Consulter l'activité →</a>
+                </div>
+            </div>
+
+            <span class="category-title">B2 - Admin. Systèmes et Réseaux</span>
+            <div class="grid">
+                <div class="card">
+                    <h3>Admin Windows Server 2022 (AD, GPO)</h3>
+                    <a href="#" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Admin & Sécurisation Serveur Apache2</h3>
+                    <a href="LAB-APACHE-SISR.pdf" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Haute Dispo & Load-Balancing (LVS)</h3>
+                    <a href="LAB-B2-FAILOVER.pdf" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Réplication Données (Rsync/GlusterFS)</h3>
+                    <a href="LABO-LABOREPLICATION.pdf" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Tunnels VPN IPsec & SSL (pfSense/SNS)</h3>
+                    <a href="#" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Configuration Wireless (Activité 01.13.1.10)</h3>
+                    <a href="Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>Switch Configuration (Activité 01.1.1.7)</h3>
+                    <a href="Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view">Consulter →</a>
+                </div>
+                <div class="card">
+                    <h3>VLAN Configuration (Activité 01.3.3.12)</h3>
+                    <a href="Maxence THARY - 01.3.3.12-packet-tracer---vlan-configuration_fr-FR.pdf" class="btn-view">Consulter →</a>
+                </div>
+            </div>
+
+            <span class="category-title">Lycée (Bac Pro SN) - Activités</span>
+            <div class="grid">
+                <div class="card">
+                    <h3>Activité Voice VLAN</h3>
+                    <a href="#" class="btn-view">Voir le PDF →</a>
+                </div>
+                <div class="card">
+                    <h3>Activité Spanning Tree Protocol</h3>
+                    <a href="#" class="btn-view">Voir le PDF →</a>
+                </div>
+                <div class="card">
+                    <h3>Activité Filtrage MAC / VLAN N2</h3>
+                    <a href="#" class="btn-view">Voir le PDF →</a>
+                </div>
+                <div class="card">
+                    <h3>Mini Projet Terminale</h3>
+                    <a href="#" class="btn-view">Voir le projet →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <div class="card" style="padding: 60px; border-radius: 40px;">
+                <h2 style="justify-content: center; border: none;">Me contacter</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">Une proposition de stage ou une question technique ?</p>
+                <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 30px;">thary.maxence@gmail.com</p>
+                <a href="mailto:thary.maxence@gmail.com" class="btn-main">Envoyer un email</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Maxence Thary © 2026 — Portfolio SISR — "Activité" est le nouveau "TP"</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxence Thary | Portfolio</title>
     <meta name="description" content="Portfolio de Maxence Thary - Étudiant BTS SIO Option SISR.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
