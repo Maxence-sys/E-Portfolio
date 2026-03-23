@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Administrateur Systèmes & Cybersécurité</title>
+    <meta name="description" content="Portfolio de Maxence Thary - Expert Systèmes & Cybersécurité">
+    <title>Maxence Thary | Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- VARIABLES DE STYLE (Inspiration Ethan) --- */
         :root {
             --primary: #2563eb; 
             --dark: #0f172a; 
@@ -19,7 +19,6 @@
             --white: #ffffff;
         }
 
-        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
@@ -32,18 +31,18 @@
         /* --- NAVIGATION --- */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 10%;
+            padding: 1rem 5%;
             position: fixed;
-            width: 100%;
+            width: 90%;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             backdrop-filter: blur(10px);
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--primary); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
@@ -55,437 +54,99 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: white;
             padding: 0 20px;
-        }
-        .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 10px; color: var(--white); }
-        .hero-content h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
-        .highlight { color: var(--accent); font-weight: 700; }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 2px solid var(--primary);
-        }
-        .btn:hover { background: transparent; color: var(--white); }
-        .btn-outline { background: transparent; border: 2px solid var(--white); margin-left: 10px; }
-        .btn-outline:hover { background: var(--white); color: var(--primary); }
-
-        /* --- SECTIONS --- */
-        section { padding: 100px 10%; }
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 4px;
-            background: var(--primary);
-        }
-
-        /* --- GRILLE DE COMPÉTENCES --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .skill-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-bottom: 4px solid transparent;
-            transition: 0.3s;
-        }
-        .skill-card:hover { transform: translateY(-10px); border-bottom-color: var(--primary); }
-        .skill-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .skill-card h3 { margin-bottom: 15px; }
-        .skill-card ul { padding: 0; list-style: none; color: var(--text); font-size: 0.95rem; }
-        .skill-card li { margin-bottom: 8px; }
-
-        /* --- GRILLE D'ACTIVITÉS (PROJETS) --- */
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        .activity-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .activity-card:hover { transform: scale(1.02); }
-        .activity-info { padding: 25px; flex-grow: 1; }
-        .activity-info h3 { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.4; }
-        .tags { margin-bottom: 20px; }
-        .tag {
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 5px;
-        }
-        .btn-link {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- TIMELINE (PARCOURS) --- */
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            padding-left: 30px;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 3px; background: #e2e8f0;
-        }
-        .timeline-item {
-            margin-bottom: 40px;
-            position: relative;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -35px; top: 5px;
-            width: 12px; height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: 0 0 0 3px #eff6ff;
-        }
-        .timeline-date { color: var(--primary); font-weight: 700; font-size: 0.85rem; }
-        .timeline-content h3 { margin: 5px 0; font-size: 1.2rem; }
-        .timeline-content span { color: #64748b; font-style: italic; display: block; margin-bottom: 10px; }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 80px 10% 40px;
-            text-align: center;
-        }
-        .social-links { margin-bottom: 30px; }
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-        .social-links a:hover { color: var(--accent); }
-
-        @media (max-width: 768px) {
-            .navbar { padding: 1rem 5%; }
-            .nav-links { display: none; }
-            section { padding: 60px 5%; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo">MAXENCE<span>.</span></div>
-        <div class="nav-links">
-            <a href="#about">À Propos</a>
-            <a href="#skills">Compétences</a>
-            <a href="#activities">Activités</a>
-            <a href="#experience">Parcours</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Maxence Thary</h1>
-            <h2>Expert <span class="highlight">Cybersécurité & Systèmes</span></h2>
-            <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.8;">
-                Étudiant en BTS SIO SISR. Passionné par l'offensif (Root-Me) et la sécurisation d'infrastructures critiques.
-            </p>
-            <a href="#activities" class="btn">Explorer mes travaux</a>
-            <a href="activite/CV_professionnel.pdf" target="_blank" class="btn btn-outline">Télécharger mon CV</a>
-        </div>
-    </header>
-
-    <section id="about">
-        <div class="section-title">À Propos de moi</div>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>
-                Ma démarche informatique est guidée par la curiosité technique. Je ne me contente pas de configurer, je cherche à comprendre comment contourner pour mieux protéger. 
-            </p>
-            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-width: 200px;">
-                    <h4 style="margin: 0; color: var(--primary);">Root-Me</h4>
-                    <p style="font-size: 0.9rem; margin: 10px 0 0;">Entraînement CTF régulier</p>
-                </div>
-                <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); min-width: 200px;">
-                    <h4 style="margin: 0; color: var(--primary);">HomeLab</h4>
-                    <p style="font-size: 0.9rem; margin: 10px 0 0;">Serveur Proxmox dédié</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" style="background: #f1f5f9;">
-        <div class="section-title">Expertise Technique</div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-user-shield"></i>
-                <h3>Cybersécurité</h3>
-                <ul>
-                    <li>Pentest (Nmap, Metasploit)</li>
-                    <li>Audit Web (Burp Suite)</li>
-                    <li>Analyse de paquets (Wireshark)</li>
-                    <li>Hardening Systèmes</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-network-wired"></i>
-                <h3>Réseaux & Infra</h3>
-                <ul>
-                    <li>Cisco (Switching & Routing)</li>
-                    <li>Firewalling (pfSense, SNS)</li>
-                    <li>VPN (IPsec, OpenVPN)</li>
-                    <li>SDN (TP-Link Omada)</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-server"></i>
-                <h3>Systèmes & Virtua</h3>
-                <ul>
-                    <li>Windows Server (AD, GPO)</li>
-                    <li>Linux (Debian, Kali)</li>
-                    <li>Proxmox VE / VMware</li>
-                    <li>Scripting (Bash, PowerShell)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities">
-        <div class="section-title">Activités & Projets</div>
-        
-        <h3 style="color: var(--primary); margin-bottom: 30px;"><i class="fas fa-shield-virus"></i> Bloc Cybersécurité</h3>
-        <div class="activities-grid" style="margin-bottom: 60px;">
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">pfSense</span><span class="tag">IDS/IPS</span></div>
-                    <h3>Mise en œuvre UTM (Squid, Snort)</h3>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">Sécurisation périmétrique avec filtrage applicatif et détection d'intrusions.</p>
-                    <a href="activite/LAB3-B3-UTM.pdf" target="_blank" class="btn-link">Consulter le dossier <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">Security</span><span class="tag">ACL</span></div>
-                    <h3>Mesures Atténuation Menaces (TP4.3.7)</h3>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">Configuration de pare-feu et contrôle d'accès granulaire.</p>
-                    <a href="#" class="btn-link">Voir l'activité <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <h3 style="color: var(--primary); margin-bottom: 30px;"><i class="fas fa-server"></i> Bloc Admin Systèmes & Réseaux</h3>
-        <div class="activities-grid">
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">Web</span><span class="tag">Hardening</span></div>
-                    <h3>Admin & Sécurisation Apache2</h3>
-                    <a href="activite/LAB-APACHE-SISR.pdf" target="_blank" class="btn-link">Consulter l'activité <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">HA</span><span class="tag">LVS</span></div>
-                    <h3>Haute Disponibilité & Load-Balancing</h3>
-                    <a href="activite/LAB-B2-FAILOVER.pdf" target="_blank" class="btn-link">Consulter l'activité <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">GlusterFS</span><span class="tag">Sync</span></div>
-                    <h3>Réplication de Données Synchrone</h3>
-                    <a href="activite/LABO-LABOREPLICATION.pdf" target="_blank" class="btn-link">Consulter l'activité <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-info">
-                    <div class="tags"><span class="tag">Cisco</span><span class="tag">Switching</span></div>
-                    <h3>Configuration Switch (Physical Mode)</h3>
-                    <a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" target="_blank" class="btn-link">Voir l'activité <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="section-title">Mon Parcours</div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">26 JANV. 2026 - 20 MARS 2026</div>
-                <div class="timeline-content">
-                    <h3>Stage Informatique - 2ème Année BTS</h3>
-                    <span>Prochainement...</span>
-                    <p>Stage de spécialisation en administration système ou cybersécurité.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2024 - 2026</div>
-                <div class="timeline-content">
-                    <h3>BTS SIO Option SISR</h3>
-                    <span>Lycée René Descartes (77)</span>
-                    <p>Apprentissage approfondi des solutions d'infrastructure et de la cybersécurité.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2021 - 2024</div>
-                <div class="timeline-content">
-                    <h3>BAC PRO SN - Option RISC</h3>
-                    <span>Lycée Saint-Aspais (77)</span>
-                    <p>Obtenu avec <strong>Mention Bien</strong>. Découverte des réseaux informatiques.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <h2>Me contacter</h2>
-        <p style="opacity: 0.7; margin-bottom: 40px;">Disponible pour un stage ou une collaboration technique.</p>
-        <div class="social-links">
-            <a href="mailto:thary.maxence@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/maxence-thary" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/maxence-adm" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-        <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Maxence Thary. Tous droits réservés.</p>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Maxence Thary - Admin Sys & Cybersécurité">
-    <title>Maxence Thary | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- ESTHÉTIQUE GÉNÉRALE (Inspirée d'Ethan) --- */
-        :root {
-            --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; --accent: #0ea5e9;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: var(--light); color: var(--text); line-height: 1.6;
-        }
-        h1, h2, h3 { color: var(--dark); margin: 0; }
-        a { text-decoration: none; transition: 0.3s; }
-        ul { list-style: none; padding: 0; }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px);
-        }
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
-        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%);
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
         }
         .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
         .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
         .hero .highlight { color: var(--accent); font-weight: 700; }
         
         .btn {
-            display: inline-block; padding: 12px 30px; background: var(--primary); color: white;
-            border-radius: 50px; font-weight: 600; margin: 5px; border: 2px solid var(--primary);
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 2px solid var(--primary);
         }
         .btn:hover { background: transparent; color: white; }
-        .btn-outline { background: transparent; border: 2px solid white; }
+        .btn-outline { background: transparent; border: 2px solid white; margin-left: 10px; }
         .btn-outline:hover { background: white; color: var(--primary); }
 
-        /* --- SECTIONS STANDARDS --- */
-        section { padding: 80px 10%; }
+        /* --- SECTION TITLES --- */
+        section { padding: 100px 10%; }
         .section-title {
-            text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--dark);
         }
         .section-title::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
-        /* --- PROFIL --- */
-        .about-content { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
-        .about-text { flex: 1; min-width: 300px; font-size: 1.1rem; }
-        .about-img { 
-            width: 250px; height: 250px; border-radius: 50%; 
-            object-fit: cover; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2); 
-            border: 5px solid white; background-color: #eee;
-        }
-
-        /* --- COMPÉTENCES --- */
+        /* --- COMPÉTENCES (SKILLS) --- */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .skill-card {
-            background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary); transition: transform 0.3s;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: 0.3s;
         }
         .skill-card:hover { transform: translateY(-5px); }
         .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
         .skill-list li { margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem; }
         .skill-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
 
-        /* --- PROJETS (ACTIVITÉS) --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+        /* --- ACTIVITÉS (PROJECTS) --- */
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .activity-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
-        .project-card {
-            background: white; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary);
-            transition: 0.3s; display: flex; flex-direction: column;
-        }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .project-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
-        .project-content h3 { margin-top: 0; margin-bottom: 10px; color: var(--dark); font-size: 1.1rem; }
+        .activity-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .activity-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .activity-content h3 { font-size: 1.1rem; margin: 0 0 15px; color: var(--dark); }
         .tags { margin-bottom: 15px; }
         .tag {
-            background: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 20px; font-size: 0.75rem; 
-            margin-right: 5px; display: inline-block; margin-bottom: 5px;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            display: inline-block;
+            margin-bottom: 5px;
         }
         .btn-small {
-            margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.9rem;
+            margin-top: auto;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
         }
+        .btn-small:hover { text-decoration: underline; }
 
         /* --- TIMELINE --- */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
@@ -493,16 +154,19 @@
         .timeline-item { padding: 10px 40px 10px 50px; position: relative; width: 100%; box-sizing: border-box; }
         .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background-color: white; border: 4px solid var(--primary); top: 25px; border-radius: 50%; z-index: 1; }
         .content-box { padding: 20px 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .date { color: var(--accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;}
+        .date { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
         .job-title { font-size: 1.2rem; font-weight: 700; margin: 5px 0; }
-        .company { font-style: italic; color: #64748b; margin-bottom: 15px; display: block; }
+        .company { font-style: italic; color: #64748b; margin-bottom: 10px; display: block; }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 50px 0; }
+        /* --- FOOTER --- */
+        footer { background: var(--dark); color: white; text-align: center; padding: 60px 0; }
         .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
         .social-icons a:hover { color: var(--accent); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .about-content { text-align: center; justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -515,17 +179,16 @@
             <a href="#skills">Compétences</a>
             <a href="#activities">Activités</a>
             <a href="#experience">Parcours</a>
-            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
             <h1>Maxence Thary</h1>
-            <h2>Admin Sys & <span class="highlight">Ethical Hacker</span></h2>
+            <h2>Futur <span class="highlight">Expert en Cybersécurité & Systèmes</span></h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
-                Étudiant en <strong>BTS SIO Option SISR</strong><br>
-                <span style="font-size: 0.95rem; color: #bae6fd;">📅 Stage : 26 Janvier au 20 Mars 2026</span>
+                Étudiant en <strong>BTS SIO SISR</strong> spécialisé en Pentesting et Administration Réseau.<br>
+                <span style="color: #bae6fd;">Recherche de stage : 26 Janvier — 20 Mars 2026</span>
             </p>
             <a href="#activities" class="btn">Voir mes activités</a>
             <a href="activite/CV_professionnel.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Mon CV</a>
@@ -533,17 +196,16 @@
     </header>
 
     <section id="about">
-        <div class="about-content">
-            <img src="assets/photo.jpg" alt="Maxence Thary" class="about-img">
-            <div class="about-text">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">À Propos</h2>
+        <h2 class="section-title">À Propos de moi</h2>
+        <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap; justify-content: center;">
+            <div style="flex: 1; min-width: 300px; max-width: 800px; text-align: center;">
                 <p>
-                    Passionné par l'infrastructure et la sécurité informatique, j'ai orienté mes études vers la compréhension profonde des systèmes pour mieux les protéger.
+                    Passionné par l'infrastructure et la sécurité informatique, j'ai orienté mes études vers la compréhension profonde des systèmes pour mieux les protéger. Je ne me contente pas de configurer ; j'aime analyser les vulnérabilités pour proposer des solutions de durcissement efficaces.
                 </p>
                 <p>
-                    Mon approche est pragmatique : je passe une grande partie de mon temps libre sur <strong>Root-Me</strong> pour aiguiser mes compétences offensives et sur mon <strong>HomeLab</strong> (Serveur Proxmox) pour expérimenter.
+                    En dehors de ma formation, j'aiguise mes compétences offensives sur <strong>Root-Me</strong> et je gère mon propre <strong>HomeLab</strong> sous Proxmox pour simuler des architectures d'entreprise complexes.
                 </p>
-                <p style="margin-top: 20px; border-left: 4px solid var(--primary); padding-left: 15px; background: #eef2ff; padding: 15px;">
+                <p style="margin-top: 20px; border-left: 4px solid var(--primary); padding-left: 15px; background: #eef2ff; padding: 15px; text-align: left;">
                     <strong>Veille Technologique :</strong> "L'évolution des menaces virales et des solutions EDR/XDR".
                 </p>
             </div>
@@ -558,97 +220,89 @@
                 <h3>Cybersécurité</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check"></i> Pentest (Nmap, Burp Suite, Metasploit)</li>
-                    <li><i class="fas fa-check"></i> Firewalling (pfSense, SNS)</li>
-                    <li><i class="fas fa-check"></i> Analyse de trafic (Wireshark)</li>
-                    <li><i class="fas fa-check"></i> Hardening (SSH, Web, AD)</li>
+                    <li><i class="fas fa-check"></i> Firewalling (pfSense, SNS, UTM)</li>
+                    <li><i class="fas fa-check"></i> IDS/IPS (Snort, Suricata)</li>
+                    <li><i class="fas fa-check"></i> Hardening (SSH, Apache, Windows)</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Réseaux & Infra</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Cisco CLI (Switching & Routing)</li>
+                    <li><i class="fas fa-check"></i> VLANs & Trunking (802.1Q)</li>
+                    <li><i class="fas fa-check"></i> VPN (IPsec, SSL, Wireguard)</li>
+                    <li><i class="fas fa-check"></i> SD-WAN (TP-Link Omada)</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-server"></i></div>
-                <h3>Infrastructure & Sys</h3>
+                <h3>Systèmes & Virtua</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Windows Server (AD, GPO, DNS)</li>
-                    <li><i class="fas fa-check"></i> Linux (Debian, Ubuntu, Kali)</li>
+                    <li><i class="fas fa-check"></i> Windows Server 2022 (AD, GPO, DNS)</li>
+                    <li><i class="fas fa-check"></i> Linux Administration (Debian, Ubuntu)</li>
                     <li><i class="fas fa-check"></i> Virtualisation (Proxmox, VMware)</li>
-                    <li><i class="fas fa-check"></i> Cisco CLI & TP-Link Omada</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon"><i class="fas fa-code"></i></div>
-                <h3>Dev & Outils</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Scripting (Bash, PowerShell, Python)</li>
-                    <li><i class="fas fa-check"></i> Gestion de parc (GLPI)</li>
-                    <li><i class="fas fa-check"></i> Supervision (Nagios, Snort)</li>
-                    <li><i class="fas fa-check"></i> RSS (Inoreader, CERT-FR)</li>
+                    <li><i class="fas fa-check"></i> Scripting (Bash, PowerShell)</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="activities">
-        <h2 class="section-title">Activités BTS SIO</h2>
+        <h2 class="section-title">Activités & Réalisations</h2>
         
-        <h3 style="margin-bottom: 20px; color: var(--primary);">B3 - Cybersécurité</h3>
-        <div class="projects-grid" style="margin-bottom: 50px;">
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Mise en œuvre UTM (Squid, Snort)</h3>
+        <h3 style="margin-bottom: 25px; color: var(--primary);"><i class="fas fa-shield-virus"></i> Bloc 3 : Cybersécurité</h3>
+        <div class="activities-grid" style="margin-bottom: 50px;">
+            <div class="activity-card">
+                <div class="activity-content">
+                    <h3>Mise en œuvre UTM (pfSense, Snort)</h3>
                     <div class="tags"><span class="tag">pfSense</span><span class="tag">IPS</span><span class="tag">Proxy</span></div>
-                    <a href="activite/LAB3-B3-UTM.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+                    <p style="font-size: 0.85rem; color: #64748b;">Installation et configuration de Squid, SquidGuard et Snort pour sécuriser un réseau MLIF.</p>
+                    <a href="activite/LAB3-B3-UTM.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Filtrage et NAT sous pfSense</h3>
-                    <div class="tags"><span class="tag">Firewall</span><span class="tag">Réseau</span></div>
-                    <a href="#" class="btn-small">Bientôt disponible <i class="fas fa-lock"></i></a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-content">
+            <div class="activity-card">
+                <div class="activity-content">
                     <h3>Mesures Atténuation Menaces (TP4.3.7)</h3>
-                    <div class="tags"><span class="tag">Défense</span><span class="tag">Sécurité</span></div>
-                    <a href="#" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+                    <div class="tags"><span class="tag">Security</span><span class="tag">ACL</span></div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Configuration des ACLs et politiques de filtrage pour limiter les vecteurs d'attaque.</p>
+                    <a href="#" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
 
-        <h3 style="margin-bottom: 20px; color: var(--primary);">B2 - Admin Systèmes & Réseaux</h3>
-        <div class="projects-grid">
-            <div class="card project-card">
-                <div class="project-content">
-                    <h3>Admin & Sécurisation Apache2</h3>
-                    <div class="tags"><span class="tag">Debian</span><span class="tag">Web</span></div>
-                    <a href="activite/LAB-APACHE-SISR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+        <h3 style="margin-bottom: 25px; color: var(--primary);"><i class="fas fa-server"></i> Bloc 2 : Admin Systèmes & Réseaux</h3>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-content">
+                    <h3>Sécurisation Serveur Web Apache2</h3>
+                    <div class="tags"><span class="tag">Linux</span><span class="tag">Hardening</span></div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Mise en place de VirtualHosts, HTTPS et durcissement de la configuration Apache.</p>
+                    <a href="activite/LAB-APACHE-SISR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="card project-card">
-                <div class="project-content">
-                    <h3>Haute Dispo & Load-Balancing (LVS)</h3>
-                    <div class="tags"><span class="tag">Failover</span><span class="tag">Linux</span></div>
-                    <a href="activite/LAB-B2-FAILOVER.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+            <div class="activity-card">
+                <div class="activity-content">
+                    <h3>Haute Disponibilité (LVS & Heartbeat)</h3>
+                    <div class="tags"><span class="tag">Failover</span><span class="tag">Load-Balancing</span></div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Configuration de la répartition de charge pour assurer la continuité de service.</p>
+                    <a href="activite/LAB-B2-FAILOVER.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="card project-card">
-                <div class="project-content">
-                    <h3>Réplication Données (GlusterFS)</h3>
-                    <div class="tags"><span class="tag">Stockage</span><span class="tag">Rsync</span></div>
-                    <a href="activite/LABO-LABOREPLICATION.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+            <div class="activity-card">
+                <div class="activity-content">
+                    <h3>Cisco: Basic Switch Config (01.1.1.7)</h3>
+                    <div class="tags"><span class="tag">Cisco</span><span class="tag">Physical Mode</span></div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Initialisation et sécurisation de base d'un commutateur en mode physique.</p>
+                    <a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="card project-card">
-                <div class="project-content">
-                    <h3>Basic Switch Config (Packet Tracer)</h3>
-                    <div class="tags"><span class="tag">Cisco</span><span class="tag">CLI</span></div>
-                    <a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
-                </div>
-            </div>
-            <div class="card project-card">
-                <div class="project-content">
-                    <h3>Configuration Wireless Network</h3>
-                    <div class="tags"><span class="tag">Wi-Fi</span><span class="tag">Sécurité</span></div>
-                    <a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-file-pdf"></i></a>
+            <div class="activity-card">
+                <div class="activity-content">
+                    <h3>Réplication de données (GlusterFS)</h3>
+                    <div class="tags"><span class="tag">Stockage</span><span class="tag">GlusterFS</span></div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Mise en œuvre d'une réplication synchrone pour la haute disponibilité des données.</p>
+                    <a href="activite/LABO-LABOREPLICATION.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -657,254 +311,41 @@
     <section id="experience" style="background-color: white;">
         <h2 class="section-title">Mon Parcours</h2>
         <div class="timeline">
-            
             <div class="timeline-item">
                 <div class="content-box">
                     <span class="date">2026 (À VENIR)</span>
-                    <h3 class="job-title">Stagiaire Informatique (BTS 2ème année)</h3>
-                    <span class="company">Prochainement...</span>
-                    <p>Stage de fin de cycle portant sur l'administration réseau et la sécurité.</p>
+                    <h3 class="job-title">Stage Informatique (BTS 2ème année)</h3>
+                    <span class="company">Recherche active</span>
+                    <p>Stage de 8 semaines portant sur l'administration système et la sécurité offensive/défensive.</p>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="content-box">
                     <span class="date">2024 - 2026</span>
                     <h3 class="job-title">BTS SIO - Option SISR</h3>
                     <span class="company">Lycée René Descartes (77)</span>
-                    <p>Apprentissage de l'administration système, réseau et des bases de la cybersécurité.</p>
+                    <p>Solutions d'Infrastructure, Systèmes et Réseaux. Spécialisation en administration et sécurité.</p>
                 </div>
             </div>
-
             <div class="timeline-item">
                 <div class="content-box">
                     <span class="date">2021 - 2024</span>
                     <h3 class="job-title">BAC PRO SN - Option RISC</h3>
                     <span class="company">Lycée Saint-Aspais (77)</span>
-                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Mention Bien.</strong></p>
+                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Obtenu avec Mention Bien.</strong></p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <footer id="contact">
+    <footer>
         <h2 style="color: white; margin-bottom: 20px;">Me Contacter</h2>
         <div class="social-icons">
             <a href="mailto:thary.maxence@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
             <a href="https://www.linkedin.com/in/maxence-thary" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/maxence-adm" target="_blank"><i class="fab fa-github"></i></a>
         </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">&copy; 2026 Maxence Thary.</p>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Portfolio Cybersécurité</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #030712;
-            --card-bg: rgba(17, 24, 39, 0.6);
-            --accent: #a855f7; /* Violet style Ethan */
-            --accent-glow: rgba(168, 85, 247, 0.2);
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- BACKGROUND EFFECTS --- */
-        .blob {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(90px);
-        }
-        .blob-1 { top: -100px; left: -100px; }
-        .blob-2 { bottom: -100px; right: -100px; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%; height: 80px;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(15px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 8%; z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* --- CONTAINER --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- HERO --- */
-        #home { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        .badge { display: inline-block; padding: 6px 16px; border-radius: 50px; background: var(--accent-glow); border: 1px solid var(--accent); color: var(--accent); font-family: 'Fira Code'; font-size: 0.75rem; margin-bottom: 20px; width: fit-content; }
-        .hero-title { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero-subtitle { font-size: 1.4rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 40px; }
-
-        /* --- SECTIONS --- */
-        section { padding: 100px 0; }
-        h2 { font-size: 2.2rem; margin-bottom: 50px; display: flex; align-items: center; gap: 20px; }
-        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--border); }
-
-        /* --- GRID & CARDS --- */
-        .category-header { margin: 40px 0 20px; display: flex; align-items: center; gap: 10px; color: var(--accent); font-family: 'Fira Code'; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 12px;
-            transition: 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            backdrop-filter: blur(10px);
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(168, 85, 247, 0.05); }
-        .card h3 { font-size: 0.95rem; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
-        
-        .btn-doc {
-            text-decoration: none;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: auto;
-        }
-
-        /* --- BUTTONS --- */
-        .btn-main { background: var(--accent); color: #fff; padding: 14px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 10px 20px var(--accent-glow); }
-
-        footer { padding: 60px; text-align: center; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-title { font-size: 2.8rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <nav>
-        <div class="logo">MAXENCE<span>.</span></div>
-        <div class="nav-links">
-            <a href="#about">Profil</a>
-            <a href="#projects">Activités</a>
-            <a href="#veille">Veille</a>
-            <a href="#contact">Contact</a>
-            <a href="activite/CV_professionnel.pdf" class="btn-main" style="padding: 8px 20px; font-size: 0.8rem;">MON CV</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        
-        <section id="home">
-            <div class="badge">DISPONIBLE POUR STAGE 2026</div>
-            <h1 class="hero-title">Maxence Thary</h1>
-            <p class="hero-subtitle">Étudiant en BTS SIO SISR spécialisé en Cybersécurité, Administration Systèmes et Réseaux Cisco.</p>
-            <div>
-                <a href="#projects" class="btn-main">Explorer mes travaux</a>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Mes Activités Professionnelles</h2>
-
-            <div class="category-header"><span>[01]</span> B3 - Cybersécurité</div>
-            <div class="grid">
-                <div class="card"><h3>Mise en œuvre UTM (pfSense, Squid, Snort)</h3><a href="activite/LAB3-B3-UTM.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Filtrage et NAT sous pfSense</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Paysage des Données (02.TP01)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Exploration Trafic DNS (04.TP4.1.7)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Attaque Base MySQL (04.TP4.2.8)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Lecture Journaux Serveurs (04.TP4.2.9)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Mesures Atténuation Menaces (04.TP4.3.7)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Configuration ACLs (06.TP6.2.4)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-            </div>
-
-            <div class="category-header"><span>[02]</span> B2 - Admin. Systèmes et Réseaux</div>
-            <div class="grid">
-                <div class="card"><h3>Admin Windows Server 2022 (AD, GPO)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Admin & Sécurisation Serveur Apache2</h3><a href="activite/LAB-APACHE-SISR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Haute Dispo & Load-Balancing (LVS)</h3><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Réplication Données (Rsync/GlusterFS)</h3><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Tunnels VPN IPsec & SSL (pfSense/SNS)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Tolérance de panne (RAID 1 & 5)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: Basic Switch Config (01.1.1.7)</h3><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: Physical Mode Exploration (01.1.0.5)</h3><a href="activite/Maxence THARY - 01.TP_1.0.5-packet-tracer---logical-and-physical-mode-exploration_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: Configure Wireless (01.13.1.10)</h3><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: VLAN configuration (01.3.3.12)</h3><a href="activite/Maxence THARY - 01.3.3.12-packet-tracer---vlan-configuration_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: Configure Trunks (01.3.4.5)</h3><a href="activite/Maxence THARY - 01.3.4.5-packet-tracer---configure-trunks_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Cisco: VLAN & Trunking Physical (01.3.4.6)</h3><a href="activite/Maxence THARY - 01.3.4.6-packet-tracer---configure-vlans-and-trunking---physical-mode_fr-FR.pdf" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>PowerShell: Commandes (04.TD01)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>PowerShell: Sauvegardes (04.TD02)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Script Base Windows (04.TD03)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>HSRP Configuration (04.TP9.3.3)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>IPv4/IPv6 Static Routes (06.15.6.1)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-            </div>
-
-            <div class="category-header"><span>[03]</span> Ateliers & Bac Pro SN</div>
-            <div class="grid">
-                <div class="card"><h3>Déploiement Infrastructure (AP4-01)</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Activité Voice VLAN</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Activité Spanning Tree Protocol</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Activité Filtrage MAC / VLAN N2</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-                <div class="card"><h3>Mini Projet Terminale 1 & 2</h3><a href="#" class="btn-doc">Voir l'activité →</a></div>
-            </div>
-        </section>
-
-        <section id="contact" style="text-align: center;">
-            <div style="background: var(--card-bg); padding: 80px 20px; border-radius: 30px; border: 1px solid var(--border);">
-                <h2 style="justify-content: center; border: none; margin-bottom: 20px;">Travaillons ensemble</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 40px;">Actuellement à la recherche d'un stage en cybersécurité ou réseaux.</p>
-                <p style="font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; color: var(--accent);">thary.maxence@gmail.com</p>
-                <a href="mailto:thary.maxence@gmail.com" class="btn-main">Me contacter par Email</a>
-                <div style="margin-top: 30px;">
-                    <a href="https://www.linkedin.com/in/maxence-thary" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">LINKEDIN</a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>Maxence Thary © 2026 — Portfolio SISR — Tous les documents sont dans le dossier /activite</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">&copy; 2026 Maxence Thary. Tous les documents sont dans le dossier /activite</p>
     </footer>
 
 </body>
