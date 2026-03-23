@@ -3,45 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Expert Cybersécurité</title>
+    <title>Maxence Thary | Portfolio Cybersécurité</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; --accent: #0ea5e9; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--light); color: var(--text); line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s; }
 
-        /* NAV */
         .navbar { background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
         .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* HERO */
         .hero { height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%); display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
         .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
         .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 50px; font-weight: 600; border: 2px solid var(--primary); }
         .btn:hover { background: transparent; color: white; }
 
-        /* SECTIONS */
         section { padding: 80px 10%; }
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); }
 
-        /* GRILLE RÉALISATIONS */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .project-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); transition: 0.3s; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-5px); }
         .btn-small { margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding-top: 20px; }
 
-        /* VEILLE */
         .veille-box { background: #fff; padding: 30px; border-radius: 12px; border-left: 5px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .veille-link { color: var(--primary); font-weight: 600; font-size: 0.9rem; word-break: break-all; }
 
-        /* TIMELINE */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
         .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; }
         .timeline-item { padding: 10px 40px 10px 50px; position: relative; }
@@ -67,7 +60,7 @@
     <header class="hero">
         <div class="hero-content">
             <h1>Maxence Thary</h1>
-            <h2>Expert <span style="color:var(--accent)">Cybersécurité & Systèmes</span></h2>
+            <h2>Futur <span style="color:var(--accent)">Expert Cybersécurité & Systèmes</span></h2>
             <p style="margin-bottom: 30px;">Vainqueur Académique Hackathon 2024 | Étudiant BTS SIO SISR</p>
             <a href="#projects" class="btn">Explorer mon Portfolio</a>
         </div>
@@ -76,7 +69,7 @@
     <section id="about">
         <h2 class="section-title">À Propos</h2>
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>Passionné par la défense des infrastructures, j'ai fini <strong>1er de l'académie de Créteil</strong> au hackathon national. Mon expertise se concentre sur l'audit, le durcissement système et la gestion réseau Cisco.</p>
+            <p>Étudiant en 2ème année de BTS SIO option SISR, j'ai fini <strong>1er de l'académie de Créteil</strong> au hackathon national. Je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
         </div>
     </section>
 
@@ -85,20 +78,18 @@
         <div class="projects-grid">
             <div class="project-card">
                 <h3><i class="fas fa-graduation-cap"></i> Activités Scolaires</h3>
-                <p>Accès à l'intégralité de mes dossiers techniques (35+ fichiers) classés par blocs B2, B3 et AP.</p>
-                <a href="projets.html" class="btn-small">Voir les activités <i class="fas fa-arrow-right"></i></a>
+                <p>Retrouvez l'ensemble de mes dossiers techniques (Cisco, Virtualisation, Admin Sys) classés par blocs.</p>
+                <a href="projets.html" class="btn-small">Voir les documents <i class="fas fa-arrow-right"></i></a>
             </div>
-            
             <div class="project-card">
                 <h3><i class="fas fa-briefcase"></i> Expérience Stage</h3>
-                <p>Détails de mon immersion chez <strong>Relief Application</strong> et rapports professionnels.</p>
+                <p>Journal de bord et missions réalisées au sein de l'entreprise <strong>Relief Application</strong>.</p>
                 <a href="stage.html" class="btn-small">Accéder à la page stage <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card">
-                <h3><i class="fas fa-rss"></i> Ma Veille Techno</h3>
-                <p>Suivi en temps réel des alertes de sécurité et vulnérabilités Zero-Day.</p>
-                <a href="#veille" class="btn-small">Lire ma veille <i class="fas fa-arrow-right"></i></a>
+                <h3><i class="fas fa-rss"></i> Veille Techno</h3>
+                <p>Suivi automatisé des vulnérabilités et actualités via mes flux Inoreader.</p>
+                <a href="#veille" class="btn-small">Consulter la veille <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -106,12 +97,12 @@
     <section id="veille">
         <h2 class="section-title">Veille Technologique</h2>
         <div class="veille-box">
-            <h3>Agrégateur : Inoreader</h3>
-            <p>J'utilise <strong>Inoreader</strong> pour centraliser ma veille stratégique. Ce dashboard me permet de surveiller les flux du CERT-FR et les alertes mondiales sur les Ransomwares.</p>
-            <p><strong>Mes flux actifs :</strong></p>
+            <h3>Dashboard Inoreader</h3>
+            <p>Ma veille est automatisée via <strong>Inoreader</strong>. Je surveille particulièrement les alertes Google sur les Ransomwares et les failles critiques.</p>
+            <p style="margin-top:20px;"><strong>Mes flux de veille :</strong></p>
             <ul>
-                <li>Alertes Ransomwares : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F6038114180921382456" target="_blank" class="veille-link">Flux Google Alert 1</a></li>
-                <li>Failles Zero-Day : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F3171461852122454017" target="_blank" class="veille-link">Flux Google Alert 2</a></li>
+                <li>Alertes Ransomwares : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F6038114180921382456" target="_blank" class="veille-link">Flux Inoreader #1</a></li>
+                <li>Vulnérabilités Google : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F3171461852122454017" target="_blank" class="veille-link">Flux Inoreader #2</a></li>
             </ul>
         </div>
     </section>
@@ -133,15 +124,18 @@
                     <span style="font-style:italic">Lycée René Descartes, Champs-sur-Marne</span>
                 </div>
             </div>
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span style="color:var(--primary); font-weight:700">2022 - 2024</span>
+                    <h3>Bac Pro Systèmes Numériques - Option ARED</h3>
+                    <span style="font-style:italic">Lycée Louis Lumière, Chelles</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Maxence Thary</p>
-        <div style="margin-top:15px">
-            <a href="mailto:thary.maxence@gmail.com" style="color:white; margin:0 10px"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/maxence-thary" target="_blank" style="color:white; margin:0 10px"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <p>&copy; 2026 Maxence Thary | <a href="mailto:thary.maxence@gmail.com" style="color:white">Contact</a></p>
     </footer>
 
 </body>
