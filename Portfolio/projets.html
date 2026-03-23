@@ -3,38 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toutes mes Activités | Maxence Thary</title>
+    <title>Mes Activités | Maxence Thary</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; --text: #334155; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--light); color: var(--text); margin: 0; padding-top: 100px; }
-        
         .nav-back { position: fixed; top: 0; width: 100%; background: var(--dark); padding: 20px 5%; z-index: 100; }
         .nav-back a { color: white; font-weight: 600; text-decoration: none; }
-
         .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        h1 { color: var(--dark); text-align: center; margin-bottom: 40px; }
-        
         .section-box { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.3rem; }
-
-        .file-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--light); border-radius: 8px; transition: 0.2s; }
-        .file-item:hover { background: #e2e8f0; }
-        .file-name { font-weight: 500; font-size: 0.9rem; }
-        .btn-view { background: var(--primary); color: white; padding: 6px 15px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; }
+        .file-list { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--light); border-radius: 6px; }
+        .file-name { font-weight: 500; font-size: 0.85rem; }
+        .btn-view { background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <div class="nav-back">
-        <a href="index.html"><i class="fas fa-arrow-left"></i> Retour au Portfolio</a>
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
     </div>
 
     <div class="container">
-        <h1>Mes Activités & TP</h1>
+        <h1>Activités Professionnelles</h1>
 
         <div class="section-box">
             <h2><i class="fas fa-project-diagram"></i> AP - Ateliers de Professionnalisation</h2>
@@ -44,48 +38,47 @@
         </div>
 
         <div class="section-box">
-            <h2><i class="fas fa-server"></i> B2 - Administration Systèmes & Réseaux</h2>
+            <h2><i class="fas fa-user-shield"></i> B3 - Cybersécurité</h2>
             <div class="file-list">
-                <div class="file-item"><span class="file-name">Administration Windows Server 2022</span><a href="activite/SISR-LABO-WINDOWS.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Admin & Sécurisation Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Tunnels VPN IPsec & SSL</span><a href="activite/VPN-SNS.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Haute Dispo & Load-Balancing (LVS)</span><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Réplication Données (GlusterFS)</span><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Tolérance de panne (RAID)</span><a href="activite/SISR_LABORAID.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Basic Switch Config (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Physical Mode Exploration (01.1.0.5)</span><a href="activite/Maxence THARY - 01.TP_1.0.5-packet-tracer---logical-and-physical-mode-exploration_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Navigate IOS (01.2.3.7)</span><a href="activite/Maxence THARY - 01.TP_2.3.7-packet-tracer---navigate-the-ios_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Wireless Network (01.13.1.10)</span><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Router on a Stick (02.4.2.7)</span><a href="activite/Maxence THARY - 02.4.2.7-packet-tracer---configure-router-on-a-stick-inter-vlan-routing_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Layer 3 Switching (02.4.3.8)</span><a href="activite/Maxence THARY - 02.4.3.8-packet-tracer---configure-layer-3-switching-and-inter-vlan-routing_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Subnetting Scenario (03.11.7.5)</span><a href="activite/Maxence THARY - 03.11.7.5-packet-tracer---subnetting-scenario_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: DHCPv4 Implementation (7.4.2)</span><a href="activite/Maxence THARY - 7.4.2-lab---implement-dhcpv4_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">PowerShell: Commandes (04.TD01)</span><a href="activite/Maxence THARY - 04.TD01_CommandesPowerShell_Rev03.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">PowerShell: Planification (04.TD02)</span><a href="activite/Maxence THARY - 04.TD02_PlanificationSauvegardesPowerShell_Rev03.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Mise en œuvre UTM (pfSense, Snort, Squid)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Analyse Firewalling (SISR)</span><a href="activite/SISR_LABOFIREWALL.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Test Sécurité Réseau (05.23.1.7)</span><a href="activite/Maxence THARY - 05.TP23.1.7_TestSecuriteReseau_rev02-3.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Attaque Base MySQL (04.4.2.8)</span><a href="activite/Maxence THARY - 04.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Mesures d'Atténuation Menaces (04.4.3.7)</span><a href="activite/Maxence THARY - 04.TP4.3.7_MesuresAttnMenaces_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Configuration ACLs (06.6.2.4)</span><a href="activite/Maxence THARY - 06.TP6.2.4_ACLs_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Implement Port Security (06.11.1.10)</span><a href="activite/Maxence THARY - 06.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Switch Security Configuration (06.11.6.2)</span><a href="activite/Maxence THARY - 06.TP_11.6.2-lab---switch-security-configuration_fr-FR-1.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
 
         <div class="section-box">
-            <h2><i class="fas fa-user-shield"></i> B3 - Cybersécurité</h2>
+            <h2><i class="fas fa-server"></i> B2 - Administration Systèmes & Réseaux</h2>
             <div class="file-list">
-                <div class="file-item"><span class="file-name">Mise en œuvre UTM (pfSense, Snort)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Analyse de Firewalling (SISR)</span><a href="activite/SISR_LABOFIREWALL.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Attaque Base MySQL (04.4.2.8)</span><a href="activite/Maxence THARY - 04.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Mesures d'Atténuation Menaces (04.4.3.7)</span><a href="activite/Maxence THARY - 04.TP4.3.7_MesuresAttnMenaces_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Configuration ACLs (06.TP6.2.4)</span><a href="activite/Maxence THARY - 06.TP6.2.4_ACLs_rev02-1.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Port Security (06.11.1.10)</span><a href="activite/Maxence THARY - 06.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Switch Security Config (06.11.6.2)</span><a href="activite/Maxence THARY - 06.TP_11.6.2-lab---switch-security-configuration_fr-FR-1.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Test Sécurité Réseau (05.23.1.7)</span><a href="activite/Maxence THARY - 05.TP23.1.7_TestSecuriteReseau_rev02-3.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Administration Windows Server (Lab)</span><a href="activite/SISR-LABO-WINDOWS.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Sécurisation Serveur Web Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Tunnels VPN IPsec & SSL (SNS)</span><a href="activite/VPN-SNS.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Failover & Haute Dispo (Heartbeat / LVS)</span><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Réplication de Données (GlusterFS)</span><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Tolérance de Panne (RAID)</span><a href="activite/SISR_LABORAID.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Installation IBPX (02.TP01)</span><a href="activite/Maxence THARY - 02.TP01_InstallationConfigurationIBPX_Rev04.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Commandes PowerShell (04.TD01)</span><a href="activite/Maxence THARY - 04.TD01_CommandesPowerShell_Rev03.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Scripting Base Windows (04.TD03)</span><a href="activite/Maxence THARY - 04.TD03_ScriptBaseWindows_Rev02.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
 
-        <div id="stages" class="section-box">
-            <h2><i class="fas fa-briefcase"></i> Rapports de Stages</h2>
+        <div class="section-box">
+            <h2><i class="fas fa-network-wired"></i> Réseaux - Cisco Packet Tracer</h2>
             <div class="file-list">
-                <div class="file-item"><span class="file-name">Rapport de Stage - IFAC (92)</span><a href="#" class="btn-view">En attente</a></div>
-                <div class="file-item"><span class="file-name">Rapport de Stage - Mairie de Meaux</span><a href="#" class="btn-view">En attente</a></div>
+                <div class="file-item"><span class="file-name">Basic Switch Config (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">VLAN Configuration (01.3.3.12)</span><a href="activite/Maxence THARY - 01.3.3.12-packet-tracer---vlan-configuration_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Configure Trunks (01.3.4.5)</span><a href="activite/Maxence THARY - 01.3.4.5-packet-tracer---configure-trunks_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Router on a Stick (02.4.2.7)</span><a href="activite/Maxence THARY - 02.4.2.7-packet-tracer---configure-router-on-a-stick-inter-vlan-routing_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Wireless Network (01.13.1.10)</span><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Configure DHCPv6 (08.8.5.1)</span><a href="activite/Maxence THARY - 08.8.5.1-lab---configure-dhcpv6_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
+                <div class="file-item"><span class="file-name">Implement DHCPv4 (07.4.2)</span><a href="activite/Maxence THARY - 7.4.2-lab---implement-dhcpv4_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
             </div>
         </div>
+
     </div>
 
 </body>
