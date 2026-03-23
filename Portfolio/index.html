@@ -14,13 +14,11 @@
         body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--light); color: var(--text); line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s; }
 
-        /* NAVIGATION */
         .navbar { background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
         .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* HERO SECTION */
         .hero { height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%); display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
         .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
@@ -28,20 +26,16 @@
         .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 50px; font-weight: 600; border: 2px solid var(--primary); }
         .btn:hover { background: transparent; color: white; }
 
-        /* SECTION STANDARDS */
         section { padding: 80px 10%; }
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px; }
         .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); }
 
-        /* CARDS PROJETS */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .project-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); transition: 0.3s; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-5px); }
-        .project-card h3 { margin-bottom: 15px; }
         .tag { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; display: inline-block; margin-top: 10px; }
         .btn-small { margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding-top: 20px; }
 
-        /* TIMELINE */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
         .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; margin-left: -2px; }
         .timeline-item { padding: 10px 40px 10px 50px; position: relative; }
@@ -49,8 +43,6 @@
         .content-box { padding: 20px 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
         footer { background: var(--dark); color: white; text-align: center; padding: 50px 0; }
-        .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; }
-
         @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
     </style>
 </head>
@@ -62,28 +54,27 @@
             <a href="#about">Profil</a>
             <a href="#projects">Réalisations</a>
             <a href="#experience">Parcours</a>
-            <a href="#contact">Contact</a>
+            <a href="activite/CV_Maxence-THARY-1.pdf" target="_blank" style="color:var(--primary)">Mon CV</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
             <h1>Maxence Thary</h1>
-            <h2>Futur <span class="highlight">Expert en Cybersécurité</span></h2>
+            <h2>Expert <span class="highlight">Cybersécurité & Systèmes</span></h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
                 Vainqueur Académique Hackathon "Passe Ton Hack d'Abord"<br>
-                Étudiant en BTS SIO SISR (2ème année)
+                Étudiant en BTS SIO SISR (2024-2026)
             </p>
-            <a href="#projects" class="btn">Voir mes projets</a>
-            <a href="activite/CV_Maxence-THARY-1.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Mon CV</a>
+            <a href="#projects" class="btn">Voir mes activités</a>
         </div>
     </header>
 
     <section id="about">
         <h2 class="section-title">À Propos</h2>
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>Étudiant passionné par la cybersécurité et l'administration réseau. J'ai obtenu la <strong>1ère place de l'académie de Créteil</strong> et la 7e place nationale lors du hackathon national Passe Ton Hack d'Abord.</p>
-            <p>Mon objectif est de sécuriser les infrastructures critiques et de lutter contre les vulnérabilités systèmes.</p>
+            <p>Étudiant passionné par la cybersécurité et les infrastructures, j'ai fini <strong>1er de l'académie de Créteil</strong> et 7e national au hackathon Passe Ton Hack d'Abord.</p>
+            <p>Mon expertise couvre l'administration système (Windows/Linux), le réseau (Cisco) et la sécurisation offensive/défensive.</p>
         </div>
     </section>
 
@@ -91,23 +82,23 @@
         <h2 class="section-title">Projets & Réalisations</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3><i class="fas fa-graduation-cap"></i> Projets Scolaires</h3>
-                <p>Retrouvez l'intégralité de mes activités techniques (Cisco, Virtualisation, Windows Server).</p>
-                <div class="tags"><span class="tag">Packet Tracer</span><span class="tag">Admin Sys</span></div>
-                <a href="projets.html" class="btn-small">Voir tous mes projets <i class="fas fa-arrow-right"></i></a>
+                <h3><i class="fas fa-graduation-cap"></i> Activités Scolaires</h3>
+                <p>Retrouvez plus de 35 dossiers techniques réalisés durant mon cursus (Cisco, PowerShell, Sécurité).</p>
+                <div class="tags"><span class="tag">Cisco</span><span class="tag">Admin Sys</span><span class="tag">Hackathon</span></div>
+                <a href="projets.html" class="btn-small">Voir toutes les activités <i class="fas fa-arrow-right"></i></a>
             </div>
             
             <div class="project-card">
-                <h3><i class="fas fa-book-open"></i> Veille Techno</h3>
+                <h3><i class="fas fa-book-open"></i> Veille Technologique</h3>
                 <p>Sujet : "L'évolution des menaces virales et des solutions EDR/XDR".</p>
-                <div class="tags"><span class="tag">Cybersécurité</span><span class="tag">EDR</span></div>
+                <div class="tags"><span class="tag">EDR/XDR</span><span class="tag">Malwares</span></div>
                 <a href="https://www.pearltrees.com/maxence_thary" target="_blank" class="btn-small">Accéder à ma veille <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="project-card">
                 <h3><i class="fas fa-briefcase"></i> Mes Stages</h3>
-                <p>Rapports détaillés de mes missions en entreprise (Administration, Support, Sécurité).</p>
-                <div class="tags"><span class="tag">Rapports</span><span class="tag">Missions</span></div>
+                <p>Accès aux rapports et bilans de mes expériences professionnelles en entreprise.</p>
+                <div class="tags"><span class="tag">Rapports</span><span class="tag">SISR</span></div>
                 <a href="projets.html#stages" class="btn-small">Consulter les rapports <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
@@ -119,29 +110,28 @@
             <div class="timeline-item">
                 <div class="content-box">
                     <span style="color:var(--accent); font-weight:700">2024 - 2026</span>
-                    <h3>BTS SIO SISR</h3>
+                    <h3>BTS SIO SISR - Spécialité Cybersécurité</h3>
                     <span style="font-style:italic">Lycée René Descartes, Champs-sur-Marne</span>
-                    <p>Spécialité Cybersécurité et Solutions d'Infrastructure.</p>
+                    <p>Focus sur l'administration système, réseau et la détection de vulnérabilités.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="content-box">
                     <span style="color:var(--accent); font-weight:700">2022 - 2024</span>
-                    <h3>Bac Pro Systèmes Numériques</h3>
+                    <h3>Bac Pro Systèmes Numériques (ARED)</h3>
                     <span style="font-style:italic">Lycée Louis Lumière, Chelles</span>
-                    <p>Option ARED. Obtenu avec <strong>Mention Bien</strong>.</p>
+                    <p>Obtenu avec <strong>Mention Bien</strong>.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <h2>Contact</h2>
-        <div class="social-icons">
-            <a href="mailto:thary.maxence@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/maxence-thary" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
+    <footer>
         <p>&copy; 2026 Maxence Thary</p>
+        <div style="margin-top:15px">
+            <a href="mailto:thary.maxence@gmail.com" style="color:white; margin:0 10px"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/maxence-thary" target="_blank" style="color:white; margin:0 10px"><i class="fab fa-linkedin"></i></a>
+        </div>
     </footer>
 
 </body>
