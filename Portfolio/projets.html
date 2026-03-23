@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets Scolaires | Maxence Thary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; --text: #334155; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light); color: var(--text); margin: 0; padding-top: 80px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        header { background: var(--dark); color: white; padding: 40px 0; text-align: center; position: fixed; top: 0; width: 100%; z-index: 10; }
+        .back-link { position: absolute; left: 5%; top: 50%; transform: translateY(-50%); color: white; font-weight: 600; }
+
+        h2 { border-left: 5px solid var(--primary); padding-left: 15px; margin-top: 40px; color: var(--dark); }
+        h3 { color: var(--primary); margin-top: 30px; font-size: 1.1rem; text-transform: uppercase; }
+
+        .activity-list { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
+        .activity-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-name { font-weight: 500; }
+        .btn-view { background: var(--primary); color: white; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; text-decoration: none; }
+        .btn-view:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+        <h1 style="margin:0; font-size: 1.5rem;">Mes Projets Scolaires</h1>
+    </header>
+
+    <div class="container">
+        
+        <h2>BTS SIO - Activités et Projets</h2>
+
+        <h3>Ateliers de Professionnalisation (AP)</h3>
+        <div class="activity-list">
+            <div class="activity-item">
+                <span class="activity-name">Déploiement Infrastructure (AP4-01)</span>
+                <a href="activite/AP4-01.pdf" class="btn-view" target="_blank">Voir le PDF</a>
+            </div>
+        </div>
+
+        <h3>B2 - Admin. Systèmes et Réseaux</h3>
+        <div class="activity-list">
+            <div class="activity-item"><span>Admin Windows Server 2022 (AD, GPO)</span><a href="activite/WIN-SERVER.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Tunnels VPN IPsec & SSL (pfSense/SNS)</span><a href="activite/VPN.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Admin & Sécurisation Serveur Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Tolérance de panne (RAID 1 & 5)</span><a href="activite/RAID.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Haute Dispo & Load-Balancing (LVS)</span><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Réplication Données (Rsync/GlusterFS)</span><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Basic Switch Configuration (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Physical Mode Exploration (01.1.0.5)</span><a href="activite/Maxence THARY - 01.TP_1.0.5-packet-tracer---logical-and-physical-mode-exploration_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Configure Wireless Network (01.13.1.10)</span><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Commandes PowerShell (04.TD01)</span><a href="activite/PS-TD01.pdf" class="btn-view">Voir</a></div>
+        </div>
+
+        <h3>B3 - Cybersécurité</h3>
+        <div class="activity-list">
+            <div class="activity-item"><span>Mise en œuvre UTM (pfSense, Squid, Snort)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Filtrage et NAT sous pfSense</span><a href="activite/NAT.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Exploration Trafic DNS (04.4.1.7)</span><a href="activite/DNS.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Attaque Base MySQL (04.4.2.8)</span><a href="activite/SQL.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Mesures Atténuation Menaces (04.4.3.7)</span><a href="activite/ATTENUATION.pdf" class="btn-view">Voir</a></div>
+        </div>
+
+        <h2 id="stages">Mes Rapports de Stages</h2>
+        <div class="activity-list">
+            <div class="activity-item"><span>Rapport de Stage - 1ère Année</span><a href="activite/Stage1.pdf" class="btn-view">Lire</a></div>
+            <div class="activity-item"><span>Rapport de Stage - 2ème Année</span><a href="activite/Stage2.pdf" class="btn-view">Lire</a></div>
+        </div>
+
+    </div>
+
+</body>
+</html>
