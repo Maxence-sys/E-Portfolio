@@ -5,51 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Maxence Thary - Expert Systèmes & Cybersécurité">
     <title>Maxence Thary | Portfolio</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; --accent: #0ea5e9; --white: #ffffff; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--light); color: var(--text); line-height: 1.6; }
-        a { text-decoration: none; transition: 0.3s; }
+        :root {
+            --primary: #2563eb; 
+            --dark: #0f172a; 
+            --light: #f8fafc; 
+            --text: #334155; 
+            --accent: #0ea5e9;
+            --white: #ffffff;
+        }
 
-        .navbar { background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
         .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
-        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        .hero { height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%); display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
-        .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: white; margin-bottom: 10px; }
         .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
         .hero .highlight { color: var(--accent); font-weight: 700; }
-        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 50px; font-weight: 600; border: 2px solid var(--primary); }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 2px solid var(--primary);
+        }
         .btn:hover { background: transparent; color: white; }
+        .btn-outline { background: transparent; border: 2px solid white; margin-left: 10px; }
+        .btn-outline:hover { background: white; color: var(--primary); }
 
-        section { padding: 80px 10%; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); }
+        /* --- SECTIONS --- */
+        section { padding: 100px 10%; }
+        .section-title {
+            text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px; color: var(--dark);
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary);
+        }
 
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
-        .project-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); transition: 0.3s; display: flex; flex-direction: column; }
+        /* --- SKILLS --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-card {
+            background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary); text-align: center;
+        }
+        .skill-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* --- CARDS RÉALISATIONS --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .project-card {
+            background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary); transition: 0.3s; display: flex; flex-direction: column; padding: 30px;
+        }
         .project-card:hover { transform: translateY(-5px); }
         .tag { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; display: inline-block; margin-top: 10px; }
         .btn-small { margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding-top: 20px; }
 
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; margin-left: -2px; }
+        /* --- TIMELINE --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; }
         .timeline-item { padding: 10px 40px 10px 50px; position: relative; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background-color: white; border: 4px solid var(--primary); top: 25px; border-radius: 50%; z-index: 1; }
-        .content-box { padding: 20px 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background: white; border: 4px solid var(--primary); border-radius: 50%; top: 25px; z-index: 1; }
+        .content-box { background: white; padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 50px 0; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
+        footer { background: var(--dark); color: white; text-align: center; padding: 60px 0; }
+        .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">PORTFOLIO</div>
+        <div class="logo">MAXENCE THARY</div>
         <div class="nav-links">
             <a href="#about">Profil</a>
             <a href="#projects">Réalisations</a>
@@ -61,56 +131,87 @@
     <header class="hero">
         <div class="hero-content">
             <h1>Maxence Thary</h1>
-            <h2>Expert <span class="highlight">Cybersécurité & Systèmes</span></h2>
+            <h2>Futur <span class="highlight">Expert en Cybersécurité</span></h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
-                Vainqueur Académique Hackathon "Passe Ton Hack d'Abord"<br>
-                Étudiant en BTS SIO SISR (2024-2026)
+                <strong>1er de l'académie de Créteil</strong> - Hackathon "Passe Ton Hack d'Abord"<br>
+                Étudiant en BTS SIO SISR (2ème année)
             </p>
-            <a href="#projects" class="btn">Voir mes activités</a>
+            <a href="#projects" class="btn">Accéder aux travaux</a>
+            <a href="mailto:thary.maxence@gmail.com" class="btn btn-outline">Me contacter</a>
         </div>
     </header>
 
     <section id="about">
         <h2 class="section-title">À Propos</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>Étudiant passionné par la cybersécurité, j'ai fini <strong>1er de l'académie de Créteil</strong> et 7e national au hackathon Passe Ton Hack d'Abord.</p>
-            <p>Mon expertise couvre l'administration système (Windows/Linux), le réseau (Cisco) et la sécurisation offensive/défensive.</p>
+        <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+            <p>Étudiant passionné par la cybersécurité et les infrastructures réseaux. Mon parcours est marqué par une curiosité technique constante et une rigueur validée par mes résultats en compétition nationale (7e place France au hackathon 2024).</p>
+            <p>Je maîtrise l'administration système Windows/Linux, le réseau Cisco et les solutions de sécurité périmétrique (pfSense, SNS).</p>
         </div>
     </section>
 
-    <section id="projects" style="background-color: white;">
-        <h2 class="section-title">Projets & Réalisations</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3><i class="fas fa-graduation-cap"></i> Activités Scolaires</h3>
-                <p>Retrouvez plus de 35 dossiers techniques réalisés durant mon cursus (Cisco, PowerShell, Sécurité).</p>
-                <div class="tags"><span class="tag">Cisco</span><span class="tag">Admin Sys</span><span class="tag">Hackathon</span></div>
-                <a href="projets.html" class="btn-small">Voir toutes les activités <i class="fas fa-arrow-right"></i></a>
+    <section id="skills" style="background: white;">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-user-shield"></i>
+                <h3>Cybersécurité</h3>
+                <p>Analyse de vulnérabilités, Pentesting de base, Firewalling, IDS/IPS (Snort), Filtrage SSL.</p>
             </div>
+            <div class="skill-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Réseaux</h3>
+                <p>Configuration Cisco CLI, VLAN, Trunking, Routage statique/dynamique, VPN IPsec.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-server"></i>
+                <h3>Systèmes</h3>
+                <p>Windows Server (AD, GPO), Linux Administration, Virtualisation (VMware/Proxmox).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Réalisations & Dossiers</h2>
+        <div class="projects-grid">
             
+            <div class="project-card">
+                <h3><i class="fas fa-file-contract"></i> Rapports & Audits</h3>
+                <p>Accédez à mes rapports de stage et mes dossiers d'audit de sécurité (MLIF).</p>
+                <div class="tags"><span class="tag">Audit</span><span class="tag">Stage</span><span class="tag">Rapport</span></div>
+                <a href="projets.html#audit" class="btn-small">Voir les documents <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <h3><i class="fas fa-graduation-cap"></i> Projet durant la Formation</h3>
+                <p>Plus de 35 dossiers techniques couvrant les blocs B2, B3 et les ateliers (AP).</p>
+                <div class="tags"><span class="tag">BTS SIO</span><span class="tag">Cisco</span><span class="tag">PowerShell</span></div>
+                <a href="projets.html" class="btn-small">Liste complète <i class="fas fa-arrow-right"></i></a>
+            </div>
+
             <div class="project-card">
                 <h3><i class="fas fa-book-open"></i> Veille Technologique</h3>
                 <p>Sujet : "L'évolution des menaces virales et des solutions EDR/XDR".</p>
-                <div class="tags"><span class="tag">EDR/XDR</span><span class="tag">Malwares</span></div>
+                <div class="tags"><span class="tag">Cyber</span><span class="tag">EDR</span><span class="tag">XDR</span></div>
                 <a href="https://www.pearltrees.com/maxence_thary" target="_blank" class="btn-small">Accéder à ma veille <i class="fas fa-arrow-right"></i></a>
             </div>
+
         </div>
     </section>
 
-    <section id="experience">
-        <h2 class="section-title">Mon Parcours</h2>
+    <section id="experience" style="background: white;">
+        <h2 class="section-title">Parcours Scolaire</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="content-box">
-                    <span style="color:var(--accent); font-weight:700">2024 - 2026</span>
-                    <h3>BTS SIO SISR - Spécialité Cybersécurité</h3>
+                    <span style="color:var(--primary); font-weight:700">2024 - 2026 (En cours)</span>
+                    <h3>BTS SIO SISR - Cybersécurité</h3>
                     <span style="font-style:italic">Lycée René Descartes, Champs-sur-Marne</span>
-                    <p>Focus sur l'administration système, réseau et la détection de vulnérabilités.</p>
+                    <p>Mise en place de réseaux sécurisés, gestion AD et virtualisation.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="content-box">
-                    <span style="color:var(--accent); font-weight:700">2022 - 2024</span>
+                    <span style="color:var(--primary); font-weight:700">2022 - 2024</span>
                     <h3>Bac Pro Systèmes Numériques (ARED)</h3>
                     <span style="font-style:italic">Lycée Louis Lumière, Chelles</span>
                     <p>Obtenu avec <strong>Mention Bien</strong>.</p>
@@ -120,11 +221,12 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Maxence Thary</p>
-        <div style="margin-top:15px">
-            <a href="mailto:thary.maxence@gmail.com" style="color:white; margin:0 10px"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/maxence-thary" target="_blank" style="color:white; margin:0 10px"><i class="fab fa-linkedin"></i></a>
+        <h2>Me Contacter</h2>
+        <div class="social-icons">
+            <a href="mailto:thary.maxence@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/maxence-thary" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
+        <p style="margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">&copy; 2026 Maxence Thary - Tous documents dans le dossier /activite</p>
     </footer>
 
 </body>
