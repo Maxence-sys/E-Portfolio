@@ -3,350 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Maxence Thary - Expert Systèmes & Cybersécurité">
-    <title>Maxence Thary | Portfolio</title>
-    
+    <title>Mes Projets Scolaires | Maxence Thary</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --primary: #2563eb; 
-            --dark: #0f172a; 
-            --light: #f8fafc; 
-            --text: #334155; 
-            --accent: #0ea5e9;
-            --white: #ffffff;
-        }
-
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 90%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
-        }
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
-        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; text-decoration: none; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-        .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
-        .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
-        .hero .highlight { color: var(--accent); font-weight: 700; }
+        :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; --text: #334155; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light); color: var(--text); margin: 0; padding-top: 80px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 2px solid var(--primary);
-        }
-        .btn:hover { background: transparent; color: white; }
-        .btn-outline { background: transparent; border: 2px solid white; margin-left: 10px; }
-        .btn-outline:hover { background: white; color: var(--primary); }
+        header { background: var(--dark); color: white; padding: 40px 0; text-align: center; position: fixed; top: 0; width: 100%; z-index: 10; }
+        .back-link { position: absolute; left: 5%; top: 50%; transform: translateY(-50%); color: white; font-weight: 600; }
 
-        /* --- SECTION TITLES --- */
-        section { padding: 100px 10%; }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 60px;
-            position: relative;
-            padding-bottom: 15px;
-            color: var(--dark);
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
+        h2 { border-left: 5px solid var(--primary); padding-left: 15px; margin-top: 40px; color: var(--dark); }
+        h3 { color: var(--primary); margin-top: 30px; font-size: 1.1rem; text-transform: uppercase; }
 
-        /* --- COMPÉTENCES (SKILLS) --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .skill-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
-            transition: 0.3s;
-        }
-        .skill-card:hover { transform: translateY(-5px); }
-        .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .skill-list li { margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem; }
-        .skill-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
-
-        /* --- ACTIVITÉS (PROJECTS) --- */
-        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .activity-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .activity-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .activity-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .activity-content h3 { font-size: 1.1rem; margin: 0 0 15px; color: var(--dark); }
-        .tags { margin-bottom: 15px; }
-        .tag {
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-        .btn-small {
-            margin-top: auto;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-        .btn-small:hover { text-decoration: underline; }
-
-        /* --- TIMELINE --- */
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; margin-left: -2px; }
-        .timeline-item { padding: 10px 40px 10px 50px; position: relative; width: 100%; box-sizing: border-box; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background-color: white; border: 4px solid var(--primary); top: 25px; border-radius: 50%; z-index: 1; }
-        .content-box { padding: 20px 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .date { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
-        .job-title { font-size: 1.2rem; font-weight: 700; margin: 5px 0; }
-        .company { font-style: italic; color: #64748b; margin-bottom: 10px; display: block; }
-
-        /* --- FOOTER --- */
-        footer { background: var(--dark); color: white; text-align: center; padding: 60px 0; }
-        .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
-        .social-icons a:hover { color: var(--accent); }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            section { padding: 60px 5%; }
-        }
+        .activity-list { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
+        .activity-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-name { font-weight: 500; }
+        .btn-view { background: var(--primary); color: white; padding: 5px 15px; border-radius: 4px; font-size: 0.8rem; text-decoration: none; }
+        .btn-view:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">MAXENCE THARY</div>
-        <div class="nav-links">
-            <a href="#about">Profil</a>
-            <a href="#skills">Compétences</a>
-            <a href="#activities">Activités</a>
-            <a href="#experience">Parcours</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Maxence Thary</h1>
-            <h2>Futur <span class="highlight">Expert en Cybersécurité & Systèmes</span></h2>
-            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
-                Étudiant en <strong>BTS SIO SISR</strong> spécialisé en Pentesting et Administration Réseau.<br>
-                <span style="color: #bae6fd;">Recherche de stage : 26 Janvier — 20 Mars 2026</span>
-            </p>
-            <a href="#activities" class="btn">Voir mes activités</a>
-            <a href="activite/CV_professionnel.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Mon CV</a>
-        </div>
+    <header>
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+        <h1 style="margin:0; font-size: 1.5rem;">Mes Projets Scolaires</h1>
     </header>
 
-    <section id="about">
-        <h2 class="section-title">À Propos de moi</h2>
-        <div style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap; justify-content: center;">
-            <div style="flex: 1; min-width: 300px; max-width: 800px; text-align: center;">
-                <p>
-                    Passionné par l'infrastructure et la sécurité informatique, j'ai orienté mes études vers la compréhension profonde des systèmes pour mieux les protéger. Je ne me contente pas de configurer ; j'aime analyser les vulnérabilités pour proposer des solutions de durcissement efficaces.
-                </p>
-                <p>
-                    En dehors de ma formation, j'aiguise mes compétences offensives sur <strong>Root-Me</strong> et je gère mon propre <strong>HomeLab</strong> sous Proxmox pour simuler des architectures d'entreprise complexes.
-                </p>
-                <p style="margin-top: 20px; border-left: 4px solid var(--primary); padding-left: 15px; background: #eef2ff; padding: 15px; text-align: left;">
-                    <strong>Veille Technologique :</strong> "L'évolution des menaces virales et des solutions EDR/XDR".
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" style="background-color: white;">
-        <h2 class="section-title">Compétences Techniques</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Cybersécurité</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Pentest (Nmap, Burp Suite, Metasploit)</li>
-                    <li><i class="fas fa-check"></i> Firewalling (pfSense, SNS, UTM)</li>
-                    <li><i class="fas fa-check"></i> IDS/IPS (Snort, Suricata)</li>
-                    <li><i class="fas fa-check"></i> Hardening (SSH, Apache, Windows)</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Réseaux & Infra</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Cisco CLI (Switching & Routing)</li>
-                    <li><i class="fas fa-check"></i> VLANs & Trunking (802.1Q)</li>
-                    <li><i class="fas fa-check"></i> VPN (IPsec, SSL, Wireguard)</li>
-                    <li><i class="fas fa-check"></i> SD-WAN (TP-Link Omada)</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon"><i class="fas fa-server"></i></div>
-                <h3>Systèmes & Virtua</h3>
-                <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Windows Server 2022 (AD, GPO, DNS)</li>
-                    <li><i class="fas fa-check"></i> Linux Administration (Debian, Ubuntu)</li>
-                    <li><i class="fas fa-check"></i> Virtualisation (Proxmox, VMware)</li>
-                    <li><i class="fas fa-check"></i> Scripting (Bash, PowerShell)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities">
-        <h2 class="section-title">Activités & Réalisations</h2>
+    <div class="container">
         
-        <h3 style="margin-bottom: 25px; color: var(--primary);"><i class="fas fa-shield-virus"></i> Bloc 3 : Cybersécurité</h3>
-        <div class="activities-grid" style="margin-bottom: 50px;">
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Mise en œuvre UTM (pfSense, Snort)</h3>
-                    <div class="tags"><span class="tag">pfSense</span><span class="tag">IPS</span><span class="tag">Proxy</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Installation et configuration de Squid, SquidGuard et Snort pour sécuriser un réseau MLIF.</p>
-                    <a href="activite/LAB3-B3-UTM.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Mesures Atténuation Menaces (TP4.3.7)</h3>
-                    <div class="tags"><span class="tag">Security</span><span class="tag">ACL</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Configuration des ACLs et politiques de filtrage pour limiter les vecteurs d'attaque.</p>
-                    <a href="#" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
+        <h2>BTS SIO - Activités et Projets</h2>
+
+        <h3>Ateliers de Professionnalisation (AP)</h3>
+        <div class="activity-list">
+            <div class="activity-item">
+                <span class="activity-name">Déploiement Infrastructure (AP4-01)</span>
+                <a href="activite/AP4-01.pdf" class="btn-view" target="_blank">Voir le PDF</a>
             </div>
         </div>
 
-        <h3 style="margin-bottom: 25px; color: var(--primary);"><i class="fas fa-server"></i> Bloc 2 : Admin Systèmes & Réseaux</h3>
-        <div class="activities-grid">
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Sécurisation Serveur Web Apache2</h3>
-                    <div class="tags"><span class="tag">Linux</span><span class="tag">Hardening</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Mise en place de VirtualHosts, HTTPS et durcissement de la configuration Apache.</p>
-                    <a href="activite/LAB-APACHE-SISR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Haute Disponibilité (LVS & Heartbeat)</h3>
-                    <div class="tags"><span class="tag">Failover</span><span class="tag">Load-Balancing</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Configuration de la répartition de charge pour assurer la continuité de service.</p>
-                    <a href="activite/LAB-B2-FAILOVER.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Cisco: Basic Switch Config (01.1.1.7)</h3>
-                    <div class="tags"><span class="tag">Cisco</span><span class="tag">Physical Mode</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Initialisation et sécurisation de base d'un commutateur en mode physique.</p>
-                    <a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="activity-card">
-                <div class="activity-content">
-                    <h3>Réplication de données (GlusterFS)</h3>
-                    <div class="tags"><span class="tag">Stockage</span><span class="tag">GlusterFS</span></div>
-                    <p style="font-size: 0.85rem; color: #64748b;">Mise en œuvre d'une réplication synchrone pour la haute disponibilité des données.</p>
-                    <a href="activite/LABO-LABOREPLICATION.pdf" target="_blank" class="btn-small">Voir l'activité <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+        <h3>B2 - Admin. Systèmes et Réseaux</h3>
+        <div class="activity-list">
+            <div class="activity-item"><span>Admin Windows Server 2022 (AD, GPO)</span><a href="activite/WIN-SERVER.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Tunnels VPN IPsec & SSL (pfSense/SNS)</span><a href="activite/VPN.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Admin & Sécurisation Serveur Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Tolérance de panne (RAID 1 & 5)</span><a href="activite/RAID.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Haute Dispo & Load-Balancing (LVS)</span><a href="activite/LAB-B2-FAILOVER.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Réplication Données (Rsync/GlusterFS)</span><a href="activite/LABO-LABOREPLICATION.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Basic Switch Configuration (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Physical Mode Exploration (01.1.0.5)</span><a href="activite/Maxence THARY - 01.TP_1.0.5-packet-tracer---logical-and-physical-mode-exploration_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Configure Wireless Network (01.13.1.10)</span><a href="activite/Maxence THARY - 01.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Commandes PowerShell (04.TD01)</span><a href="activite/PS-TD01.pdf" class="btn-view">Voir</a></div>
         </div>
-    </section>
 
-    <section id="experience" style="background-color: white;">
-        <h2 class="section-title">Mon Parcours</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="content-box">
-                    <span class="date">2026 (À VENIR)</span>
-                    <h3 class="job-title">Stage Informatique (BTS 2ème année)</h3>
-                    <span class="company">Recherche active</span>
-                    <p>Stage de 8 semaines portant sur l'administration système et la sécurité offensive/défensive.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content-box">
-                    <span class="date">2024 - 2026</span>
-                    <h3 class="job-title">BTS SIO - Option SISR</h3>
-                    <span class="company">Lycée René Descartes (77)</span>
-                    <p>Solutions d'Infrastructure, Systèmes et Réseaux. Spécialisation en administration et sécurité.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="content-box">
-                    <span class="date">2021 - 2024</span>
-                    <h3 class="job-title">BAC PRO SN - Option RISC</h3>
-                    <span class="company">Lycée Saint-Aspais (77)</span>
-                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Obtenu avec Mention Bien.</strong></p>
-                </div>
-            </div>
+        <h3>B3 - Cybersécurité</h3>
+        <div class="activity-list">
+            <div class="activity-item"><span>Mise en œuvre UTM (pfSense, Squid, Snort)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Filtrage et NAT sous pfSense</span><a href="activite/NAT.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Exploration Trafic DNS (04.4.1.7)</span><a href="activite/DNS.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Attaque Base MySQL (04.4.2.8)</span><a href="activite/SQL.pdf" class="btn-view">Voir</a></div>
+            <div class="activity-item"><span>Mesures Atténuation Menaces (04.4.3.7)</span><a href="activite/ATTENUATION.pdf" class="btn-view">Voir</a></div>
         </div>
-    </section>
 
-    <footer>
-        <h2 style="color: white; margin-bottom: 20px;">Me Contacter</h2>
-        <div class="social-icons">
-            <a href="mailto:thary.maxence@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/maxence-thary" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/maxence-adm" target="_blank"><i class="fab fa-github"></i></a>
+        <h2 id="stages">Mes Rapports de Stages</h2>
+        <div class="activity-list">
+            <div class="activity-item"><span>Rapport de Stage - 1ère Année</span><a href="activite/Stage1.pdf" class="btn-view">Lire</a></div>
+            <div class="activity-item"><span>Rapport de Stage - 2ème Année</span><a href="activite/Stage2.pdf" class="btn-view">Lire</a></div>
         </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">&copy; 2026 Maxence Thary. Tous les documents sont dans le dossier /activite</p>
-    </footer>
+
+    </div>
 
 </body>
 </html>
