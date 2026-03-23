@@ -3,53 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventaire Technique | Maxence Thary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Activités Techniques | Maxence Thary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; --text: #334155; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--light); color: var(--text); margin: 0; padding-top: 100px; }
+        :root { --primary: #2563eb; --dark: #0f172a; --light: #f1f5f9; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light); margin: 0; padding-top: 100px; }
         .nav-back { position: fixed; top: 0; width: 100%; background: var(--dark); padding: 20px 5%; z-index: 100; }
-        .nav-back a { color: white; font-weight: 600; text-decoration: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        .section-box { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.3rem; }
-        .file-list { display: grid; grid-template-columns: 1fr; gap: 8px; }
-        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--light); border-radius: 6px; }
-        .file-name { font-weight: 500; font-size: 0.85rem; }
-        .btn-view { background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; text-decoration: none; }
+        .nav-back a { color: white; text-decoration: none; font-weight: 600; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .section-box { background: white; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--light); border-radius: 6px; margin-bottom: 8px; }
+        .btn-view { background: var(--primary); color: white; padding: 5px 12px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; }
     </style>
 </head>
 <body>
-
     <div class="nav-back"><a href="index.html"><i class="fas fa-arrow-left"></i> Retour au Portfolio</a></div>
-
     <div class="container">
-        <h1 style="text-align:center; margin-bottom:40px;">Activités Techniques BTS SIO</h1>
-
-        <div class="section-box">
-            <h2>AP - Ateliers de Professionnalisation</h2>
-            <div class="file-list">
-                <div class="file-item"><span class="file-name">Déploiement Infrastructure (AP4-01)</span><a href="activite/Maxence THARY - TrameCR_AP4-01_DeploiementInfra_Rev03-2.pdf" class="btn-view" target="_blank">Voir</a></div>
-            </div>
-        </div>
-
+        <h1>Activités & TP</h1>
+        
         <div class="section-box">
             <h2>B3 - Cybersécurité</h2>
-            <div class="file-list">
-                <div class="file-item"><span class="file-name">Mise en œuvre UTM (pfSense, Snort, Squid)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Attaque Base MySQL (04.4.2.8)</span><a href="activite/Maxence THARY - 04.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Port Security (06.11.1.10)</span><a href="activite/Maxence THARY - 06.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-            </div>
+            <div class="file-item"><span>Mise en œuvre UTM (pfSense, Snort)</span><a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
+            <div class="file-item"><span>Analyse Firewalling (SISR)</span><a href="activite/SISR_LABOFIREWALL.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
+            <div class="file-item"><span>Attaque Base MySQL (04.4.2.8)</span><a href="activite/Maxence THARY - 04.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
         </div>
 
         <div class="section-box">
             <h2>B2 - Systèmes & Réseaux</h2>
-            <div class="file-list">
-                <div class="file-item"><span class="file-name">Sécurisation Serveur Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">VPN IPsec & SSL (SNS)</span><a href="activite/VPN-SNS.pdf" class="btn-view" target="_blank">Voir</a></div>
-                <div class="file-item"><span class="file-name">Cisco: Basic Switch Config (01.1.1.7)</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Voir</a></div>
-            </div>
+            <div class="file-item"><span>Administration Windows Server 2022</span><a href="activite/SISR-LABO-WINDOWS.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
+            <div class="file-item"><span>Sécurisation Apache2</span><a href="activite/LAB-APACHE-SISR.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
+            <div class="file-item"><span>Cisco: Basic Switch Config</span><a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Ouvrir</a></div>
         </div>
     </div>
 </body>
