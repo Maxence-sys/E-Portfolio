@@ -3,346 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>Parcours & Veille | Maxence Thary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0d0914;
-            --bg-card: #181124;
-            --text-main: #fcfcfc;
-            --text-muted: #a39eb5;
-            /* Dégradé Pride classique */
-            --pride-gradient: linear-gradient(90deg, #ff0018, #ffa52c, #ffff41, #008018, #0000f9, #86007d);
-            /* Dégradé pastel / Trans-inclusive pour d'autres accents */
-            --pride-soft: linear-gradient(135deg, #5bcefa, #f5a9b8, #ffffff, #f5a9b8, #5bcefa);
+            --bg-color: #faf8f5; 
+            --text-main: #2c3e50; 
+            --text-light: #596a7a;
+            --accent: #d37c4b; /* Cuivre chaleureux */
+            --accent-hover: #b8693b;
+            --white: #ffffff;
+            --radius: 12px;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            padding-top: 100px;
         }
 
-        /* En-tête / Navigation */
+        h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; color: var(--text-main); }
+
+        /* En-tête / Navigation Multipage */
         header {
-            background: rgba(13, 9, 20, 0.8);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* Barre arc-en-ciel en haut du site */
-        header::before {
-            content: '';
-            display: block;
-            height: 4px;
-            width: 100%;
-            background: var(--pride-gradient);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: var(--shadow-sm);
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 5%; max-width: 1200px; margin: auto;
         }
 
-        .logo {
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: var(--pride-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            margin-left: 2rem;
-            transition: color 0.3s ease;
-            position: relative;
+            text-decoration: none; color: var(--text-light); font-weight: 500;
+            margin-left: 2.5rem; font-size: 0.95rem; transition: var(--transition);
         }
 
-        .nav-links a:hover {
-            color: #f5a9b8;
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-        /* Conteneurs */
-        section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
+        /* Conteneurs de section */
+        section { padding: 4rem 5%; max-width: 900px; margin: auto; }
+        
+        .page-header { text-align: center; margin-bottom: 3rem; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { color: var(--text-light); }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
+        h2 { font-size: 2rem; margin-bottom: 2rem; font-weight: 600; text-align: center; position: relative; }
         h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 100%;
-            height: 4px;
-            background: var(--pride-gradient);
-            border-radius: 2px;
+            content: ''; display: block; width: 50px; height: 3px;
+            background-color: var(--accent); margin: 1rem auto 0; border-radius: 2px;
         }
 
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            position: relative;
-        }
-
-        /* Décoration d'arrière-plan lumineuse */
-        .glow-bg {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 400px;
-            height: 400px;
-            background: var(--pride-gradient);
-            filter: blur(120px);
-            opacity: 0.15;
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #5bcefa;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(5px);
-        }
-
-        #hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-
-        #hero h1 span {
-            background: var(--pride-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--pride-gradient);
-            z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .btn:hover {
-            color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(255, 165, 44, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .btn:hover::before {
-            opacity: 1;
-        }
-
-        /* À propos */
-        #a-propos p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Réalisations */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Ligne lumineuse en bas de chaque carte */
-        .card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--pride-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(24, 17, 36, 0.8);
-        }
-
-        .card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #f5a9b8;
-        }
-
-        .card p {
-            color: var(--text-muted);
-        }
+        /* Parcours (Timeline) */
+        .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+        .timeline-item { display: flex; background-color: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: var(--transition); align-items: center; border: 1px solid rgba(0,0,0,0.03); }
+        .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(5px); }
+        .timeline-date { color: var(--accent); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.3rem; min-width: 140px; }
+        .timeline-content { border-left: 1px solid rgba(0,0,0,0.08); padding-left: 2rem; }
+        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .timeline-content p { color: var(--text-light); font-size: 0.95rem; }
 
         /* Veille Tech */
-        .veille-box {
-            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(24,17,36,0) 100%);
-            padding: 3rem;
-            border-radius: 16px;
-            border-top: 2px solid transparent;
-            border-image: var(--pride-gradient);
-            border-image-slice: 1;
-        }
+        .veille-box { background-color: var(--white); padding: 3.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); text-align: center; position: relative; overflow: hidden; border-top: 4px solid var(--accent); border-bottom: 1px solid rgba(0,0,0,0.03); border-left: 1px solid rgba(0,0,0,0.03); border-right: 1px solid rgba(0,0,0,0.03); }
+        .veille-box h3 { font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--text-main); }
+        .veille-box p { color: var(--text-light); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .veille-box .objectif { display: inline-block; background-color: rgba(211, 124, 75, 0.1); color: var(--accent); padding: 1rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; margin-top: 1rem;}
 
-        .veille-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .veille-box p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Parcours */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--pride-gradient);
-            border-radius: 4px;
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.45rem;
-            top: 0;
-            width: 18px;
-            height: 18px;
-            background: var(--bg-dark);
-            border: 4px solid #5bcefa;
-            border-radius: 50%;
-        }
-
-        .timeline-date {
-            font-weight: 700;
-            color: #5bcefa;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .timeline-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item p {
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            margin-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        /* Pied de page */
+        footer { background-color: var(--text-main); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 3rem 2rem; font-size: 0.9rem; margin-top: 4rem; }
 
         @media (max-width: 768px) {
-            #hero h1 { font-size: 3rem; }
+            .timeline-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .timeline-content { border-left: none; padding-left: 0; }
+            .veille-box { padding: 2rem; }
             .nav-links { display: none; }
+            nav { justify-content: center; }
         }
     </style>
 </head>
@@ -350,47 +98,43 @@
 
     <header>
         <nav>
-            <div class="logo">Maxence.T</div>
+            <a href="index.html" class="logo">M.Thary</a>
             <div class="nav-links">
-                <a href="#a-propos">À Propos</a>
-                <a href="#realisations">Projets</a>
-                <a href="#veille">Veille Tech</a>
-                <a href="#parcours">Parcours</a>
+                <a href="index.html">Accueil</a>
+                <a href="projets.html">Projets & Activités</a>
+                <a href="stage.html" class="active">Parcours & Veille</a>
             </div>
         </nav>
     </header>
 
-    <section id="hero">
-        <div class="glow-bg"></div>
-        <div class="badge">Vainqueur Académique Hackathon 2024</div>
-        <h1>Futur Expert <br><span>Cybersécurité</span></h1>
-        <p>Étudiant en BTS SIO option SISR. Passionné par la protection des infrastructures, l'administration système et l'analyse des vulnérabilités.</p>
-        <a href="#realisations" class="btn">Découvrir mes projets</a>
-    </section>
+    <section id="parcours">
+        <div class="page-header">
+            <h1>Mon Parcours & Veille</h1>
+            <p>Découvrez mon évolution académique et ma méthodologie de veille technologique.</p>
+        </div>
 
-    <section id="a-propos">
-        <h2>À Propos</h2>
-        <p>Bienvenue sur mon E-Portfolio. Actuellement en formation BTS Services Informatiques aux Organisations (SIO), spécialité Solutions d’Infrastructure, Systèmes et Réseaux (SISR), je me spécialise activement dans le domaine de la cybersécurité. Mon approche est rigoureuse, factuelle et orientée vers l'obtention de résultats concrets pour sécuriser les SI.</p>
-    </section>
-
-    <section id="realisations">
-        <h2>Réalisations Techniques</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>Cisco & Réseaux</h3>
-                <p>Configuration avancée, routage, commutation et sécurisation des équipements réseaux (VLANs, ACLs) en environnement Cisco.</p>
+        <h2>Expériences & Formations</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-content">
+                    <h3>Hackathon National</h3>
+                    <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Virtualisation</h3>
-                <p>Déploiement et administration de serveurs virtuels. Gestion des ressources et de la haute disponibilité.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">En cours</div>
+                <div class="timeline-content">
+                    <h3>BTS SIO option SISR</h3>
+                    <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Admin Système</h3>
-                <p>Mise en place de services (AD, DNS, DHCP) et gestion des politiques de sécurité sur environnements Windows et Linux.</p>
-            </div>
-            <div class="card">
-                <h3>Journal de Stage</h3>
-                <p>Application pratique : résolution d'incidents, maintien en condition opérationnelle et audits de premier niveau.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">Stages</div>
+                <div class="timeline-content">
+                    <h3>Missions en Entreprise / Journal de stage</h3>
+                    <p>Immersion professionnelle : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -400,27 +144,8 @@
         <div class="veille-box">
             <h3>Vulnérabilités & Ransomwares</h3>
             <p>Dans un secteur où la réactivité est primordiale, j'ai mis en place une méthodologie de veille active. J'utilise des flux automatisés via <strong>Inoreader</strong> pour centraliser, trier et analyser en temps réel les informations (CERTs, blogs sécurité, bulletins d'alerte).</p>
-            <p style="color: #f5a9b8; font-weight: 600; margin-top: 1rem;">OBJECTIF : Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.</p>
-        </div>
-    </section>
-
-    <section id="parcours">
-        <h2>Parcours</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2024</div>
-                <h3>Hackathon National</h3>
-                <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">En cours</div>
-                <h3>BTS SIO option SISR</h3>
-                <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Stages</div>
-                <h3>Missions en Entreprise</h3>
-                <p>Immersion professionnelle : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+            <div class="objectif">
+                <i class="fa-solid fa-bullseye"></i> OBJECTIF : Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.
             </div>
         </div>
     </section>
