@@ -3,51 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>Maxence Thary | Portfolio Néo-Brutaliste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0d0914;
-            --bg-card: #181124;
-            --text-main: #fcfcfc;
-            --text-muted: #a39eb5;
-            /* Dégradé Pride classique */
-            --pride-gradient: linear-gradient(90deg, #ff0018, #ffa52c, #ffff41, #008018, #0000f9, #86007d);
-            /* Dégradé pastel / Trans-inclusive pour d'autres accents */
-            --pride-soft: linear-gradient(135deg, #5bcefa, #f5a9b8, #ffffff, #f5a9b8, #5bcefa);
+            --bg-color: #fdfaf6;
+            --black: #111111;
+            --white: #ffffff;
+            --accent-yellow: #fde047;
+            --accent-blue: #93c5fd;
+            --accent-pink: #f9a8d4;
+            --accent-green: #86efac;
+            --border-width: 3px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg-color);
+            color: var(--black);
             line-height: 1.6;
+            padding-top: 80px; /* Espace pour le header fixe */
         }
 
-        /* En-tête / Navigation */
+        /* En-tête / Navigation Brutaliste */
         header {
-            background: rgba(13, 9, 20, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: var(--white);
+            border-bottom: var(--border-width) solid var(--black);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-
-        /* Barre arc-en-ciel en haut du site */
-        header::before {
-            content: '';
-            display: block;
-            height: 4px;
-            width: 100%;
-            background: var(--pride-gradient);
         }
 
         nav {
@@ -60,31 +52,35 @@
         }
 
         .logo {
-            font-weight: 900;
+            font-weight: 700;
             font-size: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            background: var(--pride-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            background-color: var(--accent-yellow);
+            padding: 0.2rem 0.5rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--black);
             font-weight: 600;
             margin-left: 2rem;
-            transition: color 0.3s ease;
+            padding: 0.3rem 0;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: #f5a9b8;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 0.3rem 0.6rem;
+            margin-left: 1.4rem;
         }
 
-        /* Conteneurs */
+        /* Conteneurs et Typographie */
         section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             max-width: 1200px;
             margin: auto;
         }
@@ -92,122 +88,93 @@
         h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            position: relative;
+            text-transform: uppercase;
+            letter-spacing: -1px;
             display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 100%;
-            height: 4px;
-            background: var(--pride-gradient);
-            border-radius: 2px;
+            background-color: var(--accent-yellow);
+            padding: 0.2rem 1rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
         }
 
         /* Hero Section */
         #hero {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            position: relative;
-        }
-
-        /* Décoration d'arrière-plan lumineuse */
-        .glow-bg {
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 400px;
-            height: 400px;
-            background: var(--pride-gradient);
-            filter: blur(120px);
-            opacity: 0.15;
-            border-radius: 50%;
-            z-index: -1;
         }
 
         .badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #5bcefa;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            background-color: var(--accent-pink);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
             margin-bottom: 2rem;
-            backdrop-filter: blur(5px);
+            text-transform: uppercase;
         }
 
         #hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
+            font-size: 5rem;
+            line-height: 1;
             margin-bottom: 1.5rem;
-            font-weight: 900;
+            letter-spacing: -2px;
         }
 
         #hero h1 span {
-            background: var(--pride-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--white);
+            text-shadow: 
+                -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000; /* Outline effect */
         }
 
         #hero p {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
+            font-weight: 600;
+            max-width: 700px;
             margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 5px 5px 0px var(--black);
         }
 
         .btn {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            padding: 1rem 2.5rem;
+            background-color: var(--accent-blue);
+            color: var(--black);
+            padding: 1rem 2rem;
             text-decoration: none;
             font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            transition: all 0.1s ease;
+            display: inline-block;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--pride-gradient);
-            z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
+        .btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px var(--black);
         }
 
-        .btn:hover {
-            color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(255, 165, 44, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .btn:hover::before {
-            opacity: 1;
-        }
-
-        /* À propos */
+        /* A propos */
         #a-propos p {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            background: var(--bg-card);
+            font-weight: 600;
+            background-color: var(--white);
             padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: var(--border-width) solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
         }
 
-        /* Réalisations */
+        /* Réalisations - Grille */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -215,134 +182,108 @@
         }
 
         .card {
-            background: var(--bg-card);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Ligne lumineuse en bas de chaque carte */
-        .card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--pride-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+            background-color: var(--white);
+            padding: 2rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
+            transition: all 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            background: rgba(24, 17, 36, 0.8);
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--black);
         }
 
-        .card:hover::after {
-            transform: scaleX(1);
-        }
+        /* Couleurs alternées pour les cartes */
+        .card:nth-child(1) h3 { background-color: var(--accent-blue); }
+        .card:nth-child(2) h3 { background-color: var(--accent-green); }
+        .card:nth-child(3) h3 { background-color: var(--accent-pink); }
+        .card:nth-child(4) h3 { background-color: var(--accent-yellow); }
 
         .card h3 {
-            font-size: 1.4rem;
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border: 2px solid var(--black);
             margin-bottom: 1rem;
-            color: #f5a9b8;
+            font-size: 1.2rem;
+            text-transform: uppercase;
         }
 
         .card p {
-            color: var(--text-muted);
+            font-weight: 600;
         }
 
         /* Veille Tech */
         .veille-box {
-            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(24,17,36,0) 100%);
+            background-color: var(--accent-green);
             padding: 3rem;
-            border-radius: 16px;
-            border-top: 2px solid transparent;
-            border-image: var(--pride-gradient);
-            border-image-slice: 1;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 10px 10px 0px var(--black);
         }
 
         .veille-box h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: var(--text-main);
+            background-color: var(--white);
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border: 2px solid var(--black);
         }
 
         .veille-box p {
-            color: var(--text-muted);
+            font-weight: 600;
             font-size: 1.1rem;
             margin-bottom: 1rem;
         }
 
         /* Parcours */
         .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--pride-gradient);
-            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.45rem;
-            top: 0;
-            width: 18px;
-            height: 18px;
-            background: var(--bg-dark);
-            border: 4px solid #5bcefa;
-            border-radius: 50%;
+            display: flex;
+            gap: 2rem;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            align-items: center;
         }
 
         .timeline-date {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1rem;
             font-weight: 700;
-            color: #5bcefa;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .timeline-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item p {
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
+            font-size: 1.2rem;
+            min-width: 120px;
             text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            margin-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-weight: 600;
+            border-top: var(--border-width) solid var(--black);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             #hero h1 { font-size: 3rem; }
             .nav-links { display: none; }
+            .timeline-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .timeline-date { min-width: auto; }
         }
     </style>
 </head>
@@ -350,10 +291,10 @@
 
     <header>
         <nav>
-            <div class="logo">Maxence.T</div>
+            <div class="logo">M.Thary</div>
             <div class="nav-links">
                 <a href="#a-propos">À Propos</a>
-                <a href="#realisations">Projets</a>
+                <a href="#realisations">Réalisations</a>
                 <a href="#veille">Veille Tech</a>
                 <a href="#parcours">Parcours</a>
             </div>
@@ -361,7 +302,6 @@
     </header>
 
     <section id="hero">
-        <div class="glow-bg"></div>
         <div class="badge">Vainqueur Académique Hackathon 2024</div>
         <h1>Futur Expert <br><span>Cybersécurité</span></h1>
         <p>Étudiant en BTS SIO option SISR. Passionné par la protection des infrastructures, l'administration système et l'analyse des vulnérabilités.</p>
@@ -400,7 +340,7 @@
         <div class="veille-box">
             <h3>Vulnérabilités & Ransomwares</h3>
             <p>Dans un secteur où la réactivité est primordiale, j'ai mis en place une méthodologie de veille active. J'utilise des flux automatisés via <strong>Inoreader</strong> pour centraliser, trier et analyser en temps réel les informations (CERTs, blogs sécurité, bulletins d'alerte).</p>
-            <p style="color: #f5a9b8; font-weight: 600; margin-top: 1rem;">OBJECTIF : Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.</p>
+            <p><strong>OBJECTIF :</strong> Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.</p>
         </div>
     </section>
 
@@ -409,18 +349,24 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">2024</div>
-                <h3>Hackathon National</h3>
-                <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
+                <div class="timeline-content">
+                    <h3>Hackathon National</h3>
+                    <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
+                </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">En cours</div>
-                <h3>BTS SIO option SISR</h3>
-                <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
+                <div class="timeline-content">
+                    <h3>BTS SIO option SISR</h3>
+                    <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
+                </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">Stages</div>
-                <h3>Missions en Entreprise</h3>
-                <p>Immersion professionnelle : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+                <div class="timeline-content">
+                    <h3>Missions en Entreprise</h3>
+                    <p>Immersion professionnelle : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+                </div>
             </div>
         </div>
     </section>
