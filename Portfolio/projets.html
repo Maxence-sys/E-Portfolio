@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projets & Activités Techniques | Maxence Thary</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            /* Palette Cuivre épurée */
             --bg-color: #faf8f5; 
             --text-main: #2c3e50; 
             --text-light: #596a7a;
-            --accent: #d37c4b; /* Cuivre chaleureux */
+            --accent: #d37c4b;
             --accent-hover: #b8693b;
             --white: #ffffff;
             --radius: 12px;
@@ -23,207 +20,75 @@
             --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            padding-top: 100px; /* Espace pour le header */
+            padding-top: 100px;
         }
 
-        h1, h2, h3, .logo {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-        }
+        h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; color: var(--text-main); }
 
-        /* En-tête / Navigation Épurée */
+        /* En-tête / Navigation Multipage */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
             box-shadow: var(--shadow-sm);
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            max-width: 1200px;
-            margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 5%; max-width: 1200px; margin: auto;
         }
 
-        .nav-back a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
+        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; }
+
+        .nav-links a {
+            text-decoration: none; color: var(--text-light); font-weight: 500;
+            margin-left: 2.5rem; font-size: 0.95rem; transition: var(--transition);
         }
 
-        .nav-back a:hover {
-            color: var(--accent);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
         /* Conteneur Principal */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 5%; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center; }
+        .subtitle { text-align: center; color: var(--text-light); margin-bottom: 3rem; }
 
         /* Section Document (CV) spéciale */
-        .cv-section {
-            background: linear-gradient(135deg, var(--white), #fdfbf9);
-            border: 2px dashed rgba(211, 124, 75, 0.3);
-            border-radius: var(--radius);
-            padding: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .cv-section:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .cv-section i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
+        .cv-section { background: linear-gradient(135deg, var(--white), #fdfbf9); border: 2px dashed rgba(211, 124, 75, 0.3); border-radius: var(--radius); padding: 2rem; margin-bottom: 3rem; text-align: center; transition: var(--transition); }
+        .cv-section:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+        .cv-section i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
 
         /* Boîtes de catégories */
-        .section-box {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
-        }
-
-        .section-box:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .section-box h2 {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-box h2 i {
-            color: var(--accent);
-        }
+        .section-box { background: var(--white); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03); transition: var(--transition); }
+        .section-box:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .section-box h2 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .section-box h2 i { color: var(--accent); }
 
         /* Liste des fichiers */
-        .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.2rem;
-            background: var(--bg-color);
-            border-radius: 8px;
-            margin-bottom: 0.8rem;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .file-item:hover {
-            background: var(--white);
-            border-color: rgba(211, 124, 75, 0.2);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        .file-info i {
-            color: #e74c3c; /* Rouge classique pour l'icône PDF */
-            font-size: 1.2rem;
-        }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.2rem; background: var(--bg-color); border-radius: 8px; margin-bottom: 0.8rem; transition: var(--transition); border: 1px solid transparent; }
+        .file-item:hover { background: var(--white); border-color: rgba(211, 124, 75, 0.2); box-shadow: var(--shadow-sm); }
+        .file-info { display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--text-main); }
+        .file-info i { color: #e74c3c; font-size: 1.2rem; }
 
         /* Boutons */
-        .btn-view {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
+        .btn-view { background-color: var(--accent); color: var(--white); padding: 0.5rem 1.2rem; border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
+        .btn-view:hover { background-color: var(--accent-hover); box-shadow: 0 4px 12px rgba(211, 124, 75, 0.25); transform: translateY(-1px); }
+        .btn-cv { display: inline-block; background-color: var(--accent); color: var(--white); padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: var(--transition); }
+        .btn-cv:hover { background-color: var(--accent-hover); box-shadow: 0 6px 15px rgba(211, 124, 75, 0.25); transform: translateY(-2px); }
 
-        .btn-view:hover {
-            background-color: var(--accent-hover);
-            box-shadow: 0 4px 12px rgba(211, 124, 75, 0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn-cv {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: var(--transition);
-        }
-
-        .btn-cv:hover {
-            background-color: var(--accent-hover);
-            box-shadow: 0 6px 15px rgba(211, 124, 75, 0.25);
-            transform: translateY(-2px);
-        }
+        footer { background-color: var(--text-main); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 3rem 2rem; font-size: 0.9rem; margin-top: 4rem;}
 
         @media (max-width: 768px) {
-            .file-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .btn-view {
-                align-self: flex-start;
-            }
+            .file-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .btn-view { align-self: flex-start; }
+            .nav-links { display: none; }
+            nav { justify-content: center; }
         }
     </style>
 </head>
@@ -231,8 +96,11 @@
 
     <header>
         <nav>
-            <div class="nav-back">
-                <a href="index.html"><i class="fas fa-arrow-left"></i> Retour au Portfolio</a>
+            <a href="index.html" class="logo">M.Thary</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="projets.html" class="active">Projets & Activités</a>
+                <a href="stage.html">Parcours & Veille</a>
             </div>
         </nav>
     </header>
@@ -250,7 +118,6 @@
 
         <div class="section-box">
             <h2><i class="fa-solid fa-shield-halved"></i> Cybersécurité & Infrastructure</h2>
-            
             <div class="file-item">
                 <div class="file-info"><i class="fa-solid fa-file-pdf"></i> Mise en œuvre UTM (pfSense, Snort)</div>
                 <a href="activite/LAB3-B3-UTM.pdf" class="btn-view" target="_blank">Consulter</a>
@@ -275,7 +142,6 @@
 
         <div class="section-box">
             <h2><i class="fa-solid fa-server"></i> Systèmes & Scripting</h2>
-            
             <div class="file-item">
                 <div class="file-info"><i class="fa-solid fa-file-pdf"></i> Administration Windows Server 2022</div>
                 <a href="activite/SISR-LABO-WINDOWS.pdf" class="btn-view" target="_blank">Consulter</a>
@@ -300,7 +166,6 @@
 
         <div class="section-box">
             <h2><i class="fa-solid fa-network-wired"></i> Réseaux & Labs Cisco</h2>
-            
             <div class="file-item">
                 <div class="file-info"><i class="fa-solid fa-file-pdf"></i> Configuration basique Switch (Packet Tracer)</div>
                 <a href="activite/Maxence THARY - 01.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" class="btn-view" target="_blank">Consulter</a>
@@ -323,6 +188,10 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Maxence Thary. Tous droits réservés.</p>
+    </footer>
 
 </body>
 </html>
