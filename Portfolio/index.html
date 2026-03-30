@@ -3,50 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Portfolio Néo-Brutaliste</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Maxence Thary | Expert Cybersécurité</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdfaf6;
-            --black: #111111;
+            /* Palette épurée et chaleureuse */
+            --bg-color: #faf8f5; 
+            --text-main: #2c3e50; 
+            --text-light: #596a7a;
+            --accent: #d37c4b; /* Cuivre chaleureux */
+            --accent-hover: #b8693b;
             --white: #ffffff;
-            --accent-yellow: #fde047;
-            --accent-blue: #93c5fd;
-            --accent-pink: #f9a8d4;
-            --accent-green: #86efac;
-            --border-width: 3px;
+            --radius: 12px;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--black);
-            line-height: 1.6;
-            padding-top: 80px; /* Espace pour le header fixe */
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            padding-top: 90px;
         }
 
-        /* En-tête / Navigation Brutaliste */
+        h1, h2, h3, .logo {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* En-tête / Navigation Épurée */
         header {
-            background-color: var(--white);
-            border-bottom: var(--border-width) solid var(--black);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: var(--shadow-sm);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 1.2rem 5%;
             max-width: 1200px;
             margin: auto;
         }
@@ -54,236 +63,244 @@
         .logo {
             font-weight: 700;
             font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            background-color: var(--accent-yellow);
-            padding: 0.2rem 0.5rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 3px 3px 0px var(--black);
+            letter-spacing: -0.5px;
+            color: var(--accent);
+            text-decoration: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--black);
-            font-weight: 600;
-            margin-left: 2rem;
-            padding: 0.3rem 0;
-            position: relative;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-left: 2.5rem;
+            font-size: 0.95rem;
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 0.3rem 0.6rem;
-            margin-left: 1.4rem;
+            color: var(--accent);
         }
 
-        /* Conteneurs et Typographie */
+        /* Conteneurs */
         section {
-            padding: 5rem 5%;
+            padding: 6rem 5%;
             max-width: 1200px;
             margin: auto;
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            display: inline-block;
-            background-color: var(--accent-yellow);
-            padding: 0.2rem 1rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 4px 4px 0px var(--black);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
         }
 
         /* Hero Section */
         #hero {
-            min-height: 80vh;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
         }
 
         .badge {
-            background-color: var(--accent-pink);
-            color: var(--black);
-            padding: 0.5rem 1rem;
-            font-weight: 700;
-            font-size: 1rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 4px 4px 0px var(--black);
+            background-color: rgba(211, 124, 75, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 2rem;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         #hero h1 {
-            font-size: 5rem;
-            line-height: 1;
+            font-size: 4rem;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
+            font-weight: 700;
         }
 
         #hero h1 span {
-            color: var(--white);
-            text-shadow: 
-                -2px -2px 0 #000,  
-                 2px -2px 0 #000,
-                -2px  2px 0 #000,
-                 2px  2px 0 #000; /* Outline effect */
+            color: var(--accent);
         }
 
         #hero p {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-light);
             max-width: 700px;
             margin-bottom: 3rem;
-            background-color: var(--white);
-            padding: 1.5rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 5px 5px 0px var(--black);
         }
 
         .btn {
-            background-color: var(--accent-blue);
-            color: var(--black);
-            padding: 1rem 2rem;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
-            transition: all 0.1s ease;
-            display: inline-block;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
         }
 
-        .btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 2px 2px 0px var(--black);
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(211, 124, 75, 0.2);
         }
 
         /* A propos */
         #a-propos p {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-light);
             background-color: var(--white);
-            padding: 2rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 8px 8px 0px var(--black);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         /* Réalisations - Grille */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
         .card {
             background-color: var(--white);
-            padding: 2rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 8px 8px 0px var(--black);
-            transition: all 0.2s ease;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px var(--black);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Couleurs alternées pour les cartes */
-        .card:nth-child(1) h3 { background-color: var(--accent-blue); }
-        .card:nth-child(2) h3 { background-color: var(--accent-green); }
-        .card:nth-child(3) h3 { background-color: var(--accent-pink); }
-        .card:nth-child(4) h3 { background-color: var(--accent-yellow); }
-
         .card h3 {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border: 2px solid var(--black);
+            font-size: 1.3rem;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
-            text-transform: uppercase;
+            color: var(--text-main);
         }
 
         .card p {
-            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         /* Veille Tech */
         .veille-box {
-            background-color: var(--accent-green);
-            padding: 3rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 10px 10px 0px var(--black);
+            background-color: var(--white);
+            padding: 4rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--accent);
         }
 
         .veille-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            background-color: var(--white);
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            border: 2px solid var(--black);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
         }
 
         .veille-box p {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .veille-box strong {
+            color: var(--text-main);
         }
 
         /* Parcours */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .timeline-item {
             display: flex;
-            gap: 2rem;
             background-color: var(--white);
-            padding: 1.5rem;
-            border: var(--border-width) solid var(--black);
-            box-shadow: 6px 6px 0px var(--black);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             align-items: center;
         }
 
+        .timeline-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
         .timeline-date {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 1rem;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             min-width: 120px;
-            text-align: center;
+        }
+
+        .timeline-content {
+            border-left: 1px solid rgba(0,0,0,0.08);
+            padding-left: 2rem;
         }
 
         .timeline-content h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         /* Pied de page */
         footer {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--text-main);
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
-            padding: 2rem;
-            font-weight: 600;
-            border-top: var(--border-width) solid var(--black);
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            #hero h1 { font-size: 3rem; }
+            #hero h1 { font-size: 2.8rem; }
             .nav-links { display: none; }
+            nav { justify-content: center; }
             .timeline-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .timeline-date { min-width: auto; }
+            .timeline-content { border-left: none; padding-left: 0; }
+            .veille-box { padding: 2rem; }
         }
     </style>
 </head>
@@ -291,7 +308,7 @@
 
     <header>
         <nav>
-            <div class="logo">M.Thary</div>
+            <a href="#" class="logo">M.Thary</a>
             <div class="nav-links">
                 <a href="#a-propos">À Propos</a>
                 <a href="#realisations">Réalisations</a>
@@ -310,7 +327,7 @@
 
     <section id="a-propos">
         <h2>À Propos</h2>
-        <p>Bienvenue sur mon E-Portfolio. Actuellement en formation BTS Services Informatiques aux Organisations (SIO), spécialité Solutions d’Infrastructure, Systèmes et Réseaux (SISR), je me spécialise activement dans le domaine de la cybersécurité. Mon approche est rigoureuse, factuelle et orientée vers l'obtention de résultats concrets pour sécuriser les SI.</p>
+        <p>Bienvenue sur mon E-Portfolio. Actuellement en formation BTS Services Informatiques aux Organisations (SIO), spécialité Solutions d’Infrastructure, Systèmes et Réseaux (SISR), je me spécialise activement dans le domaine de la cybersécurité. Mon approche est rigoureuse, factuelle et orientée vers l'obtention de résultats concrets pour sécuriser les systèmes d'information.</p>
     </section>
 
     <section id="realisations">
