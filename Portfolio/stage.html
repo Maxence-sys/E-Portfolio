@@ -8,94 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #faf8f5; 
-            --text-main: #2c3e50; 
-            --text-light: #596a7a;
-            --accent: #d37c4b; /* Cuivre chaleureux */
-            --accent-hover: #b8693b;
-            --white: #ffffff;
-            --radius: 12px;
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s ease;
+            --bg-color: #faf8f5; --text-main: #2c3e50; --text-light: #596a7a;
+            --accent: #d37c4b; --white: #ffffff; --radius: 12px;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.03); --transition: all 0.3s ease;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            padding-top: 100px;
-        }
-
-        h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; color: var(--text-main); }
-
-        /* En-tête / Navigation Multipage */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 5%; max-width: 1200px; margin: auto;
-        }
-
-        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; }
-
-        .nav-links a {
-            text-decoration: none; color: var(--text-light); font-weight: 500;
-            margin-left: 2.5rem; font-size: 0.95rem; transition: var(--transition);
-        }
-
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-        /* Conteneurs de section */
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; padding-top: 100px; }
+        h1, h2, h3, .logo { font-family: 'Outfit', sans-serif; }
+        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; max-width: 1200px; margin: auto; }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--accent); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; margin-left: 2.5rem; font-size: 0.95rem; }
+        .nav-links a.active { color: var(--accent); }
         section { padding: 4rem 5%; max-width: 900px; margin: auto; }
-        
-        .page-header { text-align: center; margin-bottom: 3rem; }
-        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .page-header p { color: var(--text-light); }
-
-        h2 { font-size: 2rem; margin-bottom: 2rem; font-weight: 600; text-align: center; position: relative; }
-        h2::after {
-            content: ''; display: block; width: 50px; height: 3px;
-            background-color: var(--accent); margin: 1rem auto 0; border-radius: 2px;
-        }
-
-        /* Parcours (Timeline) */
-        .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
-        .timeline-item { display: flex; background-color: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: var(--transition); align-items: center; border: 1px solid rgba(0,0,0,0.03); }
-        .timeline-item:hover { box-shadow: var(--shadow-md); transform: translateX(5px); }
-        .timeline-date { color: var(--accent); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.3rem; min-width: 140px; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; position: relative; }
+        h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent); margin: 1rem auto 0; }
+        .timeline-item { display: flex; background-color: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); margin-bottom: 1.5rem; align-items: center; }
+        .timeline-date { color: var(--accent); font-weight: 700; font-size: 1.3rem; min-width: 140px; }
         .timeline-content { border-left: 1px solid rgba(0,0,0,0.08); padding-left: 2rem; }
-        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .timeline-content p { color: var(--text-light); font-size: 0.95rem; }
-
-        /* Veille Tech */
-        .veille-box { background-color: var(--white); padding: 3.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); text-align: center; position: relative; overflow: hidden; border-top: 4px solid var(--accent); border-bottom: 1px solid rgba(0,0,0,0.03); border-left: 1px solid rgba(0,0,0,0.03); border-right: 1px solid rgba(0,0,0,0.03); }
-        .veille-box h3 { font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--text-main); }
-        .veille-box p { color: var(--text-light); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .veille-box .objectif { display: inline-block; background-color: rgba(211, 124, 75, 0.1); color: var(--accent); padding: 1rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; margin-top: 1rem;}
-
-        /* Pied de page */
-        footer { background-color: var(--text-main); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 3rem 2rem; font-size: 0.9rem; margin-top: 4rem; }
-
-        @media (max-width: 768px) {
-            .timeline-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .timeline-content { border-left: none; padding-left: 0; }
-            .veille-box { padding: 2rem; }
-            .nav-links { display: none; }
-            nav { justify-content: center; }
-        }
+        .veille-box { background: var(--white); padding: 3rem; border-radius: var(--radius); border-top: 4px solid var(--accent); text-align: center; }
+        .objectif { background: rgba(211, 124, 75, 0.1); color: var(--accent); padding: 1rem; border-radius: 8px; font-weight: 600; margin-top: 1rem; }
+        footer { background-color: var(--text-main); color: rgba(255, 255, 255, 0.7); text-align: center; padding: 3rem 2rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="index.html" class="logo">M.Thary</a>
@@ -108,32 +44,20 @@
     </header>
 
     <section id="parcours">
-        <div class="page-header">
-            <h1>Mon Parcours & Veille</h1>
-            <p>Découvrez mon évolution académique et ma méthodologie de veille technologique.</p>
-        </div>
-
         <h2>Expériences & Formations</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-date">2024</div>
+                <div class="timeline-date">2026</div>
                 <div class="timeline-content">
                     <h3>Hackathon National</h3>
-                    <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
+                    <p><strong>1er de l'académie de Créteil et 7ème au niveau national.</strong> Résolution de scénarios complexes en sécurité réseau et forensic.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">En cours</div>
                 <div class="timeline-content">
                     <h3>BTS SIO option SISR</h3>
-                    <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Stages</div>
-                <div class="timeline-content">
-                    <h3>Missions en Entreprise / Journal de stage</h3>
-                    <p>Immersion professionnelle : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+                    <p>Formation en infrastructure, systèmes et réseaux. Spécialisation cybersécurité.</p>
                 </div>
             </div>
         </div>
@@ -143,16 +67,11 @@
         <h2>Veille Technologique</h2>
         <div class="veille-box">
             <h3>Vulnérabilités & Ransomwares</h3>
-            <p>Dans un secteur où la réactivité est primordiale, j'ai mis en place une méthodologie de veille active. J'utilise des flux automatisés via <strong>Inoreader</strong> pour centraliser, trier et analyser en temps réel les informations (CERTs, blogs sécurité, bulletins d'alerte).</p>
-            <div class="objectif">
-                <i class="fa-solid fa-bullseye"></i> OBJECTIF : Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.
-            </div>
+            <p>Utilisation de flux automatisés via <strong>Inoreader</strong> pour l'analyse en temps réel des CERTs et bulletins d'alerte CVE.</p>
+            <div class="objectif">Anticiper les menaces et comprendre les modes opératoires des nouveaux ransomwares.</div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Maxence Thary. Tous droits réservés.</p>
-    </footer>
-
+    <footer><p>&copy; 2026 Maxence Thary. Tous droits réservés.</p></footer>
 </body>
 </html>
