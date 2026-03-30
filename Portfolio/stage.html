@@ -3,27 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage : Relief Application | Maxence Thary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>maxence_thary_portfolio.sh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--light); margin: 0; padding-top: 120px; text-align: center; }
-        .nav-back { position: fixed; top: 0; width: 100%; background: var(--dark); padding: 20px 5%; z-index: 100; text-align: left; }
-        .nav-back a { color: white; text-decoration: none; font-weight: 600; }
-        .box { max-width: 700px; margin: 0 auto; padding: 60px; background: white; border-radius: 20px; border: 2px dashed #cbd5e1; }
-        i { font-size: 5rem; color: #cbd5e1; margin-bottom: 20px; }
+        :root {
+            --bg-main: #0d1117; /* Fond type GitHub Dark */
+            --bg-panel: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --keyword-blue: #58a6ff;
+            --string-green: #3fb950;
+            --alert-orange: #f2cc60;
+            --accent-purple: #bc8cff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fira Code', monospace;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 5%;
+        }
+
+        /* Effet "Fenêtre de Terminal" pour le header */
+        header {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px 8px 0 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--keyword-blue);
+        }
+
+        /* Conteneur principal façon éditeur */
+        main {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .prompt {
+            color: var(--string-green);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--keyword-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h2::before {
+            content: "~/ ";
+            color: var(--accent-purple);
+        }
+
+        /* Hero Section */
+        #hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .function-name {
+            color: var(--alert-orange);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(242, 204, 96, 0.1);
+            color: var(--alert-orange);
+            border: 1px solid var(--alert-orange);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            color: var(--string-green);
+            border: 1px solid var(--string-green);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: rgba(63, 185, 80, 0.1);
+            box-shadow: 0 0 10px rgba(63, 185, 80, 0.2);
+        }
+
+        /* Cartes Réalisations */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--keyword-blue);
+        }
+
+        .card h3 {
+            color: var(--keyword-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3::before {
+            content: "./";
+            color: var(--text-main);
+        }
+
+        /* Veille Technologique */
+        .terminal-block {
+            background-color: #010409;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .terminal-block::before {
+            content: "inoreader.log";
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: var(--bg-main);
+            padding: 0 10px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+
+        /* Parcours */
+        .log-entry {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .timestamp {
+            color: var(--string-green);
+            min-width: 80px;
+        }
+
+        .log-content h3 {
+            color: var(--accent-purple);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8b949e;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            main { padding: 1.5rem; }
+            .log-entry { flex-direction: column; gap: 0.5rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="nav-back"><a href="index.html"><i class="fas fa-arrow-left"></i> Retour au Portfolio</a></div>
-    <div class="container">
-        <h1>Relief Application</h1>
-        <div class="box">
-            <i class="fas fa-business-time"></i>
-            <h3>Documents en cours de préparation</h3>
-            <p>Mon stage chez <strong>Relief Application</strong> est actuellement en cours. Les rapports de mission et livrables techniques seront ajoutés dès validation.</p>
+
+    <header>
+        <div class="window-controls">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
         </div>
-    </div>
+        <div style="color: #8b949e; font-size: 0.9rem;">maxence@portfolio:~</div>
+        <nav class="nav-links">
+            <a href="#a-propos">cat profil.txt</a>
+            <a href="#realisations">ls -l projets/</a>
+            <a href="#veille">tail -f veille.log</a>
+            <a href="#parcours">history</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="badge">Vainqueur Académique Hackathon 2024</div>
+            <h1><span class="prompt">root@maxence:~#</span> <span class="function-name">Futur_Expert</span><br>&nbsp;&nbsp;&nbsp;--role="Cybersécurité"</h1>
+            <p>Étudiant en BTS SIO option SISR. Passionné par la protection des infrastructures, l'administration système et l'analyse des vulnérabilités.</p>
+            <a href="#realisations" class="btn">./execute_portfolio.sh</a>
+        </section>
+
+        <section id="a-propos">
+            <h2>a_propos</h2>
+            <p><span class="prompt">></span> Bienvenue sur mon E-Portfolio.</p>
+            <p><span class="prompt">></span> Actuellement en formation BTS Services Informatiques aux Organisations (SIO), spécialité Solutions d’Infrastructure, Systèmes et Réseaux (SISR), je me spécialise activement dans le domaine de la cybersécurité. Mon approche est rigoureuse, factuelle et orientée vers l'obtention de résultats concrets pour sécuriser les SI.</p>
+        </section>
+
+        <section id="realisations">
+            <h2>realisations_techniques</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Cisco_Networks</h3>
+                    <p>Configuration avancée, routage, commutation et sécurisation des équipements réseaux (VLANs, ACLs) en environnement Cisco.</p>
+                </div>
+                <div class="card">
+                    <h3>Virtualisation_Env</h3>
+                    <p>Déploiement et administration de serveurs virtuels. Gestion des ressources et de la haute disponibilité.</p>
+                </div>
+                <div class="card">
+                    <h3>Sys_Admin</h3>
+                    <p>Mise en place de services (AD, DNS, DHCP) et gestion des politiques de sécurité sur environnements Windows et Linux.</p>
+                </div>
+                <div class="card">
+                    <h3>Journal_de_Stage</h3>
+                    <p>Application pratique : résolution d'incidents, maintien en condition opérationnelle et audits de premier niveau.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="veille">
+            <h2>veille_technologique</h2>
+            <div class="terminal-block">
+                <p><span style="color: var(--keyword-blue);">[INFO]</span> Démarrage du daemon de surveillance...</p>
+                <p><span style="color: var(--keyword-blue);">[INFO]</span> Sujet : Vulnérabilités & Ransomwares</p>
+                <br>
+                <p>Dans un secteur où la réactivité est primordiale, j'ai mis en place une méthodologie de veille active. J'utilise des flux automatisés via <span class="alert-orange">Inoreader</span> pour centraliser, trier et analyser en temps réel les informations (CERTs, blogs sécurité, bulletins d'alerte).</p>
+                <br>
+                <p><span style="color: var(--string-green);">[TARGET]</span> Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication.</p>
+            </div>
+        </section>
+
+        <section id="parcours">
+            <h2>history --parcours</h2>
+            <div class="log-entry">
+                <div class="timestamp">[ 2024 ]</div>
+                <div class="log-content">
+                    <h3>Hackathon National</h3>
+                    <p>Première place académique. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
+                </div>
+            </div>
+            <div class="log-entry">
+                <div class="timestamp">[ CURRENT ]</div>
+                <div class="log-content">
+                    <h3>BTS SIO option SISR</h3>
+                    <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
+                </div>
+            </div>
+            <div class="log-entry">
+                <div class="timestamp">[ STAGES ]</div>
+                <div class="log-content">
+                    <h3>Missions en Entreprise</h3>
+                    <p>Immersion pro : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>/* &copy; 2024 Maxence Thary - System End of File */</p>
+    </footer>
+
 </body>
 </html>
