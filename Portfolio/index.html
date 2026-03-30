@@ -3,139 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxence Thary | Portfolio Cybersécurité</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Maxence Thary | E-Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; --accent: #0ea5e9; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--light); color: var(--text); line-height: 1.6; }
-        a { text-decoration: none; transition: 0.3s; }
+        /* Variables globales pour un thème clair et professionnel */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-color: #f8fafc;
+            --white: #ffffff;
+            --accent: #f59e0b;
+        }
 
-        .navbar { background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
-        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--primary); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        .hero { height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%); display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; border-radius: 50px; font-weight: 600; border: 2px solid var(--primary); }
-        .btn:hover { background: transparent; color: white; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-        section { padding: 80px 10%; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); }
+        /* En-tête / Navigation Glassmorphism */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--secondary-color);
+        }
 
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); transition: 0.3s; display: flex; flex-direction: column; }
-        .project-card:hover { transform: translateY(-5px); }
-        .btn-small { margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.9rem; padding-top: 20px; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-        .veille-box { background: #fff; padding: 30px; border-radius: 12px; border-left: 5px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .veille-link { color: var(--primary); font-weight: 600; font-size: 0.9rem; word-break: break-all; }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
 
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; }
-        .timeline-item { padding: 10px 40px 10px 50px; position: relative; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background: white; border: 4px solid var(--primary); border-radius: 50%; top: 25px; z-index: 1; }
-        .content-box { background: white; padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 50px 0; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Conteneur principal */
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        #hero h1 span {
+            color: var(--primary-color);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+
+        /* Grilles pour les cartes */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Veille Technologique */
+        .veille-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        /* Parcours (Timeline simple et propre) */
+        .timeline {
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 2rem;
+            margin-left: 1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.65rem;
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-color);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">MAXENCE THARY</div>
-        <div class="nav-links">
-            <a href="#about">Profil</a>
-            <a href="#projects">Réalisations</a>
-            <a href="#veille">Veille</a>
-            <a href="#experience">Parcours</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Maxence Thary</h1>
-            <h2>Futur <span style="color:var(--accent)">Expert Cybersécurité & Systèmes</span></h2>
-            <p style="margin-bottom: 30px;">Vainqueur Académique Hackathon 2024 | Étudiant BTS SIO SISR</p>
-            <a href="#projects" class="btn">Explorer mon Portfolio</a>
-        </div>
+    <header>
+        <nav>
+            <div class="logo">Maxence Thary</div>
+            <div class="nav-links">
+                <a href="#a-propos">Profil</a>
+                <a href="#realisations">Réalisations</a>
+                <a href="#veille">Veille Tech</a>
+                <a href="#parcours">Parcours</a>
+            </div>
+        </nav>
     </header>
 
-    <section id="about">
-        <h2 class="section-title">À Propos</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p>Étudiant en 2ème année de BTS SIO option SISR, j'ai fini <strong>1er de l'académie de Créteil</strong> au hackathon national. Je me spécialise dans la sécurisation des infrastructures et l'analyse de vulnérabilités.</p>
-        </div>
+    <section id="hero">
+        <div class="badge">🏆 Vainqueur Académique Hackathon 2024</div>
+        <h1>Futur Expert <br><span>Cybersécurité</span></h1>
+        <p>Étudiant en BTS SIO option SISR. Passionné par la protection des infrastructures, l'administration système et l'analyse des vulnérabilités.</p>
+        <a href="#realisations" class="btn">Découvrir mes projets</a>
     </section>
 
-    <section id="projects" style="background-color: white;">
-        <h2 class="section-title">Réalisations</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3><i class="fas fa-graduation-cap"></i> Activités Scolaires</h3>
-                <p>Retrouvez l'ensemble de mes dossiers techniques (Cisco, Virtualisation, Admin Sys) classés par blocs.</p>
-                <a href="projets.html" class="btn-small">Voir les documents <i class="fas fa-arrow-right"></i></a>
+    <section id="a-propos">
+        <h2>À Propos</h2>
+        <p>Bienvenue sur mon E-Portfolio. Actuellement en formation BTS Services Informatiques aux Organisations (SIO), spécialité Solutions d’Infrastructure, Systèmes et Réseaux (SISR), je me spécialise activement dans le domaine de la cybersécurité. Mon approche est rigoureuse, factuelle et orientée vers l'obtention de résultats concrets pour sécuriser les systèmes d'information des entreprises.</p>
+    </section>
+
+    <section id="realisations">
+        <h2>Réalisations Techniques</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Réseaux & Cisco</h3>
+                <p>Configuration avancée, routage, commutation et sécurisation des équipements réseaux (VLANs, ACLs) en environnement Cisco.</p>
             </div>
-            <div class="project-card">
-                <h3><i class="fas fa-briefcase"></i> Expérience Stage</h3>
-                <p>Journal de bord et missions réalisées au sein de l'entreprise <strong>Relief Application</strong>.</p>
-                <a href="stage.html" class="btn-small">Accéder à la page stage <i class="fas fa-arrow-right"></i></a>
+            <div class="card">
+                <h3>Virtualisation</h3>
+                <p>Déploiement et administration de serveurs virtuels. Gestion des ressources et de la haute disponibilité.</p>
             </div>
-            <div class="project-card">
-                <h3><i class="fas fa-rss"></i> Veille Techno</h3>
-                <p>Suivi automatisé des vulnérabilités et actualités via mes flux Inoreader.</p>
-                <a href="#veille" class="btn-small">Consulter la veille <i class="fas fa-arrow-right"></i></a>
+            <div class="card">
+                <h3>Administration Système</h3>
+                <p>Mise en place de services (Active Directory, DNS, DHCP) et gestion des politiques de sécurité sur environnements Windows et Linux.</p>
+            </div>
+            <div class="card">
+                <h3>Journal de Stage</h3>
+                <p>Application pratique de mes compétences en entreprise : résolution d'incidents, maintien en condition opérationnelle et audits de premier niveau.</p>
             </div>
         </div>
     </section>
 
     <section id="veille">
-        <h2 class="section-title">Veille Technologique</h2>
+        <h2>Veille Technologique</h2>
         <div class="veille-box">
-            <h3>Dashboard Inoreader</h3>
-            <p>Ma veille est automatisée via <strong>Inoreader</strong>. Je surveille particulièrement les alertes Google sur les Ransomwares et les failles critiques.</p>
-            <p style="margin-top:20px;"><strong>Mes flux de veille :</strong></p>
-            <ul>
-                <li>Alertes Ransomwares : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F6038114180921382456" target="_blank" class="veille-link">Flux Inoreader #1</a></li>
-                <li>Vulnérabilités Google : <a href="https://www.inoreader.com/feed/https%3A%2F%2Fwww.google.com%2Falerts%2Ffeeds%2F01953410481611099347%2F3171461852122454017" target="_blank" class="veille-link">Flux Inoreader #2</a></li>
-            </ul>
+            <h3>Surveillance des Vulnérabilités & Ransomwares</h3>
+            <p>Dans un secteur où la réactivité est primordiale, j'ai mis en place une méthodologie de veille active. J'utilise des flux automatisés via <strong>Inoreader</strong> pour centraliser, trier et analyser en temps réel les informations provenant des CERTs, des blogs de chercheurs en sécurité et des bulletins d'alerte.</p>
+            <p style="margin-top: 1rem;"><strong>Objectif :</strong> Anticiper les menaces, comprendre le mode opératoire des nouveaux ransomwares et identifier les CVEs critiques dès leur publication pour proposer des solutions de remédiation rapides.</p>
         </div>
     </section>
 
-    <section id="experience" style="background: white;">
-        <h2 class="section-title">Parcours Scolaire</h2>
+    <section id="parcours">
+        <h2>Parcours & Éxpérience</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <div class="content-box">
-                    <span style="color:var(--primary); font-weight:700">2026 (Actuel)</span>
-                    <h3>Stage chez Relief Application</h3>
-                    <p>Immersion professionnelle en administration système et réseaux.</p>
-                </div>
+                <div class="timeline-date">2024</div>
+                <h3>Vainqueur Académique Hackathon</h3>
+                <p>Première place lors du challenge national. Résolution de scénarios complexes alliant sécurité réseau et forensic.</p>
             </div>
             <div class="timeline-item">
-                <div class="content-box">
-                    <span style="color:var(--primary); font-weight:700">2024 - 2026</span>
-                    <h3>BTS SIO SISR</h3>
-                    <span style="font-style:italic">Lycée René Descartes, Champs-sur-Marne</span>
-                </div>
+                <div class="timeline-date">En cours</div>
+                <h3>BTS SIO option SISR</h3>
+                <p>Formation supérieure en infrastructure, systèmes et réseaux. Spécialisation progressive vers l'ingénierie en cybersécurité.</p>
             </div>
             <div class="timeline-item">
-                <div class="content-box">
-                    <span style="color:var(--primary); font-weight:700">2022 - 2024</span>
-                    <h3>Bac Pro Systèmes Numériques - Option ARED</h3>
-                    <span style="font-style:italic">Lycée Louis Lumière, Chelles</span>
-                </div>
+                <div class="timeline-date">Stages Professionnels</div>
+                <h3>Missions en Entreprise</h3>
+                <p>Immersion en milieu professionnel : gestion de parc informatique, assistance utilisateur et renforcement des politiques de sécurité locales.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Maxence Thary | <a href="mailto:thary.maxence@gmail.com" style="color:white">Contact</a></p>
+        <p>&copy; 2024 Maxence Thary - E-Portfolio Professionnel. Tous droits réservés.</p>
     </footer>
 
 </body>
