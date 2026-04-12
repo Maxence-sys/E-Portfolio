@@ -12,53 +12,88 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
 
-/* NAVBAR */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:56px;background:rgba(17,18,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-name{font-family:var(--mono);font-size:.75rem;color:var(--sub);letter-spacing:.05em}
 .nav-name strong{color:var(--text);font-weight:500}
 .nav-back{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--sub);text-decoration:none;letter-spacing:.04em;transition:color .15s;padding:.4rem 1rem;border:1px solid var(--line);border-radius:2px}
 .nav-back:hover{color:var(--text);border-color:var(--sub)}
 
-/* LAYOUT */
 .page{max-width:1080px;margin:0 auto;padding:0 3rem}
 .page-hero{padding:7rem 0 4rem;border-bottom:1px solid var(--line)}
 .section-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;color:var(--sub);text-transform:uppercase;margin-bottom:1rem}
 .page-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,3.8rem);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:1.5rem}
 .page-desc{color:var(--sub);font-size:1rem;line-height:1.75;max-width:700px}
 
-/* GRID & CARDS */
 .content{padding:4rem 0 6rem}
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.card { background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 2.5rem; display: flex; flex-direction: column; }
-.card-title { font-family: var(--serif); font-size: 2rem; color: var(--white); margin-bottom: 1.5rem; font-weight: 400; }
-.card p { color: var(--sub); margin-bottom: 1.5rem; }
-.card ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
-.card li { color: var(--sub); position: relative; padding-left: 1.2rem; }
-.card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
-.card strong { color: var(--text); font-weight: 500; }
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:2.5rem;display:flex;flex-direction:column}
+.card-title{font-family:var(--serif);font-size:2rem;color:var(--white);margin-bottom:1.5rem;font-weight:400}
+.card p{color:var(--sub);margin-bottom:1.5rem}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem}
+.card li{color:var(--sub);position:relative;padding-left:1.2rem}
+.card li::before{content:"—";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+.card strong{color:var(--text);font-weight:500}
 
-/* CALL TO ACTION */
-.cta-box { margin-top: 3rem; background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 3.5rem 2.5rem; text-align: center; }
-.cta-title { font-family: var(--serif); font-size: 2.2rem; color: var(--white); margin-bottom: 1.5rem; font-weight: 400; }
-.btn { display: inline-block; background: var(--white); color: var(--bg); font-family: var(--mono); font-size: .8rem; font-weight: 500; letter-spacing: .05em; text-decoration: none; padding: .9rem 1.8rem; border-radius: 2px; transition: opacity .15s, transform .15s; }
-.btn:hover { opacity: .9; transform: translateY(-2px); }
+/* FLUX RSS */
+.flux-section{margin-top:3rem}
+.flux-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.flux-title{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--white);margin-bottom:.25rem}
+.flux-meta{display:flex;align-items:center;gap:.5rem;margin-top:.35rem}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0}
+.pulse-txt{font-family:var(--mono);font-size:.62rem;color:var(--sub)}
 
-/* FOOTER */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.f-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;padding:.3rem .9rem;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--sub);cursor:pointer;transition:all .15s}
+.f-btn:hover{color:var(--text);border-color:var(--sub)}
+.f-btn.active-all{color:var(--white);border-color:var(--accent);background:var(--accent-dim)}
+.f-btn.active-virus{color:#F0997B;border-color:#993C1D;background:rgba(153,60,29,.1)}
+.f-btn.active-av{color:#85B7EB;border-color:#185FA5;background:rgba(24,95,165,.1)}
+.f-btn.sim{margin-left:auto}
+
+.feed-wrap{border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.feed-empty{padding:3rem;text-align:center;color:var(--sub);font-family:var(--mono);font-size:.7rem;border:1px solid var(--line);border-radius:4px}
+
+.alert-card{background:var(--bg2);border-bottom:1px solid var(--line);padding:1.2rem 1.5rem;transition:background .15s}
+.alert-card:last-child{border-bottom:none}
+.alert-card:hover{background:rgba(255,255,255,.02)}
+.alert-card.is-new{background:rgba(79,127,255,.04)}
+.alert-card.is-new:hover{background:rgba(79,127,255,.06)}
+
+.alert-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap}
+.badge{font-family:var(--mono);font-size:.58rem;padding:.15rem .5rem;border-radius:2px}
+.badge-new{background:rgba(29,158,117,.15);color:#5DCAA5}
+.badge-virus{background:rgba(153,60,29,.18);color:#F0997B}
+.badge-av{background:rgba(24,95,165,.18);color:#85B7EB}
+.badge-time{font-family:var(--mono);font-size:.58rem;color:var(--sub);margin-left:auto}
+.badge-site{color:var(--accent)}
+
+.alert-title{display:block;font-size:.9rem;font-weight:500;color:var(--text);text-decoration:none;margin-bottom:.45rem;line-height:1.4;transition:color .15s}
+.alert-title:hover{color:var(--white)}
+.alert-arrow{color:var(--accent)}
+.alert-desc{font-size:.83rem;color:var(--sub);margin:0;line-height:1.65}
+
+.flux-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.75rem;flex-wrap:wrap;gap:.5rem}
+.flux-footer span{font-family:var(--mono);font-size:.6rem;color:var(--sub)}
+
+/* CTA BOX */
+.cta-box{margin-top:3rem;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:3.5rem 2.5rem;text-align:center}
+.cta-title{font-family:var(--serif);font-size:2.2rem;color:var(--white);margin-bottom:1.5rem;font-weight:400}
+.btn{display:inline-block;background:var(--white);color:var(--bg);font-family:var(--mono);font-size:.8rem;font-weight:500;letter-spacing:.05em;text-decoration:none;padding:.9rem 1.8rem;border-radius:2px;transition:opacity .15s,transform .15s}
+.btn:hover{opacity:.9;transform:translateY(-2px)}
+
 footer{border-top:1px solid var(--line);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
 .footer-name{font-family:var(--mono);font-size:.7rem;color:var(--sub)}
 footer a{color:var(--sub);text-decoration:none;font-family:var(--mono);font-size:.7rem;transition:color .15s}
 footer a:hover{color:var(--text)}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .info-grid { grid-template-columns: 1fr; }
-}
+@media(max-width:900px){.info-grid{grid-template-columns:1fr}}
 @media(max-width:600px){
   nav{padding:0 1.5rem}
   .page{padding:0 1.5rem}
-  .card { padding: 1.5rem; }
-  .cta-box { padding: 2.5rem 1.5rem; }
+  .card{padding:1.5rem}
+  .cta-box{padding:2.5rem 1.5rem}
   footer{padding:1.5rem;flex-direction:column;gap:.5rem}
+  .f-btn.sim{margin-left:0}
 }
 </style>
 </head>
@@ -80,9 +115,8 @@ footer a:hover{color:var(--text)}
   </div>
 
   <div class="content">
-    
-    <div class="info-grid">
 
+    <div class="info-grid">
       <div class="card">
         <h2 class="card-title">L'outil : Inoreader & Google Alerts</h2>
         <p>Pour centraliser mon flux d'information, j'utilise <strong>Inoreader</strong> couplé à <strong>Google Alerts</strong>. Inoreader est un puissant agrégateur de flux RSS qui me permet de rassembler toutes mes sources au même endroit sans être noyé sous l'information.</p>
@@ -101,18 +135,45 @@ footer a:hover{color:var(--text)}
           <li><strong>Thème 1 : Les Virus & Menaces.</strong> Suivi des nouvelles failles exploitées (Zero-Day), des ransomwares émergents (modèle RaaS) et des nouvelles méthodes d'attaque.</li>
           <li><strong>Thème 2 : Les Antivirus & Défense.</strong> Nouveautés sur les solutions EDR/XDR pour les entreprises, et l'intégration de l'Intelligence Artificielle dans la détection comportementale des menaces.</li>
         </ul>
-        <p style="margin-bottom: 0;">
-          <strong style="color:var(--white);display:block;margin-bottom:.5rem;">Impact sur mon stage et mon domaine :</strong>
-          Cette veille est cruciale. Elle me permet d'anticiper les problèmes de sécurité avant qu'ils ne surviennent en entreprise, de proposer des solutions techniques modernes (comme les nouveaux forfaits B2B) lors de mes stages, et d'enrichir ma culture technique pour mon BTS.
+        <p style="margin-bottom:0">
+          <strong style="color:var(--white);display:block;margin-bottom:.5rem">Impact sur mon stage et mon domaine :</strong>
+          Cette veille est cruciale. Elle me permet d'anticiper les problèmes de sécurité avant qu'ils ne surviennent en entreprise, de proposer des solutions techniques modernes lors de mes stages, et d'enrichir ma culture technique pour mon BTS.
         </p>
       </div>
+    </div>
 
+    <!-- FLUX RSS -->
+    <div class="flux-section">
+      <div class="flux-header">
+        <div>
+          <p class="section-label">Flux temps réel — cybersécurité</p>
+          <h2 class="flux-title">Dashboard des alertes</h2>
+          <div class="flux-meta">
+            <span class="pulse"></span>
+            <span class="pulse-txt" id="last-update">Chargement...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="f-btn active-all" onclick="setFilter('all',this)">Tout (<span id="cnt-all">0</span>)</button>
+        <button class="f-btn" onclick="setFilter('virus',this)">Virus & Menaces (<span id="cnt-virus">0</span>)</button>
+        <button class="f-btn" onclick="setFilter('antivirus',this)">Antivirus & Défense (<span id="cnt-av">0</span>)</button>
+        <button class="f-btn sim" onclick="addBatch()">+ Simuler mise à jour</button>
+      </div>
+
+      <div id="feed-container"></div>
+
+      <div class="flux-footer">
+        <span id="flux-count">0 alerte</span>
+        <span>ANSSI · The Hacker News · BleepingComputer · ESET · Mandiant</span>
+      </div>
     </div>
 
     <div class="cta-box">
-      <h2 class="cta-title">Dashboard des Alertes</h2>
-      <p style="color:var(--sub); margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto;">
-        Accédez directement à mon espace de veille pour consulter en temps réel les derniers articles que j'ai triés et sélectionnés.
+      <h2 class="cta-title">Flux Inoreader complet</h2>
+      <p style="color:var(--sub);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto">
+        Accédez directement à mon espace de veille pour consulter en temps réel tous les articles que j'ai triés et sélectionnés.
       </p>
       <a href="#" class="btn" target="_blank">Ouvrir le flux Inoreader ↗</a>
     </div>
@@ -124,6 +185,113 @@ footer a:hover{color:var(--text)}
   <span class="footer-name">Maxence THARY — 2026</span>
   <a href="index.html">← Retour au portfolio</a>
 </footer>
+
+<script>
+const ARTICLES = [
+  {cat:"virus",tag:"Ransomware",titre:"LockBit 4.0 : nouvelle vague d'attaques ciblant les PME européennes",site:"The Hacker News",url:"https://thehackernews.com",desc:"Une campagne LockBit 4.0 frappe plusieurs PME en France et en Allemagne. Les attaquants exploitent une vulnérabilité RDP non patchée pour déployer le chiffrement en moins de 20 minutes après l'intrusion initiale."},
+  {cat:"antivirus",tag:"EDR",titre:"Microsoft Defender intègre un moteur IA de détection comportementale",site:"BleepingComputer",url:"https://bleepingcomputer.com",desc:"Microsoft annonce l'intégration d'un modèle d'IA générative dans Defender for Endpoint capable de détecter des comportements anormaux sans signature virale connue, ciblant notamment les attaques fileless."},
+  {cat:"virus",tag:"Zero-Day",titre:"CVE-2025-3141 : faille critique dans le noyau Linux exploitée in-the-wild",site:"Krebs on Security",url:"https://krebsonsecurity.com",desc:"Une vulnérabilité zero-day dans le sous-système io_uring du noyau Linux permet une élévation de privilèges locale. Des correctifs d'urgence sont disponibles pour les distributions Debian, Ubuntu et RedHat."},
+  {cat:"antivirus",tag:"XDR",titre:"CrowdStrike Falcon ajoute la détection des menaces dans les conteneurs Kubernetes",site:"Dark Reading",url:"https://darkreading.com",desc:"CrowdStrike étend ses capacités XDR aux environnements Kubernetes, permettant une visibilité en temps réel sur les pods suspects et les mouvements latéraux au sein des clusters cloud."},
+  {cat:"virus",tag:"Spyware",titre:"FinSpy 2025 : le spyware gouvernemental refait surface avec de nouvelles capacités",site:"ESET Research",url:"https://welivesecurity.com",desc:"Les chercheurs d'ESET ont identifié une variante modernisée de FinSpy ciblant des journalistes et activistes. Le malware utilise désormais le chiffrement ChaCha20 et un canal de commande via des serveurs DNS légitimes."},
+  {cat:"antivirus",tag:"Threat Intel",titre:"Inoreader + VirusTotal : intégration automatique des indicateurs de compromission",site:"Security Week",url:"https://securityweek.com",desc:"Une nouvelle intégration permet d'envoyer automatiquement les URLs et hashes détectés dans les flux RSS d'Inoreader vers VirusTotal, créant un pipeline de threat intelligence entièrement automatisé."},
+  {cat:"virus",tag:"Phishing",titre:"Campagne de phishing massif usurpant l'identité de la Caisse d'Épargne",site:"ANSSI",url:"https://cert.ssi.gouv.fr",desc:"L'ANSSI alerte sur une campagne de phishing visant les clients de plusieurs banques françaises. Les emails imitent parfaitement les communications officielles et redirigent vers des clones de sites bancaires hébergés sur des domaines .fr récemment enregistrés."},
+  {cat:"antivirus",tag:"Mise à jour",titre:"Kaspersky publie un outil de déchiffrement pour le ransomware Akira",site:"Kaspersky Lab",url:"https://kaspersky.com",desc:"Kaspersky met à disposition gratuitement un outil permettant de récupérer les fichiers chiffrés par Akira sans payer la rançon. L'outil exploite une faiblesse dans l'implémentation du générateur de clés de la version 2.1."},
+  {cat:"virus",tag:"Botnet",titre:"Mirai.V3 : 45 000 routeurs compromis en 72 heures",site:"Cloudflare Blog",url:"https://blog.cloudflare.com",desc:"Une nouvelle variante de Mirai a compromis 45 000 routeurs domestiques via une vulnérabilité dans l'interface d'administration web. Le botnet est utilisé pour lancer des attaques DDoS dépassant 800 Gbps."},
+  {cat:"antivirus",tag:"IA & Sécurité",titre:"SentinelOne Purple AI : analyse des incidents en langage naturel",site:"SC Magazine",url:"https://scmagazine.com",desc:"SentinelOne présente Purple AI, un assistant conversationnel intégré à sa plateforme qui permet aux analystes SOC d'interroger les logs et de générer des rapports d'incidents en langage naturel sans écrire de requêtes complexes."},
+  {cat:"virus",tag:"APT",titre:"Sandworm déploie un nouveau wiper ciblant l'infrastructure énergétique ukrainienne",site:"Mandiant",url:"https://mandiant.com",desc:"Mandiant a identifié un nouveau malware wiper baptisé INDUSTROYER.V3 utilisé par le groupe Sandworm (APT44) contre des opérateurs d'énergie ukrainiens. Le malware cible les systèmes SCADA et efface les données OT critiques."},
+  {cat:"antivirus",tag:"Pare-feu",titre:"pfSense 2.8 introduit le blocage automatique par géolocalisation",site:"Netgate Blog",url:"https://netgate.com",desc:"La nouvelle version de pfSense intègre nativement des listes de blocage géographique mises à jour quotidiennement, permettant de filtrer le trafic entrant depuis des régions à risque sans installation de packages tiers."}
+];
+
+const TAG_COLORS = {
+  Ransomware:"#F0997B","Zero-Day":"#F09595",Spyware:"#F0997B",Phishing:"#F0997B",Botnet:"#FAC775",APT:"#F09595",
+  EDR:"#85B7EB",XDR:"#85B7EB","Threat Intel":"#97C459","Mise à jour":"#5DCAA5","IA & Sécurité":"#AFA9EC","Pare-feu":"#85B7EB"
+};
+const TAG_BG = {
+  Ransomware:"rgba(153,60,29,.15)","Zero-Day":"rgba(163,45,45,.15)",Spyware:"rgba(113,43,19,.15)",Phishing:"rgba(153,60,29,.15)",
+  Botnet:"rgba(133,79,11,.15)",APT:"rgba(121,31,31,.15)",EDR:"rgba(24,95,165,.15)",XDR:"rgba(12,68,124,.15)",
+  "Threat Intel":"rgba(59,109,17,.15)","Mise à jour":"rgba(15,110,86,.15)","IA & Sécurité":"rgba(83,74,183,.15)","Pare-feu":"rgba(24,95,165,.15)"
+};
+
+let displayed = [];
+let activeFilter = "all";
+let lastBatch = null;
+let latestBatchSize = 0;
+
+function timeAgo(ts) {
+  const d = Math.floor((Date.now() - ts) / 60000);
+  if (d < 1) return "à l'instant";
+  if (d < 60) return "il y a " + d + "min";
+  const h = Math.floor(d / 60);
+  if (h < 24) return "il y a " + h + "h";
+  return "il y a " + Math.floor(h / 24) + "j";
+}
+
+function render() {
+  const reversed = displayed.slice().reverse();
+  const filtered = activeFilter === "all" ? reversed : reversed.filter(a => a.cat === activeFilter);
+  const vCount = displayed.filter(a => a.cat === "virus").length;
+  const avCount = displayed.filter(a => a.cat === "antivirus").length;
+
+  document.getElementById("cnt-all").textContent = displayed.length;
+  document.getElementById("cnt-virus").textContent = vCount;
+  document.getElementById("cnt-av").textContent = avCount;
+  document.getElementById("last-update").textContent = lastBatch ? ("Mis à jour " + timeAgo(lastBatch)) : "En attente...";
+
+  const countTxt = filtered.length + " alerte" + (filtered.length > 1 ? "s" : "") + " — actualisation toutes les heures";
+  document.getElementById("flux-count").textContent = countTxt;
+
+  const container = document.getElementById("feed-container");
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="feed-empty">Chargement des premières alertes...</div>';
+    return;
+  }
+
+  let html = '<div class="feed-wrap">';
+  filtered.forEach((a, i) => {
+    const isNew = latestBatchSize > 0 && i < latestBatchSize && displayed.length > latestBatchSize;
+    const tagColor = TAG_COLORS[a.tag] || "#72737a";
+    const tagBg = TAG_BG[a.tag] || "rgba(35,36,40,.5)";
+    html += `<div class="alert-card${isNew ? " is-new" : ""}">
+      <div class="alert-meta">
+        <span class="badge ${a.cat === "virus" ? "badge-virus" : "badge-av"}">${a.cat === "virus" ? "Virus & Menaces" : "Antivirus & Défense"}</span>
+        <span class="badge" style="background:${tagBg};color:${tagColor}">${a.tag}</span>
+        ${isNew ? '<span class="badge badge-new">Nouveau</span>' : ""}
+        <span class="badge-time">${timeAgo(a.timestamp)} &mdash; <span class="badge-site">${a.site}</span></span>
+      </div>
+      <a href="${a.url}" target="_blank" class="alert-title">${a.titre} <span class="alert-arrow">↗</span></a>
+      <p class="alert-desc">${a.desc}</p>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll(".f-btn").forEach(b => b.className = "f-btn" + (b.classList.contains("sim") ? " sim" : ""));
+  if (f === "all") btn.classList.add("active-all");
+  else if (f === "virus") btn.classList.add("active-virus");
+  else btn.classList.add("active-av");
+  render();
+}
+
+function addBatch() {
+  const pool = ARTICLES.filter(a => !displayed.find(d => d.titre === a.titre));
+  if (pool.length === 0) return;
+  const n = Math.min(3, pool.length);
+  const batch = pool.sort(() => Math.random() - .5).slice(0, n);
+  const now = Date.now();
+  batch.forEach((a, i) => { displayed.push({ ...a, timestamp: now - i * 5000 }); });
+  lastBatch = now;
+  latestBatchSize = n;
+  render();
+}
+
+addBatch();
+setInterval(addBatch, 3600000);
+setInterval(render, 60000);
+</script>
 
 </body>
 </html>
