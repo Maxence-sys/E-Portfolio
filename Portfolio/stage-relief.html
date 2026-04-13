@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage — Relief Applications · Maxence THARY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #111214;
+  --bg2: #18191d;
+  --line: #232428;
+  --text: #d8d9dc;
+  --sub: #72737a;
+  --accent: #4f7fff;
+  --accent-dim: rgba(79,127,255,.08);
+  --white: #f0f1f3;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 0 3rem;
+  height: 56px;
+  background: rgba(17,18,20,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-name {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--sub);
+  letter-spacing: .05em;
+}
+.nav-name strong { color: var(--text); font-weight:500; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a {
+  font-size: .8rem;
+  color: var(--sub);
+  text-decoration:none;
+  letter-spacing:.02em;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* LAYOUT */
+.page { max-width: 1080px; margin: 0 auto; padding: 0 3rem; }
+
+/* HEADER */
+.stage-header {
+  padding-top: calc(56px + 5rem);
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--line);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--sub);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color .15s;
+}
+.back-link:hover { color: var(--text); }
+.stage-eyebrow {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.stage-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: .6rem;
+}
+.stage-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--sub);
+  margin-bottom: 2rem;
+}
+.meta-row {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+}
+.meta-item {
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.meta-key {
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  color: var(--sub);
+  text-transform: uppercase;
+}
+.meta-val {
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* RAPPORT BLOCK */
+.rapport-block {
+  margin-top: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: background .15s;
+}
+.rapport-block:hover { background: rgba(79,127,255,.1); }
+.rapport-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.rapport-text-block {}
+.rapport-label {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: .25rem;
+}
+.rapport-name {
+  font-size: .9rem;
+  color: var(--white);
+}
+
+/* SECTIONS */
+section.content-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  color: var(--sub);
+  text-transform: uppercase;
+  margin-bottom: .8rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+/* COMPANY INFO GRID */
+.company-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.company-body p {
+  color: var(--sub);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: .95rem;
+}
+.company-body p strong { color: var(--text); font-weight: 500; }
+
+/* PRODUITS LIST */
+.produits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.produit-item {
+  background: var(--bg2);
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.produit-item:last-child { border-bottom: none; }
+.produit-name {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+.produit-desc {
+  font-size: .88rem;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+/* VALEURS BLOC */
+.valeurs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.valeur-item {
+  background: var(--bg2);
+  padding: 1.2rem 1.5rem;
+}
+.valeur-key {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  color: var(--sub);
+  text-transform: uppercase;
+  margin-bottom: .3rem;
+}
+.valeur-val {
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-name { font-family: var(--mono); font-size: .7rem; color: var(--sub); }
+.footer-copy { font-family: var(--mono); font-size: .65rem; color: var(--sub); }
+
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .page{padding:0 1.5rem}
+  .company-grid{grid-template-columns:1fr;gap:2.5rem}
+  .valeurs-grid{grid-template-columns:1fr}
+  .meta-row{flex-direction:column;gap:1rem}
+  nav .nav-links{display:none}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><strong>Maxence THARY</strong> &nbsp;—&nbsp; Étudiant BTS SIO SISR</div>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Profil</a></li>
+    <li><a href="index.html#skills">Compétences</a></li>
+    <li><a href="index.html#projects">Projets</a></li>
+    <li><a href="index.html#parcours">Parcours</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="stage-header">
+    <a href="index.html#parcours" class="back-link">← Retour au parcours</a>
+    <p class="stage-eyebrow">Stage de 2ᵉ année · BTS SIO SISR</p>
+    <h1 class="stage-title">Relief Applications</h1>
+    <p class="stage-subtitle">Gouvernance, Sécurité et Conformité IT</p>
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-key">Période</span>
+        <span class="meta-val">19 janvier — 20 mars 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-key">Localisation</span>
+        <span class="meta-val">Toulouse / Madrid (télétravail intégral)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-key">Secteur</span>
+        <span class="meta-val">Humanitaire · IT · ONG</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-key">Structure</span>
+        <span class="meta-val">SAS européenne</span>
+      </div>
+    </div>
+    <a href="https://github.com/Maxence-sys/E-Portfolio/raw/main/Portfolio/activite/Rapport%20de%20Stage%20_%20Gouvernance%2C%20S%C3%A9curit%C3%A9%20et%20Conformit%C3%A9%20IT.pdf" target="_blank" class="rapport-block">
+      <span class="rapport-icon">📄</span>
+      <div class="rapport-text-block">
+        <div class="rapport-label">Télécharger</div>
+        <div class="rapport-name">Rapport de Stage — Gouvernance, Sécurité et Conformité IT</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- ENTREPRISE -->
+  <section class="content-section">
+    <p class="section-label">01 — L'entreprise</p>
+    <h2 class="section-title">Identité & Structure</h2>
+    <div class="company-grid">
+      <div class="company-body">
+        <p>
+          <strong>Relief Applications</strong> est une Société par Actions Simplifiée (SAS) européenne, immatriculée au registre du commerce et des sociétés de <strong>Toulouse</strong>. Si l'entreprise est officiellement fondée en <strong>2014</strong>, son histoire prend racine un an plus tôt, lors d'une crise humanitaire majeure.
+        </p>
+        <p>
+          L'entreprise est née de la rencontre et de la vision de ses deux fondateurs, <strong>Raphaël et Arturo</strong>. En 2014, alors qu'ils intervenaient aux Philippines pour répondre aux ravages du <strong>typhon Haiyan (Yolanda)</strong>, ils ont été confrontés de plein fouet aux limites des outils technologiques sur le terrain.
+        </p>
+        <p>
+          Face au manque de solutions adaptées pour coordonner l'aide et gérer les données en temps réel dans un chaos logistique, ils ont imaginé comment l'innovation numérique pourrait transformer l'impact des missions humanitaires. À leur retour en Europe, ils décident d'unir leurs expertises — <em>le "geek" et l'humanitaire</em> — pour fonder Relief Applications.
+        </p>
+        <p>
+          Aujourd'hui, l'entreprise fonctionne en <strong>télétravail intégral</strong>, une structure dématérialisée entre Toulouse et Madrid qui reflète son agilité, mais qui impose également une rigueur extrême dans la sécurisation des accès distants et des flux d'informations.
+        </p>
+      </div>
+      <div>
+        <div class="valeurs-grid">
+          <div class="valeur-item">
+            <div class="valeur-key">Fondation</div>
+            <div class="valeur-val">2014</div>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-key">Forme juridique</div>
+            <div class="valeur-val">SAS européenne</div>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-key">Sièges</div>
+            <div class="valeur-val">Toulouse & Madrid</div>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-key">Mode de travail</div>
+            <div class="valeur-val">Télétravail intégral</div>
+          </div>
+          <div class="valeur-item" style="grid-column:1/-1">
+            <div class="valeur-key">Clients</div>
+            <div class="valeur-val">ONG, agences ONU, organisations humanitaires</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="content-section">
+    <p class="section-label">02 — Mission & Valeurs</p>
+    <h2 class="section-title">L'approche "Humanitarian-to-Humanitarian"</h2>
+    <div class="company-body">
+      <p>
+        Relief Applications ne se contente pas de fournir des services informatiques standards ; elle adopte une approche spécialisée visant à créer des <strong>outils pertinents pour des environnements contraints</strong>, tels que les zones de crise ou les régions à faible connectivité.
+      </p>
+      <p>
+        Sa mission consiste à améliorer l'<strong>efficacité opérationnelle</strong> et la qualité du suivi des programmes pour les ONG et les agences internationales, notamment celles liées au système des <strong>Nations Unies</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section class="content-section">
+    <p class="section-label">03 — Solutions & Produits</p>
+    <h2 class="section-title">Axes d'intervention</h2>
+    <p style="font-size:.95rem;color:var(--sub);margin-bottom:2rem;line-height:1.8;">
+      Relief Applications intervient sur trois axes principaux : le <strong style="color:var(--text)">conseil IT</strong>, le <strong style="color:var(--text)">développement d'applications sur mesure</strong> et la <strong style="color:var(--text)">gestion complexe de données</strong>. Ses produits ne sont pas des solutions "sur étagère" mais des architectures modulaires bâties pour coller précisément aux réalités du terrain.
+    </p>
+    <div class="produits-list">
+      <div class="produit-item">
+        <div class="produit-name">WMS — Warehouse Management System</div>
+        <div class="produit-desc">Plateforme web logistique permettant de suivre les niveaux d'inventaire et les mouvements de stocks en temps réel. Conçue pour les environnements humanitaires exigeants.</div>
+      </div>
+      <div class="produit-item">
+        <div class="produit-name">Oort</div>
+        <div class="produit-desc">Solution dédiée à la gestion des données de référence. Assure la cohérence et la fiabilité des données au sein des opérations terrain.</div>
+      </div>
+      <div class="produit-item">
+        <div class="produit-name">Solutions sur-mesure — Custom Case Management</div>
+        <div class="produit-desc">Systèmes de gestion de cas et de suivi-évaluation entièrement adaptés aux workflows des clients (protection, santé, éducation, etc.). Architectures modulaires conçues pour les réalités du terrain.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span class="footer-name"><strong>Maxence THARY</strong> — Stage Relief Applications · 2026</span>
+  <span class="footer-copy">Portfolio BTS SIO SISR</span>
+</footer>
+
+</body>
+</html>
