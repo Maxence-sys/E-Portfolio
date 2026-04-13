@@ -57,6 +57,8 @@ nav {
   transition: color .15s;
 }
 .nav-links a:hover { color: var(--text); }
+.nav-back{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--sub);text-decoration:none;letter-spacing:.04em;transition:color .15s;padding:.4rem 1rem;border:1px solid var(--line);border-radius:2px}
+.nav-back:hover{color:var(--text);border-color:var(--sub)}
 
 /* LAYOUT */
 .page { max-width: 1080px; margin: 0 auto; padding: 0 3rem; }
@@ -267,22 +269,14 @@ footer {
 <body>
 
 <nav>
-  <div class="nav-name"><strong>Maxence THARY</strong> &nbsp;—&nbsp; Étudiant BTS SIO SISR</div>
-  <ul class="nav-links">
-    <li><a href="index.html#about">Profil</a></li>
-    <li><a href="index.html#skills">Compétences</a></li>
-    <li><a href="index.html#projects">Projets</a></li>
-    <li><a href="index.html#parcours">Parcours</a></li>
-    <li><a href="veille.html">Veille</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
+  <div class="nav-name"><strong>Maxence THARY</strong> &nbsp;—&nbsp; BTS SIO SISR</div>
+  <a href="index.html" class="nav-back">← Portfolio</a>
 </nav>
 
 <div class="page">
 
   <!-- HEADER -->
   <div class="stage-header">
-    <a href="index.html#parcours" class="back-link">← Retour au parcours</a>
     <p class="stage-eyebrow">Stage de 2ᵉ année · BTS SIO SISR</p>
     <h1 class="stage-title">Relief Applications</h1>
     <p class="stage-subtitle">Gouvernance, Sécurité et Conformité IT</p>
@@ -293,7 +287,7 @@ footer {
       </div>
       <div class="meta-item">
         <span class="meta-key">Localisation</span>
-        <span class="meta-val">Toulouse (télétravail intégral)</span>
+        <span class="meta-val">Toulouse / Madrid (télétravail intégral)</span>
       </div>
       <div class="meta-item">
         <span class="meta-key">Secteur</span>
@@ -344,7 +338,7 @@ footer {
           </div>
           <div class="valeur-item">
             <div class="valeur-key">Sièges</div>
-            <div class="valeur-val">Toulouse</div>
+            <div class="valeur-val">Toulouse & Madrid</div>
           </div>
           <div class="valeur-item">
             <div class="valeur-key">Mode de travail</div>
